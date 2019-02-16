@@ -99,6 +99,7 @@ class HomeScreen extends Component {
               <Image
                 source={require('../../assets/images/UI/reconocimiento_regular.png')}
                 style={styles.recognizeButton}
+                onPress={() => navigate('RecognizeMode')}
               />
             </Col>
             <Col>
