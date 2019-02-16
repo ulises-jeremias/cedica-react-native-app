@@ -1,15 +1,14 @@
 import React from 'react'
 import {
   Image,
+  View,
   ScrollView,
   StyleSheet,
 } from 'react-native'
 
 import {
   Button,
-  Container,
   Icon,
-  Text,
 } from 'native-base'
 
 import { Row, Grid, Col } from "react-native-easy-grid"
@@ -27,14 +26,24 @@ export default class HomeScreen extends React.Component {
     } = this.props
 
     return (
-      <Container style={styles.container}>
-        <ScrollView style={styles.container} contentContainerStyle={styles.contentContainer}>
+      <View style={styles.container}>
+        <ScrollView style={styles.contentContainer}>
           <Grid style={styles.homeContainer}>
             <Row>
               <Col>
-                <Button warning style={styles.helpButton} onPress={() => alert('aaaa')}>
+                <Button
+                  warning
+                  style={styles.helpButton}
+                  onPress={() => navigate('Help')}
+                >
                   <Icon name='md-help-circle' />
                 </Button>
+              </Col>
+              <Col>
+                <Image
+                  source={require('../../assets/images/UI/logo-app.png')}
+                  style={styles.appLogo}
+              />
               </Col>
               <Col>
                 <Button
@@ -48,18 +57,29 @@ export default class HomeScreen extends React.Component {
             </Row>
             <Row>
               <Image
-                source={require('../../assets/images/UI/logo-app.png')}
-                style={styles.appLogo}
+                source={require('../../assets/images/UI/cedica.png')}
+                style={styles.cedicaLogo}
               />
             </Row>
-            <Row style={styles.secondRow}>
+            <Row>
+              <Image
+                source={require('../../assets/images/UI/jugar_regular.png')}
+                style={styles.playButton}
+              />
+            </Row>
+            <Row>
               <Col>
                 <Image
                   source={require('../../assets/images/UI/logo-unlp.png')}
                   style={styles.unlpLogo}
                 />
               </Col>
-
+              <Col>
+                <Image
+                  source={require('../../assets/images/UI/reconocimiento_regular.png')}
+                  style={styles.recognizeButton}
+                />
+              </Col>
               <Col>
                 <Image
                   source={require('../../assets/images/UI/logo-facultad-informatica.png')}
@@ -69,22 +89,21 @@ export default class HomeScreen extends React.Component {
             </Row>
           </Grid>
         </ScrollView>
-      </Container>
+      </View>
     )
   }
 }
 
 const styles = StyleSheet.create({
   container: {
-    flex: 1,
     backgroundColor: '#fff',
+    flex: 1,
   },
   contentContainer: {
     paddingTop: 30,
   },
   homeContainer: {
     alignItems: 'center',
-    marginTop: 10,
   },
   helpButton: {
     marginLeft: 15,
@@ -94,19 +113,33 @@ const styles = StyleSheet.create({
     marginRight: 15,
   },
   appLogo: {
-    width: 350,
+    alignSelf: 'center',
+    paddingTop: 3,
     resizeMode: 'contain',
-    marginTop: 3,
+    width: 350,
+  },
+  cedicaLogo: {
+    paddingTop: 10,
+    resizeMode: 'contain',
+    width: 150,
+  },
+  playButton: {
+    alignSelf: 'center',
+    resizeMode: 'contain',
+    width: 150,
+  },
+  recognizeButton: {
+    alignSelf: 'center',
+    resizeMode: 'contain',
+    width: 250,
   },
   unlpLogo: {
-    width: 250,
     resizeMode: 'contain',
+    width: 150,
   },
   infoLogo: {
-    width: 250,
+    alignSelf: 'flex-end',
     resizeMode: 'contain',
-  },
-  secondRow: {
-    alignItems: 'center',
+    width: 150,
   },
 })
