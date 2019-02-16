@@ -1,1 +1,3 @@
-export default {}
+import { combineReducers } from 'redux'
+
+export default combineReducers({})
