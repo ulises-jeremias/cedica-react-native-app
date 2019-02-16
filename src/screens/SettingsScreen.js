@@ -3,11 +3,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import {
   Body,
-  Button,
   CheckBox,
   Content,
   Form,
-  Header,
   Icon,
   Left,
   ListItem,
@@ -18,6 +16,7 @@ import {
 } from 'native-base'
 
 import settingsActions from '../actions/settings-actions'
+import { settings } from '../config/Options'
 
 function mapStateToProps(state) {
   const {
@@ -47,6 +46,20 @@ class SettingsScreen extends Component {
   }
 
   render() {
+    const {
+      miniGameOptions,
+    } = settings
+
+    const {
+      settings: {
+        settings: {
+          fields: {
+            miniGameCode,
+          }
+        }
+      }
+    } = this.props
+
     return (
       <Fragment>
         <Content>
@@ -89,36 +102,20 @@ class SettingsScreen extends Component {
               Minijuego
             </Text>
           </ListItem>
-          <ListItem>
-            <Left>
-              <Text>
-                Razas y Pelajes: Imagen - Palabra
-              </Text>
-            </Left>
-            <Right>
-              <Radio selected={true} />
-            </Right>
-          </ListItem>
-          <ListItem>
-            <Left>
-              <Text>
-                Razas y Pelajes: Palabra e Imagen
-              </Text>
-            </Left>
-            <Right>
-              <Radio selected={false} />
-            </Right>
-          </ListItem>
-          <ListItem>
-            <Left>
-              <Text>
-                Cruza: Imagen - Imagen
-              </Text>
-            </Left>
-            <Right>
-              <Radio selected={false} />
-            </Right>
-          </ListItem>
+          
+          {Array.from(miniGameOptions || []).map(miniGame => (
+            <ListItem>
+              <Left>
+                <Text>
+                  {miniGame.text}
+                </Text>
+              </Left>
+              <Right>
+                <Radio selected={fields.miniGameCode === miniGame.code} />
+              </Right>
+            </ListItem>
+          ))}
+
           <ListItem itemDivider>
             <Text>
               Nivel de Dificultad

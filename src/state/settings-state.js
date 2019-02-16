@@ -1,3 +1,11 @@
+import {
+  settings
+} from '../config/Options'
+
+const {
+  miniGameOptions
+} = settings
+
 export default {
   error: '',
   isValid: false,
@@ -8,7 +16,7 @@ export default {
       
     },
     fields: {
-      
+      miniGameCode: miniGameOptions[0].code
     }
   }
 }
