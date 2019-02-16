@@ -1,13 +1,15 @@
 import React from 'react'
 import { createStackNavigator } from 'react-navigation'
 
-import HomeScreen from '../screens/HomeScreen'
-import SettingsScreen from '../screens/SettingsScreen'
-import HelpScreen from '../screens/HelpScreen'
+import Home from '../screens/HomeScreen'
+import Settings from '../screens/SettingsScreen'
+import Help from '../screens/HelpScreen'
+import RecognizeMode from '../screens/RecognizeMode'
 
 export default createStackNavigator({
-  Home: HomeScreen,
-  Settings: SettingsScreen,
-  Help: HelpScreen,
+  Home,
+  Settings,
+  Help,
+  RecognizeMode,
 })
 
