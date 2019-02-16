@@ -2,7 +2,11 @@ import Options from '../config/Options'
 
 const {
   settings: {  
-    miniGameOptions
+    miniGames,
+    gameModes,
+    viewModes,
+    levels,
+    sounds,
   }
 } = Options
 
@@ -13,10 +17,26 @@ export default {
   success: '',
   settings: {
     current: {
-      
+      viewModeCode: viewModes[0].code,
+      miniGameCode: miniGames[0].code,
+
+      levelCode: levels[0].code,
+      soundCode: sounds[0].code,
+
+      gameModeCode: [
+        gameModes[0].code,
+      ],
     },
     fields: {
-      miniGameCode: miniGameOptions[0].code
+      viewModeCode: viewModes[0].code,
+      miniGameCode: miniGames[0].code,
+
+      levelCode: levels[0].code,
+      soundCode: sounds[0].code,
+
+      gameModeCode: [
+        gameModes[0].code,
+      ],
     }
   }
 }
