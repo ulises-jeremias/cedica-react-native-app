@@ -1,9 +1,9 @@
 {
   "devToolsPort": 19002,
-  "expoServerPort": null,
-  "packagerPort": null,
-  "packagerPid": null,
-  "expoServerNgrokUrl": null,
-  "packagerNgrokUrl": null,
-  "ngrokPid": null
+  "expoServerPort": 19000,
+  "packagerPort": 19003,
+  "packagerPid": 32115,
+  "expoServerNgrokUrl": "https://3n-5e6.anonymous.cedica.exp.direct",
+  "packagerNgrokUrl": "https://packager.3n-5e6.anonymous.cedica.exp.direct",
+  "ngrokPid": 32167
 }
