@@ -1,13 +1,12 @@
 import React from 'react'
 import {
   Image,
-  View,
-  ScrollView,
   StyleSheet,
 } from 'react-native'
 
 import {
   Button,
+  Content,
   Icon,
 } from 'native-base'
 
@@ -26,79 +25,73 @@ export default class HomeScreen extends React.Component {
     } = this.props
 
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.contentContainer}>
-          <Grid style={styles.homeContainer}>
-            <Row>
-              <Col>
-                <Button
-                  warning
-                  style={styles.helpButton}
-                  onPress={() => navigate('Help')}
-                >
-                  <Icon name='md-help-circle' />
-                </Button>
-              </Col>
-              <Col>
-                <Image
-                  source={require('../../assets/images/UI/logo-app.png')}
-                  style={styles.appLogo}
-              />
-              </Col>
-              <Col>
-                <Button
-                  warning
-                  style={styles.settingsButton}
-                  onPress={() => navigate('Settings')}
-                >
-                  <Icon name='md-settings' />
-                </Button>
-              </Col>
-            </Row>
-            <Row>
+      <Content style={styles.contentContainer}>
+        <Grid style={styles.homeContainer}>
+          <Row>
+            <Col>
+              <Button
+                warning
+                style={styles.helpButton}
+                onPress={() => navigate('Help')}
+              >
+                <Icon name='md-help-circle' />
+              </Button>
+            </Col>
+            <Col>
               <Image
-                source={require('../../assets/images/UI/cedica.png')}
-                style={styles.cedicaLogo}
-              />
-            </Row>
-            <Row>
+                source={require('../../assets/images/UI/logo-app.png')}
+                style={styles.appLogo}
+            />
+            </Col>
+            <Col>
+              <Button
+                warning
+                style={styles.settingsButton}
+                onPress={() => navigate('Settings')}
+              >
+                <Icon name='md-settings' />
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Image
+              source={require('../../assets/images/UI/cedica.png')}
+              style={styles.cedicaLogo}
+            />
+          </Row>
+          <Row>
+            <Image
+              source={require('../../assets/images/UI/jugar_regular.png')}
+              style={styles.playButton}
+            />
+          </Row>
+          <Row>
+            <Col>
               <Image
-                source={require('../../assets/images/UI/jugar_regular.png')}
-                style={styles.playButton}
+                source={require('../../assets/images/UI/logo-unlp.png')}
+                style={styles.unlpLogo}
               />
-            </Row>
-            <Row>
-              <Col>
-                <Image
-                  source={require('../../assets/images/UI/logo-unlp.png')}
-                  style={styles.unlpLogo}
-                />
-              </Col>
-              <Col>
-                <Image
-                  source={require('../../assets/images/UI/reconocimiento_regular.png')}
-                  style={styles.recognizeButton}
-                />
-              </Col>
-              <Col>
-                <Image
-                  source={require('../../assets/images/UI/logo-facultad-informatica.png')}
-                  style={styles.infoLogo}
-                />
-              </Col>
-            </Row>
-          </Grid>
-        </ScrollView>
-      </View>
+            </Col>
+            <Col>
+              <Image
+                source={require('../../assets/images/UI/reconocimiento_regular.png')}
+                style={styles.recognizeButton}
+              />
+            </Col>
+            <Col>
+              <Image
+                source={require('../../assets/images/UI/logo-facultad-informatica.png')}
+                style={styles.infoLogo}
+              />
+            </Col>
+          </Row>
+        </Grid>
+      </Content>
     )
   }
 }
 
 const styles = StyleSheet.create({
-  container: {
-    backgroundColor: '#fff',
-    flex: 1,
-  },
   contentContainer: {
     paddingTop: 30,
   },
@@ -114,32 +107,36 @@ const styles = StyleSheet.create({
   },
   appLogo: {
     alignSelf: 'center',
-    paddingTop: 3,
     resizeMode: 'contain',
     width: 350,
+    height: 100,
   },
   cedicaLogo: {
-    paddingTop: 10,
     resizeMode: 'contain',
     width: 150,
+    height: 150,
   },
   playButton: {
-    alignSelf: 'center',
     resizeMode: 'contain',
-    width: 150,
+    width: 200,
+    height: 100,
   },
   recognizeButton: {
     alignSelf: 'center',
     resizeMode: 'contain',
+    marginTop: 20,
     width: 250,
+    height: 100,
   },
   unlpLogo: {
     resizeMode: 'contain',
     width: 150,
+    height: 150,
   },
   infoLogo: {
     alignSelf: 'flex-end',
     resizeMode: 'contain',
     width: 150,
+    height: 150,
   },
 })
