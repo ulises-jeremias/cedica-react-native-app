@@ -1,4 +1,6 @@
-import React from 'react'
+import React, { Component } from 'react'
+import { bindActionCreators } from 'redux'
+import { connect } from 'react-redux'
 import {
   Image,
   View,
@@ -6,14 +8,36 @@ import {
   StyleSheet,
 } from 'react-native'
 
+
 import {
   Button,
+  Content,
   Icon,
 } from 'native-base'
 
 import { Row, Grid, Col } from "react-native-easy-grid"
 
-export default class HomeScreen extends React.Component {
+import settingsActions from '../actions/settings-actions'
+
+function mapStateToProps(state) {
+  const {
+    settings
+  } = state
+
+  return {
+    settings
+  }
+}
+
+function mapDispatchToProps(dispatch) {
+  return {
+    actions: bindActionCreators({
+      ...settingsActions,
+    }, dispatch),
+  }
+}
+
+class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
   }
@@ -26,70 +50,70 @@ export default class HomeScreen extends React.Component {
     } = this.props
 
     return (
-      <View style={styles.container}>
-        <ScrollView style={styles.contentContainer}>
-          <Grid style={styles.homeContainer}>
-            <Row>
-              <Col>
-                <Button
-                  warning
-                  style={styles.helpButton}
-                  onPress={() => navigate('Help')}
-                >
-                  <Icon name='md-help-circle' />
-                </Button>
-              </Col>
-              <Col>
-                <Image
-                  source={require('../../assets/images/UI/logo-app.png')}
-                  style={styles.appLogo}
-              />
-              </Col>
-              <Col>
-                <Button
-                  warning
-                  style={styles.settingsButton}
-                  onPress={() => navigate('Settings')}
-                >
-                  <Icon name='md-settings' />
-                </Button>
-              </Col>
-            </Row>
-            <Row>
+      <Content padder style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <Grid style={styles.homeContainer}>
+          <Row>
+            <Col>
+              <Button
+                warning
+                style={styles.helpButton}
+                onPress={() => navigate('Help')}
+              >
+                <Icon name='md-help-circle' />
+              </Button>
+            </Col>
+            <Col>
               <Image
-                source={require('../../assets/images/UI/cedica.png')}
-                style={styles.cedicaLogo}
-              />
-            </Row>
-            <Row>
+                source={require('../../assets/images/UI/logo-app.png')}
+                style={styles.appLogo}
+            />
+            </Col>
+            <Col>
+              <Button
+                warning
+                style={styles.settingsButton}
+                onPress={() => navigate('Settings')}
+              >
+                <Icon name='md-settings' />
+              </Button>
+            </Col>
+          </Row>
+          <Row>
+            <Image
+              source={require('../../assets/images/UI/cedica.png')}
+              style={styles.cedicaLogo}
+            />
+          </Row>
+          <Row>
+            <Image
+              source={require('../../assets/images/UI/jugar_regular.png')}
+              style={styles.playButton}
+            />
+          </Row>
+          <Row>
+            <Col>
               <Image
-                source={require('../../assets/images/UI/jugar_regular.png')}
-                style={styles.playButton}
+                source={require('../../assets/images/UI/logo-unlp.png')}
+                style={styles.unlpLogo}
               />
-            </Row>
-            <Row>
-              <Col>
-                <Image
-                  source={require('../../assets/images/UI/logo-unlp.png')}
-                  style={styles.unlpLogo}
-                />
-              </Col>
-              <Col>
+            </Col>
+            <Col>
+              <Button transparent onPress={() => navigate('RecognizeMode')}>
                 <Image
                   source={require('../../assets/images/UI/reconocimiento_regular.png')}
                   style={styles.recognizeButton}
                 />
-              </Col>
-              <Col>
-                <Image
-                  source={require('../../assets/images/UI/logo-facultad-informatica.png')}
-                  style={styles.infoLogo}
-                />
-              </Col>
-            </Row>
-          </Grid>
-        </ScrollView>
-      </View>
+              </Button>
+            </Col>
+            <Col>
+              <Image
+                source={require('../../assets/images/UI/logo-facultad-informatica.png')}
+                style={styles.infoLogo}
+              />
+            </Col>
+          </Row>
+        </Grid>
+      </Content>
     )
   }
 }
@@ -143,3 +167,5 @@ const styles = StyleSheet.create({
     width: 150,
   },
 })
+
+export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)
