@@ -48,11 +48,7 @@ class HomeScreen extends Component {
     } = this.props
 
     return (
-<<<<<<< HEAD
       <Content style={styles.contentContainer}>
-=======
-      <Content padder style={styles.container} contentContainerStyle={styles.contentContainer}>
->>>>>>> a17dadd935b7d36137928c651dc77d0cf669e9f5
         <Grid style={styles.homeContainer}>
           <Row>
             <Col>
@@ -65,7 +61,6 @@ class HomeScreen extends Component {
               </Button>
             </Col>
             <Col>
-<<<<<<< HEAD
               <Image
                 source={require('../../assets/images/UI/logo-app.png')}
                 style={styles.appLogo}
@@ -112,56 +107,6 @@ class HomeScreen extends Component {
                 style={styles.infoLogo}
               />
             </Col>
-=======
-              <Image
-                source={require('../../assets/images/UI/logo-app.png')}
-                style={styles.appLogo}
-            />
-            </Col>
-            <Col>
-              <Button
-                warning
-                style={styles.settingsButton}
-                onPress={() => navigate('Settings')}
-              >
-                <Icon name='md-settings' />
-              </Button>
-            </Col>
-          </Row>
-          <Row>
-            <Image
-              source={require('../../assets/images/UI/cedica.png')}
-              style={styles.cedicaLogo}
-            />
-          </Row>
-          <Row>
-            <Image
-              source={require('../../assets/images/UI/jugar_regular.png')}
-              style={styles.playButton}
-            />
-          </Row>
-          <Row>
-            <Col>
-              <Image
-                source={require('../../assets/images/UI/logo-unlp.png')}
-                style={styles.unlpLogo}
-              />
-            </Col>
-            <Col>
-              <Button transparent onPress={() => navigate('RecognizeMode')}>
-                <Image
-                  source={require('../../assets/images/UI/reconocimiento_regular.png')}
-                  style={styles.recognizeButton}
-                />
-              </Button>
-            </Col>
-            <Col>
-              <Image
-                source={require('../../assets/images/UI/logo-facultad-informatica.png')}
-                style={styles.infoLogo}
-              />
-            </Col>
->>>>>>> a17dadd935b7d36137928c651dc77d0cf669e9f5
           </Row>
         </Grid>
       </Content>
