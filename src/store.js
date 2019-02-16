@@ -1,6 +1,6 @@
 import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
-import devToolsEnhancer from 'remote-redux-devtools'
+import {composeWithDevTools} from 'remote-redux-devtools'
 
 import reducer from './reducer'
 
