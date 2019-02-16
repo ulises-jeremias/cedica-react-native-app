@@ -4,6 +4,10 @@ import {
   SETTINGS_STORED_CONFIGURATION_GET_REQUEST,
   SETTINGS_STORED_CONFIGURATION_GET_SUCCESS,
   SETTINGS_STORED_CONFIGURATION_GET_FAILURE,
+
+  SETTINGS_STORED_CONFIGURATION_UPDATE_REQUEST,
+  SETTINGS_STORED_CONFIGURATION_UPDATE_SUCCESS,
+  SETTINGS_STORED_CONFIGURATION_UPDATE_FAILURE,
   
   ON_SETTINGS_FORM_CLEAR,
   ON_SETTINGS_FORM_FIELD_CHANGE,
@@ -13,23 +17,28 @@ import initialState from '../state/settings-state'
 import formValidation from './settings-form'
 
 import {
-  requestHandler,
-  successHandler,
-  failureHandler,
+  formRequestHandler,
+  formSuccessHandler,
+  formFailureHandler,
 } from '../helpers/action-handler'
 
 const reducer = handleActions({
+
+
   [combineActions(
     SETTINGS_STORED_CONFIGURATION_GET_REQUEST,
-  )]: requestHandler('settings'),
+    SETTINGS_STORED_CONFIGURATION_UPDATE_REQUEST,
+  )]: formRequestHandler('settings'),
 
   [combineActions(
     SETTINGS_STORED_CONFIGURATION_GET_SUCCESS,
-  )]: successHandler('settings'),
+    SETTINGS_STORED_CONFIGURATION_UPDATE_SUCCESS,
+  )]: formSuccessHandler('settings'),
 
   [combineActions(
     SETTINGS_STORED_CONFIGURATION_GET_FAILURE,
-  )]: failureHandler('settings'),
+    SETTINGS_STORED_CONFIGURATION_UPDATE_FAILURE,
+  )]: formFailureHandler('settings'),
 
   [ON_SETTINGS_FORM_CLEAR]: (state, { payload: { context, options } }) => {
     let nextSettingsState = {

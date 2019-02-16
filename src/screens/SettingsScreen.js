@@ -1,8 +1,10 @@
 import React, { Component, Fragment }  from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import { Grid, Col } from 'react-native-easy-grid'
 import {
   Body,
+  Button,
   CheckBox,
   Content,
   Form,
@@ -36,15 +38,107 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
+class HeaderTitle extends Component {
+  render() {
+    const {
+      settings: {
+        settings: {
+          isFetching,
+          isValid,
+          fields,
+        }
+      },
+      actions: {
+        updateStoredConfiguration,
+      }
+    } = this.props
+
+    return (
+      <Grid>
+        <Col style={{ marginVertical: 40 }}>
+          <Text>
+            Configuración
+          </Text>
+        </Col>
+        <Col style={{ width: 80, marginVertical: 20 }}>
+          <Button
+            rounded
+            success
+            bordered={isFetching || !isValid}
+            disabled={isFetching || !isValid}
+            onPress={(isFetching || !isValid) ? undefined : () => updateStoredConfiguration(fields)}
+          >
+            <Icon success fontSize={12} name='md-save' />
+          </Button>
+        </Col>
+      </Grid>
+    )
+  }
+}
+
 class SettingsScreen extends Component {
   static navigationOptions = {
-    title: 'Configuración',
+    headerTitle: connect(mapStateToProps, mapDispatchToProps)(HeaderTitle),
   }
 
   componentDidMount() {
+    const {
+      actions: {
+        getStoredConfiguration,
+      }
+    } = this.props
 
+    getStoredConfiguration()
   }
 
+  onCheckBoxPressHandler(name, code) {
+    const {
+      actions: {
+        onSettingsFormFieldChange,
+      },
+      settings: {
+        settings: {
+          fields,
+        }
+      }
+    } = this.props
+
+    let codes = Array.from(fields[name])
+    
+    return () => {
+      if (codes.includes(code)) {
+        onSettingsFormFieldChange('settings', name, codes.filter(e => e !== code))
+        return
+      }
+
+      onSettingsFormFieldChange('settings', name, [...codes, code])
+    }
+  }
+
+  onPickerValueChangeHandler(name) {
+    const {
+      actions: {
+        onSettingsFormFieldChange,
+      }
+    } = this.props
+    
+    return value => {
+      onSettingsFormFieldChange('settings', name, value)
+    }
+  }
+
+  onRadioButtonPressHandler(name, code) {
+    const {
+      actions: {
+        onSettingsFormFieldChange,
+      }
+    } = this.props
+    
+    return () => {
+      onSettingsFormFieldChange('settings', name, code)
+    }
+  }
+  
   render() {
     const {
       settings: {
@@ -55,7 +149,7 @@ class SettingsScreen extends Component {
         sounds,
       }
     } = options
-
+    
     const {
       settings: {
         settings: {
@@ -63,7 +157,7 @@ class SettingsScreen extends Component {
         }
       }
     } = this.props
-
+    
     return (
       <Fragment>
         <Content>
@@ -72,14 +166,20 @@ class SettingsScreen extends Component {
           </ListItem> 
           
           {Array.from(viewModes || []).map((viewMode, i) => (
-            <ListItem key={`${viewMode.code}-${i+1}`}>
+            <ListItem
+              key={`${viewMode.code}-${i+1}`}
+              onPress={this.onRadioButtonPressHandler('viewModeCode', viewMode.code)}
+            >
               <Left>
                 <Text>
                   {viewMode.text}
                 </Text>
               </Left>
               <Right>
-                <Radio selected={fields.viewModeCode === viewMode.code} />
+                <Radio
+                  selected={fields.viewModeCode === viewMode.code}
+                  onPress={this.onRadioButtonPressHandler('viewModeCode', viewMode.code)}
+                />
               </Right>
             </ListItem>
           ))}
@@ -89,13 +189,17 @@ class SettingsScreen extends Component {
           </ListItem>
 
           {Array.from(gameModes || []).map((gameMode, i) => (
-            <ListItem key={`${gameMode.code}-${i+1}`}>
+            <ListItem
+              key={`${gameMode.code}-${i+1}`}
+              onPress={this.onCheckBoxPressHandler('gameModeCodes', gameMode.code)}
+            >
               <Body>
                 <Text>
                   {gameMode.text}
                 </Text>
               </Body>
               <CheckBox
+                onPress={this.onCheckBoxPressHandler('gameModeCodes', gameMode.code)}
                 checked={Array.from(fields.gameModeCodes || []).includes(gameMode.code)}
               />
             </ListItem>
@@ -108,14 +212,20 @@ class SettingsScreen extends Component {
           </ListItem>
           
           {Array.from(miniGames || []).map((miniGame, i) => (
-            <ListItem key={`${miniGame.code}-${i+1}`}>
+            <ListItem
+              key={`${miniGame.code}-${i+1}`}
+              onPress={this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+            >
               <Left>
                 <Text>
                   {miniGame.text}
                 </Text>
               </Left>
               <Right>
-                <Radio selected={fields.miniGameCode === miniGame.code} />
+                <Radio
+                  selected={fields.miniGameCode === miniGame.code}
+                  onPress={this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+                />
               </Right>
             </ListItem>
           ))}
@@ -133,6 +243,7 @@ class SettingsScreen extends Component {
                   iosIcon={<Icon name='arrow-down' />}
                   style={{ width: undefined }}
                   selectedValue={fields.levelCode}
+                  onValueChange={this.onPickerValueChangeHandler('levelCode')}
                 >
                   {Array.from(levels || []).map((level, i) => (
                     <Picker.Item
@@ -158,6 +269,7 @@ class SettingsScreen extends Component {
                   iosIcon={<Icon name='arrow-down' />}
                   style={{ width: undefined }}
                   selectedValue={fields.soundCode}
+                  onValueChange={this.onPickerValueChangeHandler('soundCode')}
                 >
                   {Array.from(sounds || []).map((sound, i) => (
                     <Picker.Item

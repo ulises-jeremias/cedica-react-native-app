@@ -30,39 +30,38 @@ export const failureHandler = module => (state, { payload }) => ({
 
 export const formRequestHandler = module => state => ({
   ...state,
-  form: {
-    ...state.form,
-    [module]: {
-      ...state.form[module],
-      isFetching: true,
-      error: null,
-    }
+  [module]: {
+    ...state[module],
+    isFetching: true,
+    error: null,
   }
 })
 
-export const formSuccessHandler = module => (state) => ({
+export const formSuccessHandler = module => (state, { payload: { data } }) => ({
   ...state,
-  form: {
-    ...state.form,
-    [module]: {
-      ...state.form[module],
-      isValid: false,
-      isFetching: false,
-      success: true,
-      error: null,
+  [module]: {
+    ...state[module],
+    isValid: false,
+    isFetching: false,
+    success: true,
+    error: null,
+    fields: {
+      ...state[module].fields,
+      ...data,
+    },
+    current: {
+      ...state[module].current,
+      ...data,
     }
   }
 })
 
 export const formFailureHandler = module => (state, { payload }) => ({
   ...state,
-  form: {
-    ...state.form,
-    [module]: {
-      ...state.form[module],
-      isFetching: false,
-      error: payload,
-      success: null,
-    }
+  [module]: {
+    ...state[module],
+    isFetching: false,
+    error: payload,
+    success: null,
   }
 })

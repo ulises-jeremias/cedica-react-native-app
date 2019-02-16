@@ -1,3 +1,5 @@
+import _ from 'underscore'
+
 export default function formValidation(state) {
   const { current, fields } = state
 
@@ -12,7 +14,7 @@ export default function formValidation(state) {
   const updated = Object.keys(fields)
     .filter(f => !(f.includes('HasError') || f.includes('ErrorMsg')))
     .filter(f => current.hasOwnProperty(f))
-    .find(f => current[f] !== fields[f])
+    .find(f => !_.isEqual(current[f], fields[f]))
 
   if (!updated) {
     return false

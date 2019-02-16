@@ -29,14 +29,26 @@ export default {
     },
     fields: {
       viewModeCode: viewModes[0].code,
+      viewModeCodeErrorMsg: '',
+      viewModeCodeHasError: false,
+
       miniGameCode: miniGames[0].code,
+      miniGameCodeErrorMsg: '',
+      miniGameCodeHasError: false,
 
       levelCode: levels[0].code,
+      levelCodeErrorMsg: '',
+      levelCodeHasError: false,
+
       soundCode: sounds[0].code,
+      soundCodeErrorMsg: '',
+      soundCodeHasError: false,
 
       gameModeCodes: [
         gameModes[0].code,
       ],
+      gameModeCodesErrorMsg: '',
+      gameModeCodesHasError: false,
     }
   }
 }
