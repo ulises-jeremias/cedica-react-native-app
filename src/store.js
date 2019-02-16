@@ -1,5 +1,6 @@
-import { createStore, applyMiddleware } from 'redux'
+import { createStore, applyMiddleware, combineReducers } from 'redux'
 import thunk from 'redux-thunk'
+import devToolsEnhancer from 'remote-redux-devtools'
 
 import reducer from './reducer'
 
@@ -11,10 +12,19 @@ packages.push(thunk)
 
 const middleware = applyMiddleware(...packages)
 
-const store = createStore(
-  reducer,
-  ...enhancers,
-  middleware,
-)
+let store
+
+if (__DEV__) {
+  store = createStore(
+    reducer,
+    composeWithDevTools(...enhancers, middleware),
+  )
+} else {
+  store = createStore(
+    reducer,
+    ...enhancers,
+    middleware,
+  )
+}
 
 export default store
