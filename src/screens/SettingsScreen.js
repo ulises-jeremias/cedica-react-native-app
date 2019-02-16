@@ -60,7 +60,7 @@ class HeaderTitle extends Component {
             Configuración
           </Text>
         </Col>
-        <Col style={{ width: 80, marginVertical: 20 }}>
+        <Col style={{ width: 80, marginVertical: 30 }}>
           <Button
             rounded
             success
