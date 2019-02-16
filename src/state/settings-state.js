@@ -23,7 +23,7 @@ export default {
       levelCode: levels[0].code,
       soundCode: sounds[0].code,
 
-      gameModeCode: [
+      gameModeCodes: [
         gameModes[0].code,
       ],
     },
@@ -34,7 +34,7 @@ export default {
       levelCode: levels[0].code,
       soundCode: sounds[0].code,
 
-      gameModeCode: [
+      gameModeCodes: [
         gameModes[0].code,
       ],
     }

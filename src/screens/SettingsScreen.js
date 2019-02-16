@@ -48,7 +48,11 @@ class SettingsScreen extends Component {
   render() {
     const {
       settings: {
-        miniGameOptions,
+        miniGames,
+        gameModes,
+        viewModes,
+        levels,
+        sounds,
       }
     } = options
 
@@ -66,44 +70,44 @@ class SettingsScreen extends Component {
           <ListItem itemDivider>
             <Text>Modo de Reconocimiento</Text>
           </ListItem> 
-          <ListItem>
-            <Left>
-              <Text>Lista</Text>
-            </Left>
-            <Right>
-              <Radio selected={false} />
-            </Right>
-          </ListItem>
-          <ListItem>
-            <Left>
-              <Text>Grilla</Text>
-            </Left>
-            <Right>
-              <Radio selected={true} />
-            </Right>
-          </ListItem>
+          
+          {Array.from(viewModes || []).map((viewMode, i) => (
+            <ListItem key={`${viewMode.code}-${i+1}`}>
+              <Left>
+                <Text>
+                  {viewMode.text}
+                </Text>
+              </Left>
+              <Right>
+                <Radio selected={fields.viewModeCode === viewMode.code} />
+              </Right>
+            </ListItem>
+          ))}
+
           <ListItem itemDivider>
             <Text />
           </ListItem>
-          <ListItem>
-            <Body>
-              <Text>Razas y Pelajes</Text>
-            </Body>
-            <CheckBox checked={true} />
-          </ListItem>
-          <ListItem>
-            <Body>
-              <Text>Cruzas</Text>
-            </Body>
-            <CheckBox checked={true} />
-          </ListItem>
+
+          {Array.from(gameModes || []).map((gameMode, i) => (
+            <ListItem key={`${gameMode.code}-${i+1}`}>
+              <Body>
+                <Text>
+                  {gameMode.text}
+                </Text>
+              </Body>
+              <CheckBox
+                checked={Array.from(fields.gameModeCodes || []).includes(gameMode.code)}
+              />
+            </ListItem>
+          ))}
+
           <ListItem itemDivider>
             <Text>
               Minijuego
             </Text>
           </ListItem>
           
-          {Array.from(miniGameOptions || []).map((miniGame, i) => (
+          {Array.from(miniGames || []).map((miniGame, i) => (
             <ListItem key={`${miniGame.code}-${i+1}`}>
               <Left>
                 <Text>
@@ -128,10 +132,15 @@ class SettingsScreen extends Component {
                   mode='dropdown'
                   iosIcon={<Icon name='arrow-down' />}
                   style={{ width: undefined }}
-                  selectedValue='key0'
+                  selectedValue={fields.levelCode}
                 >
-                  <Picker.Item label='Facil' value='key0' />
-                  <Picker.Item label='Dificil' value='key1' />
+                  {Array.from(levels || []).map((level, i) => (
+                    <Picker.Item
+                      key={`${level.code}-${i+1}`}
+                      label={level.text}
+                      value={level.code}
+                    />
+                  ))}
                 </Picker>
               </Form>
             </Content>
@@ -148,10 +157,15 @@ class SettingsScreen extends Component {
                   mode='dropdown'
                   iosIcon={<Icon name='arrow-down' />}
                   style={{ width: undefined }}
-                  selectedValue='key0'
+                  selectedValue={fields.soundCode}
                 >
-                  <Picker.Item label='Masculino' value='key0' />
-                  <Picker.Item label='Femenino' value='key1' />
+                  {Array.from(sounds || []).map((sound, i) => (
+                    <Picker.Item
+                      key={`${sound.code}-${i+1}`}
+                      label={sound.text}
+                      value={sound.code}
+                    />
+                  ))}
                 </Picker>
               </Form>
             </Content>
