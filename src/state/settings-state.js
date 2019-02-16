@@ -1,10 +1,10 @@
-import {
-  settings
-} from '../config/Options'
+import Options from '../config/Options'
 
 const {
-  miniGameOptions
-} = settings
+  settings: {  
+    miniGameOptions
+  }
+} = Options
 
 export default {
   error: '',

@@ -16,7 +16,7 @@ import {
 } from 'native-base'
 
 import settingsActions from '../actions/settings-actions'
-import { settings } from '../config/Options'
+import options from '../config/Options'
 
 function mapStateToProps(state) {
   const {
@@ -47,15 +47,15 @@ class SettingsScreen extends Component {
 
   render() {
     const {
-      miniGameOptions,
-    } = settings
+      settings: {
+        miniGameOptions,
+      }
+    } = options
 
     const {
       settings: {
         settings: {
-          fields: {
-            miniGameCode,
-          }
+          fields,
         }
       }
     } = this.props
@@ -103,8 +103,8 @@ class SettingsScreen extends Component {
             </Text>
           </ListItem>
           
-          {Array.from(miniGameOptions || []).map(miniGame => (
-            <ListItem>
+          {Array.from(miniGameOptions || []).map((miniGame, i) => (
+            <ListItem key={`${miniGame.code}-${i+1}`}>
               <Left>
                 <Text>
                   {miniGame.text}
