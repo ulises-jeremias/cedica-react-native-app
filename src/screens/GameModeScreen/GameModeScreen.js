@@ -2,7 +2,9 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import settingsActions from '../actions/settings-actions'
+import ImageImage from './interactions/ImageImage'
+
+import settingsActions from '../../actions/settings-actions'
 
 function mapStateToProps(state) {
   const {
@@ -39,7 +41,15 @@ class GameModeScreen extends Component {
       },
     } = this.props
 
-    return null
+    const miniGamesComponent = {
+      'miniGames#0': (
+        <ImageImage />
+      ),
+      'miniGames#1': null,
+      'miniGames#2': null,
+    }
+
+    return miniGamesComponent[current.miniGameCode]
   }
 }
 
