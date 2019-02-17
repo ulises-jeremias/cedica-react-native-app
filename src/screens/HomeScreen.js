@@ -84,7 +84,7 @@ class HomeScreen extends Component {
           </Row>
           <Row>
             <Button
-              onPress={() => navigate('PlayMode')}
+              onPress={() => navigate('GameMode')}
               transparent
               >
               <Image
@@ -152,14 +152,15 @@ const styles = StyleSheet.create({
   },
   playButtonImage: {
     resizeMode: 'contain',
+    marginTop: 40,
     width: 200,
     height: 100,
   },
   recognizeButton: {
-    marginTop: 20,
+    alignSelf: 'center',
+    marginTop: 50,
   },
   recognizeButtonImage: {
-    alignSelf: 'center',
     resizeMode: 'contain',
     width: 250,
     height: 100,
