@@ -56,6 +56,7 @@ class GameModeScreen extends Component {
     } = this.props
 
     const miniGamesComponent = {
+      null: null,
       'miniGames#0': null,
       'miniGames#1': null,
       'miniGames#2': (
