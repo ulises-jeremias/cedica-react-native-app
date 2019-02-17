@@ -24,7 +24,7 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class RecognizeMode extends Component {
+class RecognizeModeScreen extends Component {
   static navigationOptions = {
     title: 'Modo Reconocimiento',
   }
@@ -49,4 +49,4 @@ class RecognizeMode extends Component {
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecognizeMode)
+export default connect(mapStateToProps, mapDispatchToProps)(RecognizeModeScreen)
