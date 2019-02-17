@@ -3,8 +3,9 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'underscore'
 import {
-  Grid,
   Col,
+  Grid,
+  Row,
 } from 'react-native-easy-grid'
 import {
   Image,
@@ -71,21 +72,23 @@ class ImageImageInteractionModeScreen extends Component {
     return (
       <Content style={styles.container}>
         <Grid style={{ marginTop: 40 }}>
-          {selectedHorses.map((horse, i) => (
-            <Col key={`options-${i+1}`} style={{ padding: 5 }}>
-              <Button
-                onPress={() => {}}
-                style={styles.optionButton}
-                transparent
-              >
-                <Image
-                  source={getImage(horse)}
-                  resizeMode='contain'
-                  style={styles.optionImage}
-                />
-              </Button>
-            </Col>
-          ))}
+          <Row>
+            {selectedHorses.map((horse, i) => (
+              <Col key={`options-${i+1}`} style={{ padding: 5 }}>
+                <Button
+                  onPress={() => {}}
+                  style={styles.optionButton}
+                  transparent
+                >
+                  <Image
+                    source={getImage(horse)}
+                    resizeMode='contain'
+                    style={styles.optionImage}
+                  />
+                </Button>
+              </Col>
+            ))}
+          </Row>
         </Grid>
       </Content>
     )

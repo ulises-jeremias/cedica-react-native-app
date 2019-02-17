@@ -20,7 +20,7 @@ import {
   ON_SETTINGS_FORM_FIELD_CHANGE,
 } from '../constants'
 
-import defaultState from '../state/settings-state'
+import options from '../config/Options'
 
 exports.onSettingsFormClear = (context, options) => {
   options = options || { error: true, success: true }
@@ -48,7 +48,17 @@ exports.getStoredConfiguration = () => {
       .then(data => JSON.parse(data))
       .then(data => {
         if (_.isEmpty(data)) {
-          data = defaultState.settings.current
+          data = {
+            viewModeCode: options.viewModes[0].code,
+            miniGameCode: options.miniGames[0].code,
+
+            levelCode: options.levels[0].code,
+            soundCode: options.sounds[0].code,
+
+            gameModeCodes: [
+              options.gameModes[0].code,
+            ],
+          }
         }
 
         dispatch(actionSuccess(SETTINGS_STORED_CONFIGURATION_GET_SUCCESS, 'settings', data))

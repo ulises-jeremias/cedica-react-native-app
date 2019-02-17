@@ -29,6 +29,20 @@ class GameModeScreen extends Component {
     title: 'Juego',
   }
 
+  state = {
+    isLoadingComplete: false,
+  }
+
+  componentDidMount() {
+    const {
+      actions: {
+        getStoredConfiguration,
+      }
+    } = this.props
+
+    getStoredConfiguration()
+  }
+
   render() {
     const {
       navigation: {

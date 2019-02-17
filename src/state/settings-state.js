@@ -17,36 +17,32 @@ export default {
   success: '',
   settings: {
     current: {
-      viewModeCode: viewModes[0].code,
-      miniGameCode: miniGames[0].code,
+      viewModeCode: null,
+      miniGameCode: null,
 
-      levelCode: levels[0].code,
-      soundCode: sounds[0].code,
+      levelCode: null,
+      soundCode: null,
 
-      gameModeCodes: [
-        gameModes[0].code,
-      ],
+      gameModeCodes: [],
     },
     fields: {
-      viewModeCode: viewModes[0].code,
+      viewModeCode: null,
       viewModeCodeErrorMsg: '',
       viewModeCodeHasError: false,
 
-      miniGameCode: miniGames[0].code,
+      miniGameCode: null,
       miniGameCodeErrorMsg: '',
       miniGameCodeHasError: false,
 
-      levelCode: levels[0].code,
+      levelCode: null,
       levelCodeErrorMsg: '',
       levelCodeHasError: false,
 
-      soundCode: sounds[0].code,
+      soundCode: null,
       soundCodeErrorMsg: '',
       soundCodeHasError: false,
 
-      gameModeCodes: [
-        gameModes[0].code,
-      ],
+      gameModeCodes: [],
       gameModeCodesErrorMsg: '',
       gameModeCodesHasError: false,
     }
