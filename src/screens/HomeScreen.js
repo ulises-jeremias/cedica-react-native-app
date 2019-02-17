@@ -83,10 +83,15 @@ class HomeScreen extends Component {
             />
           </Row>
           <Row>
-            <Image
-              source={require('../../assets/images/UI/jugar_regular.png')}
-              style={styles.playButton}
-            />
+            <Button
+              onPress={() => navigate('PlayMode')}
+              transparent
+              >
+              <Image
+                source={require('../../assets/images/UI/jugar_regular.png')}
+                style={styles.playButtonImage}
+              />
+            </Button>
           </Row>
           <Row>
             <Col>
@@ -96,11 +101,16 @@ class HomeScreen extends Component {
               />
             </Col>
             <Col>
-              <Image
-                source={require('../../assets/images/UI/reconocimiento_regular.png')}
+              <Button
                 style={styles.recognizeButton}
                 onPress={() => navigate('RecognizeMode')}
-              />
+                transparent
+                >
+                <Image
+                  source={require('../../assets/images/UI/reconocimiento_regular.png')}
+                  style={styles.recognizeButtonImage}
+                />
+              </Button>
             </Col>
             <Col>
               <Image
@@ -140,15 +150,17 @@ const styles = StyleSheet.create({
     width: 150,
     height: 150,
   },
-  playButton: {
+  playButtonImage: {
     resizeMode: 'contain',
     width: 200,
     height: 100,
   },
   recognizeButton: {
+    marginTop: 20,
+  },
+  recognizeButtonImage: {
     alignSelf: 'center',
     resizeMode: 'contain',
-    marginTop: 20,
     width: 250,
     height: 100,
   },

@@ -43,10 +43,13 @@ class ListMode extends Component {
                   {getRace(elem)}
                 </H1>
                 <Button
-                  warning
+                  transparent
                   onPress={() => alert('sonido')}
                 >
-                  <Icon name='md-settings' />
+                  <Image
+                    source={require('../../../assets/images/UI/audio_click.png')}
+                    style={styles.playSound}
+                  />
                 </Button>
               </Body>
               <Right>
@@ -70,6 +73,10 @@ const styles = StyleSheet.create({
     height: 150,
     width: 160,
   },
+  playSound: {
+    height: 50,
+    width: 50,
+  }
 })
 
 export default ListMode
