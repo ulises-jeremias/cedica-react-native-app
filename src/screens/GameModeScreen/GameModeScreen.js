@@ -2,9 +2,9 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
-import settingsActions from '../actions/settings-actions'
-import ListMode from '../components/Recognize/List'
-import GridMode from '../components/Recognize/Grid'
+import ImageImage from './interactions/ImageImage'
+
+import settingsActions from '../../actions/settings-actions'
 
 function mapStateToProps(state) {
   const {
@@ -24,9 +24,9 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class RecognizeMode extends Component {
+class GameModeScreen extends Component {
   static navigationOptions = {
-    title: 'Modo Reconocimiento',
+    title: 'Juego',
   }
 
   render() {
@@ -41,12 +41,16 @@ class RecognizeMode extends Component {
       },
     } = this.props
 
-    if (current.viewModeCode === 'viewModes#0') {
-      return <ListMode />
-    } else {
-      return <GridMode />
+    const miniGamesComponent = {
+      'miniGames#0': (
+        <ImageImage />
+      ),
+      'miniGames#1': null,
+      'miniGames#2': null,
     }
+
+    return miniGamesComponent[current.miniGameCode]
   }
 }
 
-export default connect(mapStateToProps, mapDispatchToProps)(RecognizeMode)
+export default connect(mapStateToProps, mapDispatchToProps)(GameModeScreen)
