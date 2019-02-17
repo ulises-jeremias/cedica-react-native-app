@@ -1,6 +1,14 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
+import {
+  Image,
+  StyleSheet,
+} from 'react-native'
+import {
+  Content,
+  Text,
+} from 'native-base'
 
 import settingsActions from '../../../actions/settings-actions'
 
@@ -32,8 +40,24 @@ class ImageImageInteractionModeScreen extends Component {
       },
     } = this.props
 
-    return null
+    return (
+      <Content style={styles.container}>
+        <Text>
+          Hola
+        </Text>
+      </Content>
+    )
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f3bc32',
+  },
+  horseImage: {
+    height: 150,
+    width: 160,
+  },
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageImageInteractionModeScreen)
