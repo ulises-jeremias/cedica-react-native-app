@@ -42,11 +42,11 @@ class GameModeScreen extends Component {
     } = this.props
 
     const miniGamesComponent = {
-      'miniGames#0': (
-        <ImageImage />
-      ),
+      'miniGames#0': null,
       'miniGames#1': null,
-      'miniGames#2': null,
+      'miniGames#2': (
+        <ImageImage navigate={navigate} />
+      ),
     }
 
     return miniGamesComponent[current.miniGameCode]

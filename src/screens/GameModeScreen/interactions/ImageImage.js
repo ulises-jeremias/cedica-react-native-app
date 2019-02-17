@@ -11,6 +11,7 @@ import {
   StyleSheet,
 } from 'react-native'
 import {
+  Button,
   Content,
   Text,
 } from 'native-base'
@@ -37,6 +38,21 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ImageImageInteractionModeScreen extends Component {
+  componentDidMount() {
+    const {
+      navigate,
+      settings: {
+        settings: {
+          current,
+        },
+      },
+    } = this.props
+
+    if (!current.gameModeCodes.includes('gameModes#1')) {
+      navigate('Home')
+    }
+  }
+
   render() {
     const {
       settings: {
@@ -46,18 +62,28 @@ class ImageImageInteractionModeScreen extends Component {
       },
     } = this.props
 
+    if (!current.gameModeCodes.includes('gameModes#1')) {
+      return null
+    }
+
     const selectedHorses = _.sample(_.shuffle(horses), 4)
 
     return (
       <Content style={styles.container}>
-        <Grid>
+        <Grid style={{ marginTop: 40 }}>
           {selectedHorses.map((horse, i) => (
-            <Col key={`options-${i+1}`}>
-              <Image
-                source={getImage(horse)}
-                resizeMode='contain'
-                style={styles.optionImage}
-              />
+            <Col key={`options-${i+1}`} style={{ padding: 5 }}>
+              <Button
+                onPress={() => {}}
+                style={styles.optionButton}
+                transparent
+              >
+                <Image
+                  source={getImage(horse)}
+                  resizeMode='contain'
+                  style={styles.optionImage}
+                />
+              </Button>
             </Col>
           ))}
         </Grid>
@@ -71,9 +97,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#f3bc32',
   },
   optionImage: {
-    height: 150,
-    width: 160,
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    height: 120,
+    width: 140,
   },
+  optionButton: {
+    alignSelf: 'center',
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(ImageImageInteractionModeScreen)
