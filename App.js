@@ -1,6 +1,6 @@
 import React from 'react'
 import { Platform, StatusBar, StyleSheet, View } from 'react-native'
-import { Provider, connect } from 'react-redux';
+import { Provider } from 'react-redux'
 import { AppLoading, Asset, Font, Icon } from 'expo'
 
 import AppNavigator from './src/navigation/AppNavigator'
