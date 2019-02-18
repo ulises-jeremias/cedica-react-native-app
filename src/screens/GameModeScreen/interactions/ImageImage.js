@@ -67,11 +67,19 @@ class ImageImageInteractionModeScreen extends Component {
       return null
     }
 
-    const selectedHorses = _.sample(_.shuffle(horses), 4)
+    const selectedHorses = _.sample(_.shuffle(horses), 5)
 
     return (
       <Content style={styles.container}>
-        <Grid style={{ marginTop: 40 }}>
+        <Grid style={{ marginTop: 20 }}>
+          <Row>
+            <Col>
+              <Image
+                source={getImage(selectedHorses.pop())}
+                style={styles.mainImage}
+              />
+            </Col>
+          </Row>
           <Row>
             {selectedHorses.map((horse, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
@@ -82,7 +90,6 @@ class ImageImageInteractionModeScreen extends Component {
                 >
                   <Image
                     source={getImage(horse)}
-                    resizeMode='contain'
                     style={styles.optionImage}
                   />
                 </Button>
@@ -99,6 +106,12 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f3bc32',
   },
+  mainImage: {
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    height: 200,
+    width: 340,
+  },
   optionImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
@@ -107,6 +120,7 @@ const styles = StyleSheet.create({
   },
   optionButton: {
     alignSelf: 'center',
+    marginTop: 40,
   }
 })
 
