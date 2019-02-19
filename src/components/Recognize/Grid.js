@@ -1,4 +1,4 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import {
   Image,
   StyleSheet,
@@ -15,6 +15,7 @@ import {
 
 import { Row, Grid, Col } from "react-native-easy-grid"
 
+import { horses, getRace, getImage } from '../../config/Horses'
 
 class GridMode extends Component {
   static navigationOptions = {
@@ -29,38 +30,28 @@ class GridMode extends Component {
     return (
       <Content padder style={styles.container} contentContainerStyle={styles.contentContainer}>
         <Grid style={styles.homeContainer}>
-          <Row>
-            <Button
-              rounded
-              onPress={() => navigate('Home')}
-            >
-              <Icon name='md-home' />
-            </Button>
-          </Row>
-          <Row>
-            <Col size={50}>
-              <Image
-                source={require('../../../assets/images/Caballos/angola-spc-zainocolorado.png')}
-                style={styles.horseImage}
-              />
-            </Col>
-            <Col size={15}>
-              <H1>
-                Test
-              </H1>
-              <Button
-                warning
-                onPress={() => alert(current)}
-              >
-                <Icon name='md-settings' />
-              </Button>
-            </Col>
-            <Col size={25}>
-              <Text>
-                esto es un grid
-              </Text>
-            </Col>
-          </Row>
+          {
+            horses.map(elem => (
+              <Fragment key={elem}>
+                <Image
+                  source={getImage(elem)}
+                  style={styles.horseImage}
+                />
+                <Text style={styles.horseRace}>
+                  {getRace(elem)}
+                </Text>
+                <Button
+                  transparent
+                  onPress={() => alert('sonido')}
+                >
+                  <Image
+                    source={require('../../../assets/images/UI/audio_click.png')}
+                    style={styles.playSound}
+                  />
+                </Button>
+              </Fragment>
+            ))
+          }
         </Grid>
       </Content>
     )
@@ -70,14 +61,20 @@ class GridMode extends Component {
 const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f3bc32',
-    flex: 1,
   },
   contentContainer: {
     paddingTop: 30,
   },
   horseImage: {
-    width: 200,
-    resizeMode: 'contain',
+    height: 150,
+    width: 160,
+  },
+  horseRace: {
+    textAlignVertical: 'bottom',
+  },
+  playSound: {
+    height: 50,
+    width: 50,
   },
 })
 
