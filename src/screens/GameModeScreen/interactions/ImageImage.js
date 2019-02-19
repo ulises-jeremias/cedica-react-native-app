@@ -17,6 +17,8 @@ import {
   Text,
 } from 'native-base'
 
+import Cup from '../../../components/Success/Cup'
+
 import settingsActions from '../../../actions/settings-actions'
 import { horses, getImage } from '../../../config/Horses'
 
@@ -68,6 +70,14 @@ class ImageImageInteractionModeScreen extends Component {
     }
 
     const selectedHorses = _.sample(_.shuffle(horses), 5)
+
+    if (true) {
+      return (
+        <Content style={styles.container}>
+          <Cup width='150' height='150' />
+        </Content>
+      )  
+    }
 
     return (
       <Content style={styles.container}>
