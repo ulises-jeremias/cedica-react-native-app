@@ -29,18 +29,18 @@ class ListMode extends Component {
     return (
       <Content style={styles.container}>
         {
-          horses.map(elem => (
-            <ListItem key={elem} thumbnail>
+          horses.map(({name, image}) => (
+            <ListItem key={name} thumbnail>
               <Left>
                 <Image
-                  source={getImage(elem)}
+                  source={image}
                   resizeMode='contain'
                   style={styles.horseImage}
                 />
               </Left>
               <Body style={styles.horseActions}>
                 <H1>
-                  {getName(elem)}
+                  {getName(name)}
                 </H1>
                 <Button
                   transparent
@@ -54,8 +54,8 @@ class ListMode extends Component {
               </Body>
               <Right>
                 <Text style={styles.horseDescription}>
-                  Cruza: { getRace(elem) }{'\n'}
-                  Pelaje: { getFur(elem) }
+                  Raza: { getRace(name) }{'\n'}
+                  Pelaje: { getFur(name) }
                 </Text>
               </Right>
             </ListItem>
