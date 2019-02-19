@@ -18,7 +18,7 @@ import {
   Text,
 } from 'native-base'
 
-import { horses, getRace, getImage, getName, getFur } from '../../config/Horses'
+import { horses, getBreed, getImage, getName, getFur } from '../../config/Horses'
 
 class ListMode extends Component {
   static navigationOptions = {
@@ -29,18 +29,18 @@ class ListMode extends Component {
     return (
       <Content style={styles.container}>
         {
-          horses.map(({name, image}) => (
-            <ListItem key={name} thumbnail>
+          horses.map(elem => (
+            <ListItem key={getName(elem)} thumbnail>
               <Left>
                 <Image
-                  source={image}
+                  source={getImage(elem)}
                   resizeMode='contain'
                   style={styles.horseImage}
                 />
               </Left>
               <Body style={styles.horseActions}>
                 <H1>
-                  {getName(name)}
+                  {getName(elem)}
                 </H1>
                 <Button
                   transparent
@@ -54,8 +54,8 @@ class ListMode extends Component {
               </Body>
               <Right>
                 <Text style={styles.horseDescription}>
-                  Raza: { getRace(name) }{'\n'}
-                  Pelaje: { getFur(name) }
+                  Raza: { getBreed(elem) }{'\n'}
+                  Pelaje: { getFur(elem) }
                 </Text>
               </Right>
             </ListItem>

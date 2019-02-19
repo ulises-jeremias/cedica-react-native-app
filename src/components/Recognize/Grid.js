@@ -15,7 +15,7 @@ import {
 
 import { Row, Grid, Col } from "react-native-easy-grid"
 
-import { horses, getRace, getImage } from '../../config/Horses'
+import { horses, getBreed, getImage } from '../../config/Horses'
 
 class GridMode extends Component {
   static navigationOptions = {
@@ -37,8 +37,8 @@ class GridMode extends Component {
                   source={getImage(elem)}
                   style={styles.horseImage}
                 />
-                <Text style={styles.horseRace}>
-                  {getRace(elem)}
+                <Text style={styles.horseBreed}>
+                  {getBreed(elem)}
                 </Text>
                 <Button
                   transparent
@@ -69,7 +69,7 @@ const styles = StyleSheet.create({
     height: 150,
     width: 160,
   },
-  horseRace: {
+  horseBreed: {
     textAlignVertical: 'bottom',
   },
   playSound: {
