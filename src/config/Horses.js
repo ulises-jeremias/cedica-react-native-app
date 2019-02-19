@@ -186,15 +186,15 @@ function capitalize(str) {
 }
 
 export function getName(horse) {
-  return capitalize(horse.split('-')[0].replace(/\_/g, ' '))
+  return capitalize(horse.name.split('-')[0].replace(/\_/g, ' '))
 }
 
 export function getRace(horse) {
-  return capitalize(horse.split('-')[1].replace(/\_/g, ' '))
+  return capitalize(horse.name.split('-')[1].replace(/\_/g, ' '))
 }
 
 export function getFur(horse) {
-  return capitalize(horse.split('-')[2].replace('.png', '').replace(/\_/g, ' '))
+  return capitalize(horse.name.split('-')[2].replace('.png', '').replace(/\_/g, ' '))
 }
 
 export function getImage(horse) {
