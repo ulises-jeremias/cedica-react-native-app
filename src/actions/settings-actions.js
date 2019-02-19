@@ -47,7 +47,7 @@ exports.getStoredConfiguration = () => {
     return AsyncStorage.getItem('settings')
       .then(data => JSON.parse(data))
       .then(data => {
-        if (_.isEmpty(data)) {
+        if (!data) {
           data = {
             viewModeCode: options.viewModes[0].code,
             miniGameCode: options.miniGames[0].code,
