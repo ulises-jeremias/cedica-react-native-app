@@ -3,6 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 
 import ImageImage from './interactions/ImageImage'
+import WordImage from './interactions/WordImage'
 
 import settingsActions from '../../actions/settings-actions'
 
@@ -58,7 +59,9 @@ class GameModeScreen extends Component {
     const miniGamesComponent = {
       null: null,
       'miniGames#0': null,
-      'miniGames#1': null,
+      'miniGames#1': (
+        <WordImage navigate={navigate} />
+      ),
       'miniGames#2': (
         <ImageImage navigate={navigate} />
       ),

@@ -17,10 +17,8 @@ import {
   Text,
 } from 'native-base'
 
-import Cup from '../../../components/Success/Cup'
-
 import settingsActions from '../../../actions/settings-actions'
-import { horses, getImage } from '../../../config/Horses'
+import { horses, getImage, getName } from '../../../config/Horses'
 
 function mapStateToProps(state) {
   const {
@@ -65,29 +63,22 @@ class ImageImageInteractionModeScreen extends Component {
       },
     } = this.props
 
-    if (!current.gameModeCodes.includes('gameModes#1')) {
+    if (!current.gameModeCodes.includes('gameModes#0')) {
       return null
     }
 
-    const selectedHorses = _.sample(_.shuffle(horses), 5)
+    const selectedHorses = _.sample(_.shuffle(horses), 4)
 
-    if (true) {
-      return (
-        <Content style={[styles.container, { backgroundColor: 'black' }]}>
-          <Cup style={{ height: 150, width: 150 }} />
-        </Content>
-      )  
-    }
+    const horse = Math.floor(Math.random() * 3)
 
     return (
       <Content style={styles.container}>
         <Grid style={{ marginTop: 20 }}>
           <Row>
             <Col>
-              <Image
-                source={getImage(selectedHorses.pop())}
-                style={styles.mainImage}
-              />
+              <Text>
+                { getName(selectedHorses[horse]) }
+              </Text>
             </Col>
           </Row>
           <Row>
