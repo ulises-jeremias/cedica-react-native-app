@@ -36,13 +36,29 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
+        require('./assets/images/Caballos/amapola-petiso_argentino-rosillo.png'),
+        require('./assets/images/Caballos/ambar-mestizo_cruza_arabe-alazan_tostado.png'),
         require('./assets/images/Caballos/angola-spc-zainocolorado.png'),
-        require('./assets/images/Caballos/bionda-cruzárabe-alazán_ruano.png'),
+        require('./assets/images/Caballos/antu-Mestizo-overo_zaino.png'),
+        require('./assets/images/Caballos/bionda-mestizo-alazán_ruano.png'),
+        require('./assets/images/Caballos/blanco-mestizo-blanco.png'),
         require('./assets/images/Caballos/bonita-mestizo_qh_con_criollo-overo_azulejo.png'),
+        require('./assets/images/Caballos/cacique-mestizo-alazan.png'),
         require('./assets/images/Caballos/candelaria-mestizo-tobiano.png'),
         require('./assets/images/Caballos/ciro-mestizo-tordillo_canela.png'),
+        require('./assets/images/Caballos/felipe-mestizo-zaino.png'),
         require('./assets/images/Caballos/hualfín-criollo-horsepicaso.png'),
         require('./assets/images/Caballos/juana-cuarto_de_milla-bayo.png'),
+        require('./assets/images/Caballos/mora-petiso_argentino-tordillo_moro.png'),
+        require('./assets/images/Caballos/muñeco-mestizo-overo_rosado.png'),
+        require('./assets/images/Caballos/nala-mestizo-moro.png'),
+        require('./assets/images/Caballos/pamperito-petiso_argentino-zaino.png'),
+        require('./assets/images/Caballos/pintada-mestizo-alazan_pintado.png'),
+        require('./assets/images/Caballos/pochito-mestizo-zaino.png'),
+        require('./assets/images/Caballos/primavera-silla_argentino-alazan.png'),
+        require('./assets/images/Caballos/tigre-criollo-bayo_gateado.png'),
+        require('./assets/images/Caballos/tupac-mestizo-zaino_oscuro.png'),
+        require('./assets/images/Caballos/zorzal-mestizo-tordillo.png'),
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar

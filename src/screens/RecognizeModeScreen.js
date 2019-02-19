@@ -29,6 +29,16 @@ class RecognizeModeScreen extends Component {
     title: 'Modo Reconocimiento',
   }
 
+  componentDidMount() {
+    const {
+      actions: {
+        getStoredConfiguration,
+      }
+    } = this.props
+
+    getStoredConfiguration()
+  }
+
   render() {
     const {
       navigation: {
@@ -41,11 +51,13 @@ class RecognizeModeScreen extends Component {
       },
     } = this.props
 
-    if (current.viewModeCode === 'viewModes#0') {
-      return <ListMode />
-    } else {
-      return <GridMode />
+    const recognizeModeComponent = {
+      null: null,
+      'viewModes#0': <ListMode />,
+      'viewModes#1': <GridMode />,
     }
+
+    return recognizeModeComponent[current.viewModeCode]
   }
 }
 

@@ -18,7 +18,7 @@ import {
   Text,
 } from 'native-base'
 
-import { horses, getRace, getImage } from '../../config/Horses'
+import { horses, getRace, getImage, getName, getFur } from '../../config/Horses'
 
 class ListMode extends Component {
   static navigationOptions = {
@@ -40,7 +40,7 @@ class ListMode extends Component {
               </Left>
               <Body style={styles.horseActions}>
                 <H1>
-                  {getRace(elem)}
+                  {getName(elem)}
                 </H1>
                 <Button
                   transparent
@@ -53,8 +53,9 @@ class ListMode extends Component {
                 </Button>
               </Body>
               <Right>
-                <Text>
-                  { elem }
+                <Text style={styles.horseDescription}>
+                  Cruza: { getRace(elem) }{'\n'}
+                  Pelaje: { getFur(elem) }
                 </Text>
               </Right>
             </ListItem>
@@ -76,6 +77,9 @@ const styles = StyleSheet.create({
   playSound: {
     height: 50,
     width: 50,
+  },
+  horseDescription: {
+    textAlign: 'left',
   }
 })
 
