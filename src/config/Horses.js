@@ -189,7 +189,7 @@ export function getName(horse) {
   return capitalize(horse.name.split('-')[0].replace(/\_/g, ' '))
 }
 
-export function getRace(horse) {
+export function getBreed(horse) {
   return capitalize(horse.name.split('-')[1].replace(/\_/g, ' '))
 }
 
@@ -203,7 +203,7 @@ export function getImage(horse) {
 
 export default {
   horses,
-  getRace,
+  getBreed,
   getName,
   getImage,
   getFur,
