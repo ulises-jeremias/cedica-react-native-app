@@ -1,3 +1,3 @@
-export const confettiImages = ''
+export const confetti = ''
 
-export const cupImages = ''
+export const cup = require('../../assets/images/Festejos/')
