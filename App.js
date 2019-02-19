@@ -36,6 +36,13 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
+        require('./assets/images/Caballos/angola-spc-zainocolorado.png'),
+        require('./assets/images/Caballos/bionda-cruzárabe-alazán_ruano.png'),
+        require('./assets/images/Caballos/bonita-mestizo_qh_con_criollo-overo_azulejo.png'),
+        require('./assets/images/Caballos/candelaria-mestizo-tobiano.png'),
+        require('./assets/images/Caballos/ciro-mestizo-tordillo_canela.png'),
+        require('./assets/images/Caballos/hualfín-criollo-horsepicaso.png'),
+        require('./assets/images/Caballos/juana-cuarto_de_milla-bayo.png'),
       ]),
       Font.loadAsync({
         // This is the font that we are using for our tab bar
