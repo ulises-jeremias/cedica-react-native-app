@@ -64,7 +64,7 @@ exports.getStoredConfiguration = () => {
         dispatch(actionSuccess(SETTINGS_STORED_CONFIGURATION_GET_SUCCESS, 'settings', data))
       })
       .catch(err => {
-        dispatch(actionFailure(SETTINGS_STORED_CONFIGURATION_GET_FAILURE, errorHandler(err)))
+        dispatch(actionFailure(SETTINGS_STORED_CONFIGURATION_GET_FAILURE, err.message))
       })
   }
 }
@@ -77,7 +77,7 @@ exports.updateStoredConfiguration = (data) => {
         dispatch(actionSuccess(SETTINGS_STORED_CONFIGURATION_UPDATE_SUCCESS, 'settings', data))
       })
       .catch(err => {
-        dispatch(actionFailure(SETTINGS_STORED_CONFIGURATION_UPDATE_FAILURE, errorHandler(err)))
+        dispatch(actionFailure(SETTINGS_STORED_CONFIGURATION_UPDATE_FAILURE, err.message))
       })
   }
 }
