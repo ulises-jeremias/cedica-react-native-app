@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Audio } from 'expo'
+import { StyleSheet } from 'react-native'
 import { Button, Content, Icon } from 'native-base'
 import { Grid, Col, Row } from 'react-native-easy-grid'
 
@@ -171,11 +172,20 @@ class GameModeScreen extends Component {
         navigate,
       },
       settings: {
+        isFetching,
         settings: {
           current,
         },
       },
     } = this.props
+
+    if (isFetching) {
+      return (
+        <Content style={styles.container}>
+          <Spinner color='white' />
+        </Content>
+      )
+    }
 
     const miniGamesComponent = {
       null: null,
@@ -195,14 +205,14 @@ class GameModeScreen extends Component {
             </Col>
             <Col>
               <Row>
-                <Col style={{ paddingVertical: 30 }}>
+                <Col style={{ paddingVertical: 50 }}>
                   <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
                     <Icon name='md-home' />
                   </Button>
                 </Col>
               </Row>
               <Row>
-                <Col style={{ paddingVertical: 30 }}>
+                <Col style={{ paddingVertical: 50 }}>
                   <Button style={{ alignSelf: 'center' }} warning onPress={this.handleWin}>
                     <Icon name='md-arrow-round-forward' />
                   </Button>
@@ -223,7 +233,7 @@ class GameModeScreen extends Component {
                 }} 
               />
             </Col>
-            <Col style={{ paddingVertical: 30 }}>
+            <Col style={{ paddingVertical: 50 }}>
               <Button style={{ alignSelf: 'center' }} warning onPress={() => this.setState(() => ({ result: null }))}>
                 <Icon name='md-arrow-round-forward' />
               </Button>
@@ -235,12 +245,12 @@ class GameModeScreen extends Component {
         <Content style={{ backgroundColor: 'black' }}>
           <Grid>
             <Row>
-              <Col style={{ paddingVertical: 30 }}>
+              <Col style={{ paddingVertical: 50 }}>
                 <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
                   <Icon name='md-home' />
                 </Button>
               </Col>
-              <Col style={{ paddingVertical: 30 }}>
+              <Col style={{ paddingVertical: 50 }}>
                 <Button style={{ alignSelf: 'center' }} warning onPress={this.handleRefresh}>
                   <Icon name='md-repeat' />
                 </Button>
@@ -282,5 +292,11 @@ class GameModeScreen extends Component {
     return miniGamesComponent[result !== null ? result : current.miniGameCode]
   }
 }
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f3bc32',
+  },
+})
 
 export default connect(mapStateToProps, mapDispatchToProps)(GameModeScreen)

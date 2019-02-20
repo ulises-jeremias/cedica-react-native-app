@@ -73,7 +73,7 @@ class WordImageInteractionModeScreen extends Component {
 
     const samples = levelCode === 'levels#0' ? 2 : 4
 
-    const selectedHorses = _.sample(_.shuffle(horses), samples)
+    const selectedHorses = _.sample(horses, samples)
     const horseIndex = Math.floor(Math.random() * (samples - 1))
 
     const option = Math.floor(Math.random() * 3)

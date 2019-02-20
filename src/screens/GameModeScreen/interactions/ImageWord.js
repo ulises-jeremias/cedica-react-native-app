@@ -73,22 +73,22 @@ class WordImageInteractionModeScreen extends Component {
 
     const samples = levelCode === 'levels#0' ? 2 : 4
 
-    const selectedHorses = _.sample(_.shuffle(horses), samples)
+    const selectedHorses = _.sample(horses, samples)
     const horseIndex = Math.floor(Math.random() * (samples - 1))
 
     const option = Math.floor(Math.random() * 3)
 
     const options = [
       {
-        text: getBreed(selectedHorses[horseIndex]),
+        text: horse => getBreed(horse),
         cmp: horse => getBreed(selectedHorses[horseIndex]) === getBreed(horse),
       },
       {
-        text: getFur(selectedHorses[horseIndex]),
+        text: horse => getFur(horse),
         cmp: horse => getFur(selectedHorses[horseIndex]) === getFur(horse),
       },
       {
-        text: `${getBreed(selectedHorses[horseIndex])} - ${getFur(selectedHorses[horseIndex])}`,
+        text: horse => `${getBreed(horse)} - ${getFur(horse)}`,
         cmp: horse => getFur(selectedHorses[horseIndex]) === getFur(horse) && getBreed(selectedHorses[horseIndex]) === getBreed(horse),
       },
     ]
@@ -114,7 +114,7 @@ class WordImageInteractionModeScreen extends Component {
                     style={styles.mainText}
                     onPress={selectedOption.cmp(horse) ? onSuccess : onFailed}
                   >
-                    { selectedOption.text }
+                    { selectedOption.text(horse) }
                   </Text>
                 </Row>
                 <Row>

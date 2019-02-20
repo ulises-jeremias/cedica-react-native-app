@@ -6,7 +6,6 @@ import {
   StyleSheet,
 } from 'react-native'
 
-
 import {
   Button,
   Content,
@@ -16,6 +15,13 @@ import {
 import { Row, Grid, Col } from "react-native-easy-grid"
 
 import settingsActions from '../actions/settings-actions'
+
+import playButton from '../../assets/images/UI/jugar_regular.png'
+import playButtonClicked from '../../assets/images/UI/jugar_click.png'
+
+import recognizeButton from '../../assets/images/UI/reconocimiento_regular.png'
+import recognizeButtonClicked from '../../assets/images/UI/reconocimiento_click.png'
+
 
 function mapStateToProps(state) {
   const {
@@ -38,6 +44,10 @@ function mapDispatchToProps(dispatch) {
 class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
+  }
+
+  state = {
+    playClick: false,
   }
 
   componentDidMount() {
@@ -98,7 +108,8 @@ class HomeScreen extends Component {
               transparent
               >
               <Image
-                source={require('../../assets/images/UI/jugar_regular.png')}
+                source={playButtonClicked ? playButtonClicked : playButton}
+                onPress={() => this.setState(() => ({ playButtonClicked: true, }))}
                 style={styles.playButtonImage}
               />
             </Button>
@@ -117,7 +128,7 @@ class HomeScreen extends Component {
                 transparent
                 >
                 <Image
-                  source={require('../../assets/images/UI/reconocimiento_regular.png')}
+                  source={recognizeButton}
                   style={styles.recognizeButtonImage}
                 />
               </Button>
