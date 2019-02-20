@@ -10,9 +10,9 @@ import {
 import {
   Image,
   StyleSheet,
+  TouchableHighlight,
 } from 'react-native'
 import {
-  Button,
   Content,
   Text,
 } from 'native-base'
@@ -66,16 +66,15 @@ class WordImageInteractionModeScreen extends Component {
           <Row>
             {selectedHorses.map((horse, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
-                <Button
+                <TouchableHighlight
                   onPress={_.isEqual(horse, selectedHorses[horseIndex]) ? onSuccess : onFailed}
                   style={styles.optionButton}
-                  transparent
                 >
                   <Image
                     source={getImage(horse)}
                     style={styles.optionImage}
                   />
-                </Button>
+                </TouchableHighlight>
               </Col>
             ))}
           </Row>
