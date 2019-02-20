@@ -216,9 +216,7 @@ class GameModeScreen extends Component {
             <Col>
               <Confetti
                 style={{
-                  width: 750,
-                  height: 500,
-                  resizeMode: 'contain',
+                  resizeMode: 'cover',
                   alignSelf: 'center',
                 }} 
               />

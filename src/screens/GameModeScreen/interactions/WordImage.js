@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   mainText: {
-    fontSize: 20,
+    fontSize: 30,
     alignSelf: 'center',
     color: 'white',
   },
