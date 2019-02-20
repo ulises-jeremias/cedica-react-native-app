@@ -68,8 +68,6 @@ class RecognizeModeScreen extends Component {
       'viewModes#1': <GridMode sound={current.soundCode} />,
     }
 
-    console.log(current.gameModeCodes)
-
     if (_.isEmpty(current.gameModeCodes) && !isFetching) {
       return (
         <Content style={styles.container}>
