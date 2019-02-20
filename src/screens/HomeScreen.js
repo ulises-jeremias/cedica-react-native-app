@@ -1,12 +1,14 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 import {
   Image,
   StyleSheet,
 } from 'react-native'
-
 import {
   Button,
   Content,
@@ -103,7 +105,7 @@ class HomeScreen extends Component {
               />
             </Button>
           </Row>
-          <Row>
+          <Row style={styles.lastRow}>
             <Col>
               <Image
                 source={require('../../assets/images/UI/logo-unlp.png')}
@@ -137,55 +139,58 @@ class HomeScreen extends Component {
 
 const styles = StyleSheet.create({
   contentContainer: {
-    paddingTop: 30,
+    paddingTop: hp('5%'),
   },
   homeContainer: {
     alignItems: 'center',
   },
   helpButton: {
-    marginLeft: 15,
+    marginLeft: wp('2%'),
   },
   settingsButton: {
     alignSelf: 'flex-end',
-    marginRight: 15,
+    marginRight: wp('2%'),
   },
   appLogo: {
     alignSelf: 'center',
     resizeMode: 'contain',
-    width: 350,
-    height: 100,
+    width: wp('45%'),
+    height: hp('25%'),
   },
   cedicaLogo: {
     resizeMode: 'contain',
-    width: 150,
-    height: 150,
+    width: wp('30%'),
+    height: hp('35%'),
   },
   playButtonImage: {
     resizeMode: 'contain',
-    marginTop: 40,
-    width: 200,
-    height: 100,
+    marginTop: hp('8%'),
+    width: wp('20%'),
+    height: hp('20%'),
   },
   recognizeButton: {
     alignSelf: 'center',
-    marginTop: 50,
+    marginTop: hp('4%'),
   },
   recognizeButtonImage: {
     resizeMode: 'contain',
-    width: 250,
-    height: 100,
+    width: wp('30%'),
+    height: hp('17%'),
   },
   unlpLogo: {
     resizeMode: 'contain',
-    width: 150,
-    height: 150,
+    width: wp('20%'),
+    height: hp('15%'),
   },
   infoLogo: {
     alignSelf: 'flex-end',
     resizeMode: 'contain',
-    width: 150,
-    height: 150,
+    width: wp('20%'),
+    height: hp('15%'),
   },
+  lastRow: {
+    marginTop: hp('6%'),
+  }
 })
 
 export default connect(mapStateToProps, mapDispatchToProps)(HomeScreen)

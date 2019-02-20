@@ -26,6 +26,7 @@ export default class App extends React.Component {
         <Provider store={store}>
           <View style={styles.container}>
             {Platform.OS === 'ios' && <StatusBar barStyle="default" />}
+            {Platform.OS === 'android' && <StatusBar hidden />}
             <AppNavigator />
           </View>
         </Provider>
