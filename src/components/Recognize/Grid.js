@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import { Audio } from 'expo'
 import _ from 'underscore'
 import {
   Image,
@@ -8,6 +9,7 @@ import {
 
 
 import {
+  Button,
   Content,
   Text,
 } from 'native-base'
@@ -16,29 +18,49 @@ import { Row, Grid, Col } from "react-native-easy-grid"
 
 import { horses, getBreed, getImage, getName } from '../../config/Horses'
 
-function horseRow(horseChunck) {
-  return horseChunck.map(elem => (
-    <Col key={getName(elem)}>
-      <View style={styles.horseView}>
-        <Image
-          source={getImage(elem)}
-          style={styles.horseImage}
-        />
-        <Text style={styles.horseBreed}>
-          {getBreed(elem)}
-        </Text>
-        <Image
-          source={require('../../../assets/images/UI/audio_click.png')}
-          style={styles.playSound}
-        />
-      </View>
-    </Col>
-  ))
-}
-
 class GridMode extends Component {
   static navigationOptions = {
     header: null,
+  }
+
+  horseRow(horseChunck) {
+    return horseChunck.map(elem => (
+      <Col key={getName(elem)}>
+        <View style={styles.horseView}>
+          <Image
+            source={getImage(elem)}
+            style={styles.horseImage}
+          />
+          <Text style={styles.horseBreed}>
+            {getBreed(elem)}
+          </Text>
+          <Button
+            transparent
+            onPress={this.onPlayPress(elem)}
+          >
+            <Image
+              source={require('../../../assets/images/UI/audio_click.png')}
+              style={styles.playSound}
+            />
+          </Button>
+        </View>
+      </Col>
+    ))
+  }
+
+  onPlayPress(elem) {
+    return () => {
+      try {
+        (async () => {
+          const soundObject = new Audio.Sound()
+          
+          await soundObject.loadAsync(elem.sound.female)
+          await soundObject.playAsync()
+        })()
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
   }
 
   render() {
@@ -50,7 +72,7 @@ class GridMode extends Component {
           {
             horsesChunked.map((elem, index) => (
               <Row key={index}>
-                {horseRow(elem)}
+                {this.horseRow(elem)}
               </Row>
             ))
           }
