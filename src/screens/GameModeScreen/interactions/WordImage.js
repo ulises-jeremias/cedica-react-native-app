@@ -18,7 +18,7 @@ import {
 } from 'native-base'
 
 import settingsActions from '../../../actions/settings-actions'
-import { horses, getImage, getName } from '../../../config/Horses'
+import { horses, getImage, getBreed } from '../../../config/Horses'
 
 function mapStateToProps(state) {
   const {
@@ -39,45 +39,22 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ImageImageInteractionModeScreen extends Component {
-  componentDidMount() {
-    const {
-      navigate,
-      settings: {
-        settings: {
-          current,
-        },
-      },
-    } = this.props
-
-    if (!current.gameModeCodes.includes('gameModes#1')) {
-      navigate('Home')
-    }
-  }
-
   render() {
     const {
-      settings: {
-        settings: {
-          current,
-        },
-      },
+      onSuccess,
+      onFailed,
     } = this.props
 
-    if (!current.gameModeCodes.includes('gameModes#0')) {
-      return null
-    }
-
     const selectedHorses = _.sample(_.shuffle(horses), 4)
-
-    const horse = Math.floor(Math.random() * 3)
+    const horseIndex = Math.floor(Math.random() * 3)
 
     return (
       <Content style={styles.container}>
         <Grid style={{ marginTop: 20 }}>
           <Row>
-            <Col>
-              <Text>
-                { getName(selectedHorses[horse]) }
+            <Col style={styles.main}>
+              <Text style={styles.mainText}>
+                { getBreed(selectedHorses[horseIndex]) }
               </Text>
             </Col>
           </Row>
@@ -85,7 +62,7 @@ class ImageImageInteractionModeScreen extends Component {
             {selectedHorses.map((horse, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
                 <Button
-                  onPress={() => {}}
+                  onPress={_.isEqual(horse, selectedHorses[horseIndex]) ? onSuccess : onFailed}
                   style={styles.optionButton}
                   transparent
                 >
@@ -107,11 +84,14 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f3bc32',
   },
-  mainImage: {
+  main: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: 200,
-    width: 340,
+    textAlign: 'center',
+  },
+  mainText: {
+    fontSize: 50,
+    color: 'white',
   },
   optionImage: {
     resizeMode: 'contain',
