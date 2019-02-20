@@ -170,7 +170,7 @@ const styles = StyleSheet.create({
   },
   recognizeButton: {
     alignSelf: 'center',
-    marginTop: hp('4%'),
+    marginTop: hp('3%'),
   },
   recognizeButtonImage: {
     resizeMode: 'contain',

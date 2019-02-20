@@ -47,16 +47,16 @@ exports.getStoredConfiguration = () => {
     return AsyncStorage.getItem('settings')
       .then(data => JSON.parse(data))
       .then(data => {
-        if (!data) {
+        if (data === null) {
           data = {
-            viewModeCode: options.viewModes[0].code,
-            miniGameCode: options.miniGames[0].code,
+            viewModeCode: options.settings.viewModes[0].code,
+            miniGameCode: options.settings.miniGames[0].code,
 
-            levelCode: options.levels[0].code,
-            soundCode: options.sounds[0].code,
+            levelCode: options.settings.levels[0].code,
+            soundCode: options.settings.sounds[0].code,
 
             gameModeCodes: [
-              options.gameModes[0].code,
+              options.settings.gameModes[0].code,
             ],
           }
         }
