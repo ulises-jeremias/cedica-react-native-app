@@ -16,13 +16,6 @@ import { Row, Grid, Col } from "react-native-easy-grid"
 
 import settingsActions from '../actions/settings-actions'
 
-import playButton from '../../assets/images/UI/jugar_regular.png'
-import playButtonClicked from '../../assets/images/UI/jugar_click.png'
-
-import recognizeButton from '../../assets/images/UI/reconocimiento_regular.png'
-import recognizeButtonClicked from '../../assets/images/UI/reconocimiento_click.png'
-
-
 function mapStateToProps(state) {
   const {
     settings
@@ -44,10 +37,6 @@ function mapDispatchToProps(dispatch) {
 class HomeScreen extends Component {
   static navigationOptions = {
     header: null,
-  }
-
-  state = {
-    playClick: false,
   }
 
   componentDidMount() {
@@ -108,8 +97,7 @@ class HomeScreen extends Component {
               transparent
               >
               <Image
-                source={playButtonClicked ? playButtonClicked : playButton}
-                onPress={() => this.setState(() => ({ playButtonClicked: true, }))}
+                source={require('../../assets/images/UI/jugar_regular.png')}
                 style={styles.playButtonImage}
               />
             </Button>
@@ -128,7 +116,7 @@ class HomeScreen extends Component {
                 transparent
                 >
                 <Image
-                  source={recognizeButton}
+                  source={require('../../assets/images/UI/reconocimiento_regular.png')}
                   style={styles.recognizeButtonImage}
                 />
               </Button>

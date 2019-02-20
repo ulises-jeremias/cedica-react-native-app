@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Audio } from 'expo'
 import { StyleSheet } from 'react-native'
-import { Button, Content, Icon } from 'native-base'
+import { Header, Button, Content, Icon, Container, Right } from 'native-base'
 import { Grid, Col, Row } from 'react-native-easy-grid'
 
 import settingsActions from '../../actions/settings-actions'
@@ -223,23 +223,21 @@ class GameModeScreen extends Component {
         </Content>
       ),
       'success': (
-        <Content style={{ backgroundColor: 'black' }}>
-          <Grid>
-            <Col>
-              <Confetti
-                style={{
-                  resizeMode: 'cover',
-                  alignSelf: 'center',
-                }} 
-              />
-            </Col>
-            <Col style={{ paddingVertical: 50 }}>
-              <Button style={{ alignSelf: 'center' }} warning onPress={() => this.setState(() => ({ result: null }))}>
+        <Container style={{ backgroundColor: 'black' }}>
+          <Header transparent>
+            <Right>
+              <Button block warning onPress={() => this.setState(() => ({ result: null }))}>
                 <Icon name='md-arrow-round-forward' />
               </Button>
-            </Col>
-          </Grid>
-        </Content>
+            </Right>
+          </Header>
+          <Confetti
+            style={{
+              resizeMode: 'cover',
+              alignSelf: 'center',
+            }} 
+          />
+        </Container>
       ),
       'lose': (
         <Content style={{ backgroundColor: 'black' }}>
