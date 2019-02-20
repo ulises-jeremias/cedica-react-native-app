@@ -478,8 +478,9 @@ export function getImage(horse) {
   return horse.image
 }
 
-export function getSound(horse, sex = 'female') {
-  return horse.sound[sex]
+export function getSound(horse, sex = 'sounds#1') {
+  let sexField = sex === 'sounds#0' ? 'male' : 'female'
+  return horse.sound[sexField]
 }
 
 export default {
