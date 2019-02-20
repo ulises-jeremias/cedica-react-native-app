@@ -27,12 +27,16 @@ class ListMode extends Component {
   }
 
   onPlayPress(elem) {
+    const {
+      sound
+    } = this.props
+
     return () => {
       try {
         (async () => {
           const soundObject = new Audio.Sound()
           
-          await soundObject.loadAsync(getSound(elem))
+          await soundObject.loadAsync(getSound(elem, sound))
           await soundObject.playAsync()
         })()
       } catch (error) {
