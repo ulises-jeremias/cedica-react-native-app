@@ -232,18 +232,25 @@ class GameModeScreen extends Component {
         </Content>
       ),
       'lose': (
-        <Content style={{ backgroundColor: 'black' }}>
+        <Content>
           <Grid>
-            <Col style={{ paddingVertical: 30 }}>
-              <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
-                <Icon name='md-home' />
-              </Button>
-            </Col>
-            <Col style={{ paddingVertical: 30 }}>
-              <Button style={{ alignSelf: 'center' }} warning onPress={this.handleRefresh}>
-                <Icon name='md-repeat' />
-              </Button>
-            </Col>
+            <Row>
+              <Text>
+                Perdiste!
+              </Text>
+            </Row>
+            <Row>
+              <Col style={{ paddingVertical: 30 }}>
+                <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
+                  <Icon name='md-home' />
+                </Button>
+              </Col>
+              <Col style={{ paddingVertical: 30 }}>
+                <Button style={{ alignSelf: 'center' }} warning onPress={this.handleRefresh}>
+                  <Icon name='md-repeat' />
+                </Button>
+              </Col>
+            </Row>
           </Grid>
         </Content>
       ),
