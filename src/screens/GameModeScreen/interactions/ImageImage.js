@@ -17,8 +17,6 @@ import {
   Text,
 } from 'native-base'
 
-import Cup from '../../../components/Success/Cup'
-
 import settingsActions from '../../../actions/settings-actions'
 import { horses, getImage } from '../../../config/Horses'
 
@@ -41,43 +39,8 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ImageImageInteractionModeScreen extends Component {
-  componentDidMount() {
-    const {
-      navigate,
-      settings: {
-        settings: {
-          current,
-        },
-      },
-    } = this.props
-
-    if (!current.gameModeCodes.includes('gameModes#1')) {
-      navigate('Home')
-    }
-  }
-
   render() {
-    const {
-      settings: {
-        settings: {
-          current,
-        },
-      },
-    } = this.props
-
-    if (!current.gameModeCodes.includes('gameModes#1')) {
-      return null
-    }
-
     const selectedHorses = _.sample(_.shuffle(horses), 5)
-
-    if (true) {
-      return (
-        <Content style={[styles.container, { backgroundColor: 'black' }]}>
-          <Cup style={{ height: 150, width: 150 }} />
-        </Content>
-      )  
-    }
 
     return (
       <Content style={styles.container}>
