@@ -5,6 +5,10 @@ import { Audio } from 'expo'
 import { StyleSheet } from 'react-native'
 import { Header, Button, Content, Icon, Container, Right } from 'native-base'
 import { Grid, Col, Row } from 'react-native-easy-grid'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 
 import settingsActions from '../../actions/settings-actions'
 
@@ -196,8 +200,9 @@ class GameModeScreen extends Component {
             <Col>
               <Cup
                 style={{
-                  width: 450,
-                  height: 300,
+                  marginTop: hp('6%'),
+                  width: wp('60%'),
+                  height: hp('60%'),
                   resizeMode: 'contain',
                   alignSelf: 'center',
                 }} 
@@ -205,14 +210,14 @@ class GameModeScreen extends Component {
             </Col>
             <Col>
               <Row>
-                <Col style={{ paddingVertical: 50 }}>
+                <Col style={{ paddingVertical: hp('17%') }}>
                   <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
                     <Icon name='md-home' />
                   </Button>
                 </Col>
               </Row>
               <Row>
-                <Col style={{ paddingVertical: 50 }}>
+                <Col style={{ paddingVertical: hp('7%') }}>
                   <Button style={{ alignSelf: 'center' }} warning onPress={this.handleWin}>
                     <Icon name='md-arrow-round-forward' />
                   </Button>
@@ -233,6 +238,8 @@ class GameModeScreen extends Component {
           </Header>
           <Confetti
             style={{
+              height: hp('100%'),
+              width: wp('100%'),
               resizeMode: 'cover',
               alignSelf: 'center',
             }} 
@@ -243,13 +250,13 @@ class GameModeScreen extends Component {
         <Content style={{ backgroundColor: 'black' }}>
           <Grid>
             <Row>
-              <Col style={{ paddingVertical: 50 }}>
-                <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
+              <Col style={{ paddingVertical: hp('18%') }}>
+                <Button style={{ alignSelf: 'center' }} large warning onPress={() => navigate('Home')}>
                   <Icon name='md-home' />
                 </Button>
               </Col>
-              <Col style={{ paddingVertical: 50 }}>
-                <Button style={{ alignSelf: 'center' }} warning onPress={this.handleRefresh}>
+              <Col style={{ paddingVertical: hp('18%') }}>
+                <Button style={{ alignSelf: 'center' }} large warning onPress={this.handleRefresh}>
                   <Icon name='md-repeat' />
                 </Button>
               </Col>
