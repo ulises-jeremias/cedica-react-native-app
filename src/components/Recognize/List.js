@@ -19,7 +19,7 @@ import {
   Separator,
 } from 'native-base'
 
-import { horses, getImage, getName, getDescription } from '../../config/Horses'
+import { horses, getImage, getName, getDescription, getSound } from '../../config/Horses'
 
 class ListMode extends Component {
   static navigationOptions = {
@@ -32,7 +32,7 @@ class ListMode extends Component {
         (async () => {
           const soundObject = new Audio.Sound()
           
-          await soundObject.loadAsync(elem.sound.female)
+          await soundObject.loadAsync(getSound(elem))
           await soundObject.playAsync()
         })()
       } catch (error) {

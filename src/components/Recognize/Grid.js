@@ -16,7 +16,7 @@ import {
 
 import { Row, Grid, Col } from "react-native-easy-grid"
 
-import { horses, getBreed, getImage, getName } from '../../config/Horses'
+import { horses, getBreed, getImage, getName, getSound } from '../../config/Horses'
 
 class GridMode extends Component {
   static navigationOptions = {
@@ -55,7 +55,7 @@ class GridMode extends Component {
         (async () => {
           const soundObject = new Audio.Sound()
           
-          await soundObject.loadAsync(elem.sound.female)
+          await soundObject.loadAsync(getSound(elem))
           await soundObject.playAsync()
         })()
       } catch (error) {
