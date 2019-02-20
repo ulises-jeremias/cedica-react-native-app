@@ -11,6 +11,7 @@ import {
   Tabs,
   Tab,
   H2,
+  Spinner,
 } from 'native-base'
 
 import settingsActions from '../actions/settings-actions'
@@ -55,6 +56,7 @@ class RecognizeModeScreen extends Component {
     const {
       settings: {
         settings: {
+          isFetching,
           current,
         },
       },
@@ -62,16 +64,24 @@ class RecognizeModeScreen extends Component {
 
     const recognizeModeComponent = {
       null: null,
-      'viewModes#0': <ListMode />,
-      'viewModes#1': <GridMode />,
+      'viewModes#0': <ListMode sound={current.soundCode} />,
+      'viewModes#1': <GridMode sound={current.soundCode} />,
     }
 
-    if (_.isEmpty(current.gameModeCodes)) {
+    console.log(current.gameModeCodes)
+
+    if (_.isEmpty(current.gameModeCodes) && !isFetching) {
       return (
         <Content style={styles.container}>
           <H2 style={styles.containerTitle}>
             Seleccione algún filtro en la configuración
           </H2>
+        </Content>
+      )
+    } else if (isFetching) {
+      return (
+        <Content style={styles.container}>
+          <Spinner color='white' />
         </Content>
       )
     }
@@ -111,7 +121,8 @@ const styles = StyleSheet.create({
   },
   containerTitle: {
     textAlign: 'center',
-    marginTop: 20,
+    marginTop: 50,
+    color: 'white'
   },
   tab: {
     backgroundColor: '#cd960c',
