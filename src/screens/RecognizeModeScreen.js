@@ -1,14 +1,16 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-
+import _ from 'underscore'
 import {
   StyleSheet,
 } from 'react-native'
 
 import {
+  Content,
   Tabs,
   Tab,
+  H2,
 } from 'native-base'
 
 import settingsActions from '../actions/settings-actions'
@@ -64,6 +66,16 @@ class RecognizeModeScreen extends Component {
       'viewModes#1': <GridMode />,
     }
 
+    if (_.isEmpty(current.gameModeCodes)) {
+      return (
+        <Content style={styles.container}>
+          <H2 style={styles.containerTitle}>
+            Seleccione algún filtro en la configuración
+          </H2>
+        </Content>
+      )
+    }
+
     return (
       <Tabs>
         {
@@ -94,6 +106,13 @@ class RecognizeModeScreen extends Component {
 }
 
 const styles = StyleSheet.create({
+  container: {
+    backgroundColor: '#f3bc32',
+  },
+  containerTitle: {
+    textAlign: 'center',
+    marginTop: 20,
+  },
   tab: {
     backgroundColor: '#cd960c',
   },

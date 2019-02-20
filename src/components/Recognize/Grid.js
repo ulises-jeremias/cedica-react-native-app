@@ -36,6 +36,7 @@ class GridMode extends Component {
           </Text>
           <Button
             transparent
+            style={styles.playSoundButton}
             onPress={this.onPlayPress(elem)}
           >
             <Image
@@ -90,18 +91,20 @@ const styles = StyleSheet.create({
     paddingTop: 30,
   },
   horseImage: {
-    height: 150,
-    width: 160,
+    height: 120,
+    width: 130,
     alignSelf: 'center',
   },
   horseBreed: {
     textAlignVertical: 'bottom',
     textAlign: 'center',
   },
+  playSoundButton: {
+    alignSelf: 'center',
+  },
   playSound: {
     height: 50,
     width: 50,
-    alignSelf: 'center',
   },
 })
 
