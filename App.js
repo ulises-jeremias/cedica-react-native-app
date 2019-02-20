@@ -36,9 +36,10 @@ export default class App extends React.Component {
   _loadResourcesAsync = async () => {
     return Promise.all([
       Asset.loadAsync([
-        require('./assets/sounds/Relincho.m4a'),
+        require('./assets/sounds/Relincho.mp3'),
         require('./assets/sounds/Resoplido.m4a'),
 
+        require('./assets/images/Festejos/confetti.gif'),
         require('./assets/images/Festejos/cup.gif'),
 
         require('./assets/images/Caballos/amapola-petiso_argentino-rosillo.png'),

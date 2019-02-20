@@ -10,8 +10,9 @@ import settingsActions from '../../actions/settings-actions'
 import ImageImage from './interactions/ImageImage'
 import WordImage from './interactions/WordImage'
 import Cup from '../../components/Success/Cup'
+import Confetti from '../../components/Success/Confetti'
 
-import successSound from '../../../assets/sounds/Relincho.m4a'
+import successSound from '../../../assets/sounds/Relincho.mp3'
 import failedSound from '../../../assets/sounds/Resoplido.m4a'
 
 function mapStateToProps(state) {
@@ -200,10 +201,10 @@ class GameModeScreen extends Component {
         <Content style={{ backgroundColor: 'black' }}>
           <Grid>
             <Col>
-              <Cup
+              <Confetti
                 style={{
-                  width: 350,
-                  height: 300,
+                  width: 750,
+                  height: 500,
                   resizeMode: 'contain',
                   alignSelf: 'center',
                 }} 
