@@ -26,7 +26,7 @@ class GridMode extends Component {
   horseRow(horseChunck) {
     return horseChunck.map(elem => (
       <Col key={getName(elem)}>
-        <View style={styles.horseView}>
+        <View>
           <Image
             source={getImage(elem)}
             style={styles.horseImage}

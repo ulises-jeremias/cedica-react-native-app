@@ -2,6 +2,10 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'underscore'
+import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 import { Audio } from 'expo'
 import {
   Col,
@@ -17,6 +21,7 @@ import {
   Button,
   Content,
   Text,
+  View,
 } from 'native-base'
 
 import settingsActions from '../../../actions/settings-actions'
@@ -97,7 +102,7 @@ class WordImageInteractionModeScreen extends Component {
 
     return (
       <Content style={styles.container}>
-        <Grid style={{ marginTop: 20 }}>
+        <Grid style={{ marginTop: hp('4%') }}>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <Col style={styles.main}>
               <Image
@@ -106,28 +111,27 @@ class WordImageInteractionModeScreen extends Component {
               />
             </Col>
           </Row>
-          <Row>
+          <Row style={{ marginVertical: hp('4%') }}>
             {selectedHorses.map((horse, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
-                <Row>
+                <View>
                   <Text
                     style={styles.mainText}
                     onPress={selectedOption.cmp(horse) ? onSuccess : onFailed}
                   >
                     { selectedOption.text(horse) }
                   </Text>
-                </Row>
-                <Row>
                   <Button
                     transparent
                     onPress={this.onPlayPress(horse)}
+                    style={styles.playSoundButton}
                   >
                     <Image
                       source={require('../../../../assets/images/UI/audio_click.png')}
                       style={styles.playSound}
                     />
                   </Button>
-                </Row>
+                </View>
               </Col>
             ))}
           </Row>
@@ -149,27 +153,24 @@ const styles = StyleSheet.create({
   mainImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: 200,
-    width: 340,
+    height: hp('45%'),
+    width: wp('55%'),
   },
   mainText: {
-    fontSize: 30,
-    alignSelf: 'center',
+    fontSize: hp('5%'),
+    textAlign: 'center',
     color: 'white',
-  },
-  optionImage: {
-    resizeMode: 'contain',
-    alignSelf: 'center',
-    height: 120,
-    width: 140,
   },
   optionButton: {
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: hp('6%'),
+  },
+  playSoundButton: {
+    alignSelf: 'center',
   },
   playSound: {
-    height: 50,
-    width: 50,
+    height: hp('6%'),
+    width: wp('6%'),
   },
 })
 

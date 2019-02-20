@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import _ from 'underscore'
 import { Audio } from 'expo'
 import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
+import {
   Col,
   Grid,
   Row,
@@ -17,6 +21,7 @@ import {
   Button,
   Content,
   Text,
+  View,
 } from 'native-base'
 
 import settingsActions from '../../../actions/settings-actions'
@@ -84,7 +89,7 @@ class ImageImageInteractionModeScreen extends Component {
 
     return (
       <Content style={styles.container}>
-        <Grid style={{ marginTop: 20 }}>
+        <Grid style={{ marginTop: hp('3%') }}>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <Col>
               <Image
@@ -127,18 +132,18 @@ const styles = StyleSheet.create({
   mainImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: 200,
-    width: 340,
+    height: hp('45%'),
+    width: hp('50%'),
   },
   optionImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: 120,
-    width: 140,
+    height: hp('22%'),
+    width: wp('27%'),
   },
   optionButton: {
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: hp('6%'),
   }
 })
 

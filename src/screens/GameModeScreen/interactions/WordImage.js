@@ -4,6 +4,10 @@ import { connect } from 'react-redux'
 import _ from 'underscore'
 import { Audio } from 'expo'
 import {
+  widthPercentageToDP as wp,
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
+import {
   Col,
   Grid,
   Row,
@@ -17,6 +21,7 @@ import {
   Button,
   Content,
   Text,
+  View,
 } from 'native-base'
 
 import settingsActions from '../../../actions/settings-actions'
@@ -97,24 +102,23 @@ class WordImageInteractionModeScreen extends Component {
 
     return (
       <Content style={styles.container}>
-        <Grid style={{ marginTop: 20 }}>
+        <Grid style={{ marginTop: hp('4%') }}>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
-            <Col style={[styles.main, { width: 100 }]}>
+            <View style={[styles.main]}>
               <Text style={styles.mainText}>
                 { selectedOption.text }
               </Text>
-            </Col>
-            <Col style={[styles.main]}>
               <Button
                 transparent
                 onPress={this.onPlayPress(selectedHorses[horseIndex])}
+                style={styles.playSoundButton}
               >
                 <Image
                   source={require('../../../../assets/images/UI/audio_click.png')}
                   style={styles.playSound}
                 />
               </Button>
-            </Col>
+            </View>
           </Row>
           <Row>
             {selectedHorses.map((horse, i) => (
@@ -144,26 +148,31 @@ const styles = StyleSheet.create({
   main: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    textAlign: 'center',
+    paddingTop: hp('7%'),
+    height: hp('45%'),
   },
   mainText: {
-    fontSize: 30,
+    fontSize: hp('8%'),
     alignSelf: 'center',
     color: 'white',
   },
   optionImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: 120,
-    width: 140,
+    height: hp('25%'),
+    width: wp('30%'),
   },
   optionButton: {
     alignSelf: 'center',
-    marginTop: 40,
+    marginTop: hp('4%'),
+  },
+  playSoundButton: {
+    alignSelf: 'center',
   },
   playSound: {
-    height: 50,
-    width: 50,
+    alignSelf: 'center',
+    height: hp('7%'),
+    width: wp('7%'),
   },
 })
 
