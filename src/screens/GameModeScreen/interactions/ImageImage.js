@@ -2,6 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'underscore'
+import { Audio } from 'expo'
 import {
   Col,
   Grid,
@@ -10,6 +11,7 @@ import {
 import {
   Image,
   StyleSheet,
+  TouchableHighlight,
 } from 'react-native'
 import {
   Button,
@@ -18,7 +20,7 @@ import {
 } from 'native-base'
 
 import settingsActions from '../../../actions/settings-actions'
-import { horses, getImage } from '../../../config/Horses'
+import { crosses, getImage, getBreed, getFur, getSound } from '../../../config/Horses'
 
 function mapStateToProps(state) {
   const {
@@ -39,33 +41,76 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ImageImageInteractionModeScreen extends Component {
+  onPlayPress(elem) {
+    const {
+      config: {
+        soundCode,
+      }
+    } = this.props
+
+    return () => {
+      try {
+        (async () => {
+          const soundObject = new Audio.Sound()
+          
+          await soundObject.loadAsync(getSound(elem, soundCode))
+          await soundObject.playAsync()
+        })()
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+  }
+
   render() {
-    const selectedHorses = _.sample(_.shuffle(horses), 5)
+    const {
+      onSuccess,
+      onFailed,
+      config: {
+        levelCode,
+      }
+    } = this.props
+
+    const samples = levelCode === 'levels#0' ? 2 : 4
+
+    const selectedHorses = _.sample(_.shuffle(crosses), samples)
+    const horseIndex = Math.floor(Math.random() * (samples - 1))
+
+    const cmp = horse => {
+      return (_.isEqual(horse.mother, selectedHorses[horseIndex].mother) &&
+              _.isEqual(horse.father, selectedHorses[horseIndex].father))
+
+    }
 
     return (
       <Content style={styles.container}>
         <Grid style={{ marginTop: 20 }}>
-          <Row>
+          <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <Col>
               <Image
-                source={getImage(selectedHorses.pop())}
                 style={styles.mainImage}
+                source={getImage(selectedHorses[horseIndex].mother)}
+              />
+            </Col>
+            <Col>
+              <Image
+                style={styles.mainImage}
+                source={getImage(selectedHorses[horseIndex].father)}
               />
             </Col>
           </Row>
           <Row>
-            {selectedHorses.map((horse, i) => (
+            {selectedHorses.map((cross, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
-                <Button
-                  onPress={() => {}}
+                <TouchableHighlight
+                  onPress={cmp(cross) ? onSuccess : onFailed}
                   style={styles.optionButton}
-                  transparent
                 >
                   <Image
-                    source={getImage(horse)}
+                    source={getImage(cross.horse)}
                     style={styles.optionImage}
                   />
-                </Button>
+                </TouchableHighlight>
               </Col>
             ))}
           </Row>
