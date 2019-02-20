@@ -1,4 +1,4 @@
-export const corsses = [
+export const crosses = [
   {
     horse: {
       name: 'bella',
@@ -203,6 +203,7 @@ export function getImage(horse) {
 
 export default {
   horses,
+  crosses,
   getBreed,
   getName,
   getImage,
