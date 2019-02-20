@@ -3,7 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Audio } from 'expo'
 import { Button, Content, Icon } from 'native-base'
-import { Grid, Col } from 'react-native-easy-grid'
+import { Grid, Col, Row } from 'react-native-easy-grid'
 
 import settingsActions from '../../actions/settings-actions'
 
@@ -79,6 +79,7 @@ class GameModeScreen extends Component {
           await soundObject.loadAsync(successSound)
         }
 
+        await soundObject.stopAsync()
         await soundObject.playAsync()
       })()
     } catch (error) {
@@ -108,6 +109,7 @@ class GameModeScreen extends Component {
           await soundObject.loadAsync(failedSound)            
         }
 
+        await soundObject.stopAsync()
         await soundObject.playAsync()
       })()
     } catch (error) {
@@ -182,7 +184,7 @@ class GameModeScreen extends Component {
             <Col>
               <Cup
                 style={{
-                  width: 350,
+                  width: 450,
                   height: 300,
                   resizeMode: 'contain',
                   alignSelf: 'center',
@@ -190,9 +192,20 @@ class GameModeScreen extends Component {
               />
             </Col>
             <Col>
-              <Button warning onPress={this.handleWin}>
-                <Icon name='md-help-circle' />
-              </Button>
+              <Row>
+                <Col style={{ paddingVertical: 30 }}>
+                  <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
+                    <Icon name='md-home' />
+                  </Button>
+                </Col>
+              </Row>
+              <Row>
+                <Col style={{ paddingVertical: 30 }}>
+                  <Button style={{ alignSelf: 'center' }} warning onPress={this.handleWin}>
+                    <Icon name='md-arrow-round-forward' />
+                  </Button>
+                </Col>
+              </Row>
             </Col>
           </Grid>
         </Content>
@@ -210,9 +223,9 @@ class GameModeScreen extends Component {
                 }} 
               />
             </Col>
-            <Col>
-              <Button warning onPress={() => this.setState(() => ({ result: null }))}>
-                <Icon name='md-help-circle' />
+            <Col style={{ paddingVertical: 30 }}>
+              <Button style={{ alignSelf: 'center' }} warning onPress={() => this.setState(() => ({ result: null }))}>
+                <Icon name='md-arrow-round-forward' />
               </Button>
             </Col>
           </Grid>
@@ -221,14 +234,14 @@ class GameModeScreen extends Component {
       'lose': (
         <Content style={{ backgroundColor: 'black' }}>
           <Grid>
-            <Col>
-              <Button warning onPress={() => navigate('Home')}>
-                <Icon name='md-help-circle' />
+            <Col style={{ paddingVertical: 30 }}>
+              <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
+                <Icon name='md-home' />
               </Button>
             </Col>
-            <Col>
-              <Button warning onPress={this.handleRefresh}>
-                <Icon name='md-help-circle' />
+            <Col style={{ paddingVertical: 30 }}>
+              <Button style={{ alignSelf: 'center' }} warning onPress={this.handleRefresh}>
+                <Icon name='md-repeat' />
               </Button>
             </Col>
           </Grid>

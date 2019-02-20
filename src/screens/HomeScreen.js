@@ -40,6 +40,16 @@ class HomeScreen extends Component {
     header: null,
   }
 
+  componentDidMount() {
+    const {
+      actions: {
+        getStoredConfiguration,
+      }
+    } = this.props
+
+    getStoredConfiguration()
+  }
+
   render() {
     const {
       navigation: {

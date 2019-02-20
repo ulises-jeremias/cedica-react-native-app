@@ -56,7 +56,7 @@ class WordImageInteractionModeScreen extends Component {
     return (
       <Content style={styles.container}>
         <Grid style={{ marginTop: 20 }}>
-          <Row>
+          <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <Col style={styles.main}>
               <Text style={styles.mainText}>
                 { getBreed(selectedHorses[horseIndex]) }
@@ -96,6 +96,7 @@ const styles = StyleSheet.create({
   },
   mainText: {
     fontSize: 50,
+    alignSelf: 'center',
     color: 'white',
   },
   optionImage: {
