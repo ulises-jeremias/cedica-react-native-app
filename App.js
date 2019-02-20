@@ -43,7 +43,7 @@ export default class App extends React.Component {
 
         require('./assets/images/Caballos/amapola-petiso_argentino-rosillo.png'),
         require('./assets/images/Caballos/ambar-mestizo_cruza_arabe-alazan_tostado.png'),
-        require('./assets/images/Caballos/angola-spc-zainocolorado.png'),
+        require('./assets/images/Caballos/angola-sangre_pura_de_carrera-zainocolorado.png'),
         require('./assets/images/Caballos/antu-Mestizo-overo_zaino.png'),
         require('./assets/images/Caballos/bionda-mestizo-alazán_ruano.png'),
         require('./assets/images/Caballos/blanco-mestizo-blanco.png'),

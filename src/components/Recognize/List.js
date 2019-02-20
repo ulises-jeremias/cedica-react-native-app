@@ -1,5 +1,6 @@
-import React, { Component } from 'react'
+import React, { Component, Fragment } from 'react'
 import _ from 'underscore'
+import { Audio } from 'expo'
 import {
   Image,
   StyleSheet,
@@ -10,58 +11,73 @@ import {
   Button,
   Body,
   Content,
-  H1,
   ListItem,
   Left,
+  H2,
   Right,
   Text,
+  Separator,
 } from 'native-base'
 
-import { horses, getBreed, getImage, getName, getFur } from '../../config/Horses'
+import { horses, getImage, getName, getDescription } from '../../config/Horses'
 
 class ListMode extends Component {
   static navigationOptions = {
     header: null,
   }
 
-  render() {
-    const {
-      onSetModalVisible
-    } = this.props
+  onPlayPress(elem) {
+    return () => {
+      try {
+        (async () => {
+          const soundObject = new Audio.Sound()
+          
+          await soundObject.loadAsync(elem.sound.female)
+          await soundObject.playAsync()
+        })()
+      } catch (error) {
+        console.log(error.message)
+      }
+    }
+  }
 
+  render() {
     return (
       <Content style={styles.container}>
         {
           horses.map(elem => (
-            <ListItem key={getName(elem)} style={styles.horses}>
-              <Left>
-                <Image
-                  source={getImage(elem)}
-                  resizeMode='contain'
-                  style={styles.horseImage}
-                />
-              </Left>
-              <Body style={styles.horseActions}>
-                <H1>
+            <Fragment key={getName(elem)}>
+              <Separator bordered style={styles.horseHeader}>
+                <H2 style={styles.horseHeaderText}>
                   {getName(elem)}
-                </H1>
-                <Button
-                  transparent
-                  onPress={() => alert('sonido')}
-                >
+                </H2>
+              </Separator>
+              <ListItem style={styles.horses}>
+                <Left>
                   <Image
-                    source={require('../../../assets/images/UI/audio_click.png')}
-                    style={styles.playSound}
+                    source={getImage(elem)}
+                    resizeMode='contain'
+                    style={styles.horseImage}
                   />
-                </Button>
-              </Body>
-              <Right>
-                <Text style={styles.horseDescription}>
-                  Raza: { getBreed(elem) }{'\n'}
-                  Pelaje: { getFur(elem) }
-                </Text>
-              </Right>
-            </ListItem>
+                </Left>
+                <Body>
+                  <Text style={styles.horseDescription}>
+                    { getDescription(elem) }
+                  </Text>
+                </Body>
+                <Right style={styles.horseActions}>
+                  <Button
+                    transparent
+                    onPress={this.onPlayPress(elem)}
+                  >
+                    <Image
+                      source={require('../../../assets/images/UI/audio_click.png')}
+                      style={styles.playSound}
+                    />
+                  </Button>
+                </Right>
+              </ListItem>
+            </Fragment>
           ))
         }
       </Content>
@@ -73,9 +89,15 @@ const styles = StyleSheet.create({
   container: {
     backgroundColor: '#f3bc32',
   },
+  horseHeader: {
+    backgroundColor: '#9d7309'
+  },
+  horseHeaderText: {
+    color: 'white'
+  },
   horseImage: {
-    height: 150,
-    width: 160,
+    height: 250,
+    width: 260,
   },
   horses: {
     marginBottom: 30,
@@ -85,7 +107,9 @@ const styles = StyleSheet.create({
     width: 50,
   },
   horseDescription: {
-    textAlign: 'left',
+    textAlign: 'justify',
+    fontSize: 12,
+    color: 'white'
   }
 })
 
