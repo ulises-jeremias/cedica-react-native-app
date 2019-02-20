@@ -7,6 +7,8 @@ import AppNavigator from './src/navigation/AppNavigator'
 
 import store from './src/store'
 
+console.disableYellowBox = true
+
 export default class App extends React.Component {
   state = {
     isLoadingComplete: false,
