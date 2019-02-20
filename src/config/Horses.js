@@ -3,6 +3,12 @@ export const crosses = [
     horse: {
       name: 'bella',
       image: require('../../assets/images/Crosses/bella/bella.png'),
+      description: `RAZA: MESTIZO.
+      Cuando el resultado de la cruza entre dos caballos resulta en otro cuyas características no corresponden a ninguna raza pura conocida, se lo denomina CABALLO MESTIZO. Su pelaje depende mucho de las cruzas y los genes que tenga el caballo, por lo que podemos decir que la gama de colores y combinaciones con la que cuentan en su pelaje es verdaderamente muy amplia.
+      
+      PELAJE: ZAINO COLORADO.
+      La capa tiene un color fundamentalmente marrón, variables de un rojo al negro.
+      Pueden ser: Zaino – Zaino Colorado – Zaino Doradillo – Zaino Oscuro.`,
     },
     mother: {
       name: 'bonita',
@@ -17,6 +23,12 @@ export const crosses = [
     horse: {
       name: 'huayra',
       image: require('../../assets/images/Crosses/huayra/huayra.png'),
+      description: `RAZA: MESTIZO.
+      Cuando el resultado de la cruza entre dos caballos resulta en otro cuyas características no corresponden a ninguna raza pura conocida, se lo denomina CABALLO MESTIZO. Su pelaje depende mucho de las cruzas y los genes que tenga el caballo, por lo que podemos decir que la gama de colores y combinaciones con la que cuentan en su pelaje es verdaderamente muy amplia.
+      
+      PELAJE: ZAINO. 
+      La capa tiene un color fundamentalmente marrón, variables de un rojo al negro.
+      Pueden ser: Zaino – Zaino Colorado – Zaino Doradillo – Zaino Oscuro.`,
     },
     mother: {
       name: 'pocha',
@@ -31,6 +43,12 @@ export const crosses = [
     horse: {
       name: 'mancha',
       image: require('../../assets/images/Crosses/mancha/mancha.png'),
+      description: `RAZA: APPALOOSA.
+      Raza de Caballos criados según las normas del Appaloosa Horse Club para preservar los caballos de la Tribu Nez Perce casi extintos. Caracterizado por su piel moteada, su esclerótica ocular blanca -y mucho más visible que en otras razas- y sus cascos rayados bien definidos, son animales buen carácter y personalidad activa. 
+      Su nombre deriva de su aspecto característico en  su pelaje, también llamado “pecoso”. Pueden ser Nevado - Lavado - Leopardo - Mármol - Escarchado.
+      
+      PELAJE: PINTADO.
+      Se caracteriza porque los pelos de diferentes colores que forman su capa se agrupan formando manchas o parches.`,
     },
     mother: {
       name: 'pintada',
@@ -45,6 +63,13 @@ export const crosses = [
     horse: {
       name: 'nalito',
       image: require('../../assets/images/Crosses/nalito/nalito.png'),
+      description: `RAZA: SILLA ARGENTINO.
+      Raza de Caballo cuyo orígen se remonta a 1941 cuando  el Anglo Argentino se transformó en raza para la AAFE (Asociación Argentina de Fomento Equino). A partir de 1982 comenzó a llamarse Silla Argentino. Es una animal muy parecido al SPC, aunque más robustos. Se destaca por su temperamento enérgico y vivaz. De volumen y peso medianos, su estructura fuerte y proporcionada le otorga una armonía apta para el deporte. 
+      Su pelaje, notablemente liso y sedoso, puede ser Alazán, Zaino o Tordillo pero no Pintado o Tobiano.
+      
+      PELAJE: ALAZÁN.
+      Capa color anaranjado parejo y uniforme, que va del amarillento al colorado azafrán. Su piel es oscura. Las crines, cerdas y miembros son del mismo color o más claros, pero nunca oscuro, pero nunca negras.
+      Pueden ser: Alazán – Alazán Claro – Alazán Rubio – Alazán Dorado – Alazán Tostado.`,
     },
     mother: {
       name: 'nala',
@@ -59,6 +84,13 @@ export const crosses = [
     horse: {
       name: 'orita',
       image: require('../../assets/images/Crosses/orita/orita.png'),
+      description: `RAZA: CUARTO DE MILLA.
+      Raza de Caballos conformada por la cruza de Pura Sangre Inglés y Mustang americano. De carácter tranquilo; es muy sensible y sociable. Veloces, dúctiles, de poca estatura y corpulentos: constitución musculosa, pecho grande y ancho.
+      Muy amplia es la gama de pelaje, sólo no se aceptan los Pintados, los Manchados (Appaloosa) ni los Albinos.
+      
+      PELAJE: ALAZÁN.
+      Capa color anaranjado parejo y uniforme, que va del amarillento al colorado azafrán. Su piel es oscura. Las crines, cerdas y miembros son del mismo color o más claros, pero nunca oscuro, pero nunca negras.
+      Pueden ser: Alazán – Alazán Claro – Alazán Rubio – Alazán Dorado – Alazán Tostado.`,
     },
     mother: {
       name: 'petra',
@@ -73,6 +105,12 @@ export const crosses = [
     horse: {
       name: 'pirata',
       image: require('../../assets/images/Crosses/pirata/pirata.png'),
+      description: `RAZA: PETISO ARGENTINO.
+      Raza de Caballos que nació de la cruza de petisos importados con caballos de otras razas, principalmente autóctonas. De cabeza mediana, orejas pequeñas, cuerpo armonioso y profundo; de acción ágil y suelta, temperamento activo y brioso.En la actualidad, se usa para actividades hípicas con niños y niñas.
+      
+      PELAJE: TOBIANO.
+      Capa caracterizada por manchas de bordes definidos blancas –grandes o pequeñas- que, generalmente, se inician sobre la parte dorsal.
+      Pueden ser: Tobiano Colorado – Tobiano Negro.`,
     },
     mother: {
       name: 'kika',
@@ -440,6 +478,10 @@ export function getImage(horse) {
   return horse.image
 }
 
+export function getSound(horse, sex = 'female') {
+  return horse.sound[sex]
+}
+
 export default {
   horses,
   crosses,
@@ -448,4 +490,5 @@ export default {
   getImage,
   getFur,
   getDescription,
+  getSound,
 }
