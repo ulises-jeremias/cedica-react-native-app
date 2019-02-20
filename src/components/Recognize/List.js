@@ -11,7 +11,6 @@ import {
   Body,
   Content,
   H1,
-  Icon,
   ListItem,
   Left,
   Right,
@@ -26,11 +25,15 @@ class ListMode extends Component {
   }
 
   render() {
+    const {
+      onSetModalVisible
+    } = this.props
+
     return (
       <Content style={styles.container}>
         {
           horses.map(elem => (
-            <ListItem key={getName(elem)} thumbnail>
+            <ListItem key={getName(elem)} style={styles.horses}>
               <Left>
                 <Image
                   source={getImage(elem)}
@@ -73,6 +76,9 @@ const styles = StyleSheet.create({
   horseImage: {
     height: 150,
     width: 160,
+  },
+  horses: {
+    marginBottom: 30,
   },
   playSound: {
     height: 50,
