@@ -1,4 +1,5 @@
 import React, { Component, Fragment } from 'react'
+import _ from 'underscore'
 import {
   Image,
   StyleSheet,
@@ -7,7 +8,7 @@ import {
 
 
 import {
-  Container,
+  Content,
   Text,
 } from 'native-base'
 
@@ -15,36 +16,46 @@ import { Row, Grid, Col } from "react-native-easy-grid"
 
 import { horses, getBreed, getImage, getName } from '../../config/Horses'
 
+function horseRow(horseChunck) {
+  return horseChunck.map(elem => (
+    <Col key={getName(elem)}>
+      <View style={styles.horseView}>
+        <Image
+          source={getImage(elem)}
+          style={styles.horseImage}
+        />
+        <Text style={styles.horseBreed}>
+          {getBreed(elem)}
+        </Text>
+        <Image
+          source={require('../../../assets/images/UI/audio_click.png')}
+          style={styles.playSound}
+        />
+      </View>
+    </Col>
+  ))
+}
+
 class GridMode extends Component {
   static navigationOptions = {
     header: null,
   }
 
   render() {
+    const horsesChunked = _.chunk(horses, 3)
+
     return (
-      <Container style={styles.container} contentContainerStyle={styles.contentContainer}>
-        <Grid style={styles.homeContainer}>
+      <Content style={styles.container} contentContainerStyle={styles.contentContainer}>
+        <Grid>
           {
-            horses.map(elem => (
-              <Fragment key={getName(elem)}>
-                <View style={styles.horseView}>
-                  <Image
-                    source={getImage(elem)}
-                    style={styles.horseImage}
-                  />
-                  <Text style={styles.horseBreed}>
-                    {getBreed(elem)}
-                  </Text>
-                  <Image
-                    source={require('../../../assets/images/UI/audio_click.png')}
-                    style={styles.playSound}
-                  />
-                </View>
-              </Fragment>
+            horsesChunked.map((elem, index) => (
+              <Row key={index}>
+                {horseRow(elem)}
+              </Row>
             ))
           }
         </Grid>
-      </Container>
+      </Content>
     )
   }
 }
@@ -59,6 +70,7 @@ const styles = StyleSheet.create({
   horseImage: {
     height: 150,
     width: 160,
+    alignSelf: 'center',
   },
   horseBreed: {
     textAlignVertical: 'bottom',
