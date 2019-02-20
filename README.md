@@ -1,22 +1,21 @@
-# cedica-react-native-app
+# CEDICA
 
-## Levantar ambiente de desarrollo
+## React Native App
+
+* * *
+
+## Ambiente de desarrollo
 
 Para levantar el ambiente de desarrollo, primero se deben instalar las
-dependencias ejecutando:
+dependencias ejecutando los siguientes comandos en la linea de comandos:
 
 ```bash
 $ yarn
-```
-
-Luego, se debe ejecutar:
-
-```bash
 $ yarn android
 ```
 
-Una vez levantado expo, se mostrará una pantalla con un código QR que se debe
-escanear desde la aplicación de expo (disponible en android y ios)
+Una vez levantado `expo`, se muestra una pantalla con un código QR que se debe
+escanear desde la aplicación de expo (disponible en android y ios).
 
 Esto abrirá automáticamente nuestra aplicación en el teléfono, la cual
 construirá y descargará la app.
@@ -39,11 +38,13 @@ a las pantallas para movernos por nuestra app.
 Normalmente, las nuevas rutas irían al archivo `src/navigator/MainNavigator.js`,
 donde se importan las pantallas. El nombre con el cual se importen es como van a
 ser conocidas dentro de nuestra app.
+
 Por ejemplo, para agregar una pantalla de `Test`, se deberían agregar las
 siguientes líneas al archivo
 
 ```javascript
 ...
+
 import Test from '../screens/TestScreen'
 
 export default createStackNavigator({
@@ -87,15 +88,11 @@ Son funciones que simplifican ciertos aspectos del desarrollo.
 
 ## Construir un APK de producción
 
-Para construir un APK, es necesario instalar las dependencias
+Para construir un APK, es necesario instalar las dependencias y general la aplicación para android
+de la siguiente forma:
 
 ```bash
 $ yarn
-```
-
-y luego se debe ejecutar
-
-```bash
 $ yarn build:android
 ```
 

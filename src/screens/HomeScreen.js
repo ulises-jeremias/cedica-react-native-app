@@ -164,7 +164,7 @@ const styles = StyleSheet.create({
   },
   playButtonImage: {
     resizeMode: 'contain',
-    marginTop: hp('8%'),
+    marginTop: hp('12%'),
     width: wp('20%'),
     height: hp('20%'),
   },
@@ -189,7 +189,7 @@ const styles = StyleSheet.create({
     height: hp('15%'),
   },
   lastRow: {
-    marginTop: hp('6%'),
+    marginTop: hp('8%'),
   }
 })
 
