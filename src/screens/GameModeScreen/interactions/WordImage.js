@@ -38,15 +38,20 @@ function mapDispatchToProps(dispatch) {
   }
 }
 
-class ImageImageInteractionModeScreen extends Component {
+class WordImageInteractionModeScreen extends Component {
   render() {
     const {
       onSuccess,
       onFailed,
+      config: {
+        levelCode,
+      }
     } = this.props
 
-    const selectedHorses = _.sample(_.shuffle(horses), 4)
-    const horseIndex = Math.floor(Math.random() * 3)
+    const samples = levelCode === 'levels#0' ? 2 : 4
+
+    const selectedHorses = _.sample(_.shuffle(horses), samples)
+    const horseIndex = Math.floor(Math.random() * (samples - 1))
 
     return (
       <Content style={styles.container}>
@@ -105,4 +110,4 @@ const styles = StyleSheet.create({
   }
 })
 
-export default connect(mapStateToProps, mapDispatchToProps)(ImageImageInteractionModeScreen)
+export default connect(mapStateToProps, mapDispatchToProps)(WordImageInteractionModeScreen)

@@ -2,6 +2,8 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Audio } from 'expo'
+import { Button, Content, Icon } from 'native-base'
+import { Grid, Col } from 'react-native-easy-grid'
 
 import settingsActions from '../../actions/settings-actions'
 
@@ -40,12 +42,14 @@ class GameModeScreen extends Component {
 
     this.state = {
       result: null,
-      attempts: 2,
+      success: 0,
       levels: 5,
     }
 
     this.onFailed = this.onFailed.bind(this)
     this.onSuccess = this.onSuccess.bind(this)
+    this.handleRefresh = this.handleRefresh.bind(this)
+    this.handleWin = this.handleWin.bind(this)
   }
 
   componentDidMount() {
@@ -61,13 +65,19 @@ class GameModeScreen extends Component {
   onSuccess() {
     const {
       levels,
+      success,
     } = this.state
 
     try {
       (async () => {
         const soundObject = new Audio.Sound()
         
-        await soundObject.loadAsync(successSound)
+        if (!(levels - 1) && (success + 1) < 3) {
+          await soundObject.loadAsync(failedSound)            
+        } else {
+          await soundObject.loadAsync(successSound)
+        }
+
         await soundObject.playAsync()
       })()
     } catch (error) {
@@ -75,21 +85,28 @@ class GameModeScreen extends Component {
     }
 
     this.setState(() => ({
-      result: (levels - 1) ? 'success' : 'win',
+      result: (levels - 1) ? 'success' : ((success + 1) >= 3 ? 'win' : 'lose'),
       levels: levels - 1,
+      success: success + 1,
     }))
   }
 
   onFailed() {
     const {
-      attempts,
+      levels,
+      success,
     } = this.state
 
     try {
       (async () => {
         const soundObject = new Audio.Sound()
         
-        await soundObject.loadAsync(failedSound)
+        if (!(levels - 1) && success >= 3) {
+          await soundObject.loadAsync(successSound)
+        } else {
+          await soundObject.loadAsync(failedSound)            
+        }
+
         await soundObject.playAsync()
       })()
     } catch (error) {
@@ -97,9 +114,46 @@ class GameModeScreen extends Component {
     }
 
     this.setState(() => ({
-      result: (attempts - 1) ? 'failed' : 'lose',
-      attempts: attempts - 1,
+      result: (levels - 1) ? null : (success >= 3 ? 'win' : 'lose'),
+      levels: levels - 1
     }))
+  }
+
+  handleRefresh() {
+    this.setState(() => ({
+      result: null,
+      success: 0,
+      levels: 5,
+    }))
+  }
+
+  handleWin() {
+    const {
+      actions: {
+        onSettingsFormFieldChange,
+        updateStoredConfiguration,
+      },
+      settings: {
+        settings: {
+          current: {
+            miniGameCode,
+          },
+          fields,
+        },
+      },
+    } = this.props
+
+    const p = String(miniGameCode).split('#')
+
+    const value = `${p[0]}#${p[1] === '2' ? 0 : parseInt(p[1]) + 1}`
+
+    onSettingsFormFieldChange('settings', 'miniGameCode', value)
+    updateStoredConfiguration({
+      ...fields,
+      miniGameCode: value,
+    })
+
+    this.handleRefresh()
   }
 
   render() {
@@ -122,23 +176,82 @@ class GameModeScreen extends Component {
       null: null,
 
       'win': (
-        <Cup />
+        <Content style={{ backgroundColor: 'black' }}>
+          <Grid>
+            <Col>
+              <Cup
+                style={{
+                  width: 350,
+                  height: 300,
+                  resizeMode: 'contain',
+                  alignSelf: 'center',
+                }} 
+              />
+            </Col>
+            <Col>
+              <Button warning onPress={this.handleWin}>
+                <Icon name='md-help-circle' />
+              </Button>
+            </Col>
+          </Grid>
+        </Content>
       ),
-      'success': null,
-      'failed': null,
-      'lose': null,
+      'success': (
+        <Content style={{ backgroundColor: 'black' }}>
+          <Grid>
+            <Col>
+              <Cup
+                style={{
+                  width: 350,
+                  height: 300,
+                  resizeMode: 'contain',
+                  alignSelf: 'center',
+                }} 
+              />
+            </Col>
+            <Col>
+              <Button warning onPress={() => this.setState(() => ({ result: null }))}>
+                <Icon name='md-help-circle' />
+              </Button>
+            </Col>
+          </Grid>
+        </Content>
+      ),
+      'lose': (
+        <Content style={{ backgroundColor: 'black' }}>
+          <Grid>
+            <Col>
+              <Button warning onPress={() => navigate('Home')}>
+                <Icon name='md-help-circle' />
+              </Button>
+            </Col>
+            <Col>
+              <Button warning onPress={this.handleRefresh}>
+                <Icon name='md-help-circle' />
+              </Button>
+            </Col>
+          </Grid>
+        </Content>
+      ),
 
       'miniGames#0': null,
       'miniGames#1': (
         <WordImage
           {...this.state}
+          config={current}
           navigate={navigate}
           onFailed={this.onFailed}
           onSuccess={this.onSuccess}
         />
       ),
       'miniGames#2': (
-        <ImageImage navigate={navigate} />
+        <ImageImage
+          {...this.state}
+          config={current}
+          navigate={navigate}
+          onFailed={this.onFailed}
+          onSuccess={this.onSuccess}
+        />
       ),
     }
 
