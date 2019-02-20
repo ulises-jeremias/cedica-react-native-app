@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import { Audio } from 'expo'
-import { Button, Content, Icon, Text } from 'native-base'
+import { Button, Content, Icon } from 'native-base'
 import { Grid, Col, Row } from 'react-native-easy-grid'
 
 import settingsActions from '../../actions/settings-actions'
@@ -232,13 +232,8 @@ class GameModeScreen extends Component {
         </Content>
       ),
       'lose': (
-        <Content>
+        <Content style={{ backgroundColor: 'black' }}>
           <Grid>
-            <Row>
-              <Text>
-                Perdiste!
-              </Text>
-            </Row>
             <Row>
               <Col style={{ paddingVertical: 30 }}>
                 <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
