@@ -7,10 +7,6 @@ import {
   Text,
 } from 'native-base'
 
-import {
-  blue
-} from '../config/Colors'
-
 export default class HelpScreen extends React.Component {
   static navigationOptions = {
     title: 'Ayuda',
