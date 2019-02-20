@@ -100,7 +100,7 @@ class WordImageInteractionModeScreen extends Component {
       <Content style={styles.container}>
         <Grid style={{ marginTop: 20 }}>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
-            <Col style={[styles.main, { width: 80 }]}>
+            <Col style={[styles.main, { width: 100 }]}>
               <Text style={styles.mainText}>
                 { selectedOption.text }
               </Text>
@@ -148,7 +148,7 @@ const styles = StyleSheet.create({
     textAlign: 'center',
   },
   mainText: {
-    fontSize: 50,
+    fontSize: 20,
     alignSelf: 'center',
     color: 'white',
   },
