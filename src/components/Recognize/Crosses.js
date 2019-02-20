@@ -31,7 +31,7 @@ class CrossesMode extends Component {
           crosses.map(({ horse, father, mother }) => (
             <Fragment key={getName(horse)}>
               <Separator bordered style={styles.horseHeader}>
-                <H2 style={styles.horseHeaderText}>
+                <H2 style={styles.textColor}>
                   {getName(horse)}
                 </H2>
               </Separator>
@@ -57,7 +57,9 @@ class CrossesMode extends Component {
                       resizeMode='contain'
                       style={styles.horseImage}
                     />
-                    <Text>
+                    <Text
+                      style={styles.textColor}
+                    >
                       {getName(father)}(Padre)
                     </Text>
                   </View>
@@ -97,7 +99,7 @@ const styles = StyleSheet.create({
   horseHeader: {
     backgroundColor: '#9d7309'
   },
-  horseHeaderText: {
+  textColor: {
     color: 'white'
   },
   horseImage: {
@@ -109,6 +111,7 @@ const styles = StyleSheet.create({
   },
   horseName: {
     textAlign: 'center',
+    color: 'white'
   },
   horseDescription: {
     textAlign: 'justify',
