@@ -9,6 +9,8 @@ import settingsActions from '../../actions/settings-actions'
 
 import ImageImage from './interactions/ImageImage'
 import WordImage from './interactions/WordImage'
+import ImageWord from './interactions/ImageWord'
+
 import Cup from '../../components/Success/Cup'
 import Confetti from '../../components/Success/Confetti'
 
@@ -246,7 +248,15 @@ class GameModeScreen extends Component {
         </Content>
       ),
 
-      'miniGames#0': null,
+      'miniGames#0': (
+        <ImageWord
+          {...this.state}
+          config={current}
+          navigate={navigate}
+          onFailed={this.onFailed}
+          onSuccess={this.onSuccess}
+        />
+      ),
       'miniGames#1': (
         <WordImage
           {...this.state}

@@ -99,35 +99,35 @@ class WordImageInteractionModeScreen extends Component {
       <Content style={styles.container}>
         <Grid style={{ marginTop: 20 }}>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
-            <Col style={[styles.main, { width: 100 }]}>
-              <Text style={styles.mainText}>
-                { selectedOption.text }
-              </Text>
-            </Col>
-            <Col style={[styles.main]}>
-              <Button
-                transparent
-                onPress={this.onPlayPress(selectedHorses[horseIndex])}
-              >
-                <Image
-                  source={require('../../../../assets/images/UI/audio_click.png')}
-                  style={styles.playSound}
-                />
-              </Button>
+            <Col style={styles.main}>
+              <Image
+                style={styles.mainImage}
+                source={getImage(selectedHorses[horseIndex])}
+              />
             </Col>
           </Row>
           <Row>
             {selectedHorses.map((horse, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
-                <TouchableHighlight
-                  onPress={selectedOption.cmp(horse) ? onSuccess : onFailed}
-                  style={styles.optionButton}
-                >
-                  <Image
-                    source={getImage(horse)}
-                    style={styles.optionImage}
-                  />
-                </TouchableHighlight>
+                <Row>
+                  <Text
+                    style={styles.mainText}
+                    onPress={selectedOption.cmp(horse) ? onSuccess : onFailed}
+                  >
+                    { selectedOption.text }
+                  </Text>
+                </Row>
+                <Row>
+                  <Button
+                    transparent
+                    onPress={this.onPlayPress(horse)}
+                  >
+                    <Image
+                      source={require('../../../../assets/images/UI/audio_click.png')}
+                      style={styles.playSound}
+                    />
+                  </Button>
+                </Row>
               </Col>
             ))}
           </Row>
@@ -145,6 +145,12 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'center',
     textAlign: 'center',
+  },
+  mainImage: {
+    resizeMode: 'contain',
+    alignSelf: 'center',
+    height: 200,
+    width: 340,
   },
   mainText: {
     fontSize: 30,
