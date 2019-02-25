@@ -6,7 +6,7 @@ import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
 } from 'react-native-responsive-screen'
-import { Audio } from 'expo'
+// import { Audio } from 'expo'
 import {
   Col,
   Grid,
@@ -56,7 +56,8 @@ class WordImageInteractionModeScreen extends Component {
     return () => {
       try {
         (async () => {
-          const soundObject = new Audio.Sound()
+          // const soundObject = new Audio.Sound()
+const soundObject = null
           
           await soundObject.loadAsync(getSound(elem, soundCode))
           await soundObject.playAsync()

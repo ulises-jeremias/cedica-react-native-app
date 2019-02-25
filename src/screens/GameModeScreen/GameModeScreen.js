@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-import { Audio } from 'expo'
+// import { Audio } from 'expo'
 import { StyleSheet } from 'react-native'
 import { Header, Button, Content, Icon, Container, Right } from 'native-base'
 import { Grid, Col, Row } from 'react-native-easy-grid'
@@ -78,7 +78,8 @@ class GameModeScreen extends Component {
 
     try {
       (async () => {
-        const soundObject = new Audio.Sound()
+        // const soundObject = new Audio.Sound()
+const soundObject = null
         
         if (!(levels - 1) && (success + 1) < 3) {
           await soundObject.loadAsync(failedSound)            
@@ -108,7 +109,8 @@ class GameModeScreen extends Component {
 
     try {
       (async () => {
-        const soundObject = new Audio.Sound()
+        // const soundObject = new Audio.Sound()
+const soundObject = null
         
         if (!(levels - 1) && success >= 3) {
           await soundObject.loadAsync(successSound)

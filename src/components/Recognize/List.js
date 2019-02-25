@@ -1,6 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import _ from 'underscore'
-import { Audio } from 'expo'
+// import { Audio } from 'expo'
 import {
   Image,
   StyleSheet,
@@ -34,7 +34,8 @@ class ListMode extends Component {
     return () => {
       try {
         (async () => {
-          const soundObject = new Audio.Sound()
+          // const soundObject = new Audio.Sound()
+const soundObject = null
           
           await soundObject.loadAsync(getSound(elem, sound))
           await soundObject.playAsync()

@@ -1,5 +1,5 @@
 import React, { Component, Fragment } from 'react'
-import { Audio } from 'expo'
+// import { Audio } from 'expo'
 import _ from 'underscore'
 import {
   Image,
@@ -57,7 +57,8 @@ class GridMode extends Component {
     return () => {
       try {
         (async () => {
-          const soundObject = new Audio.Sound()
+          // const soundObject = new Audio.Sound()
+const soundObject = null
           
           await soundObject.loadAsync(getSound(elem, sound))
           await soundObject.playAsync()

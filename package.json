@@ -1,26 +1,19 @@
 {
-  "main": "node_modules/expo/AppEntry.js",
   "scripts": {
-    "start": "expo start",
-    "android": "expo start --android",
-    "ios": "expo start --ios",
-    "eject": "expo eject",
+    "start": "react-native start",
+    "android": "react-native run-android",
+    "ios": "react-native run-ios",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
-    "remotedev": "remotedev --hostname=localhost --port=8000",
-    "build:android": "expo build:android",
-    "build:ios": "expo build:ios"
+    "remotedev": "remotedev --hostname=localhost --port=8000"
   },
   "jest": {
-    "preset": "jest-expo"
+    "preset": "react-native"
   },
   "dependencies": {
-    "@expo/samples": "2.1.1",
-    "@expo/vector-icons": "^9.0.0",
-    "expo": "^32.0.0",
     "native-base": "^2.11.0",
     "react": "16.5.0",
     "react-mixin": "^5.0.0",
-    "react-native": "https://github.com/expo/react-native/archive/sdk-32.0.0.tar.gz",
+    "react-native": "0.58.5",
     "react-native-easy-grid": "^0.2.0",
     "react-native-responsive-screen": "^1.2.0",
     "react-navigation": "^3.0.9",
@@ -33,9 +26,10 @@
     "underscore": "^1.9.1"
   },
   "devDependencies": {
-    "babel-preset-expo": "^5.0.0",
-    "jest-expo": "^32.0.0",
-    "remotedev-server": "^0.3.1"
+    "jest": "^24.1.0",
+    "metro-react-native-babel-preset": "^0.52.0",
+    "babel-core": "^7.0.0-bridge.0",
+    "react-test-renderer": "16.6.3"
   },
   "private": true
 }

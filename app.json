@@ -1,31 +1,4 @@
 {
-  "expo": {
-    "name": "CEDICA",
-    "slug": "CEDICA",
-    "privacy": "public",
-    "sdkVersion": "32.0.0",
-    "platforms": [
-      "ios",
-      "android"
-    ],
-    "version": "1.0.0",
-    "orientation": "landscape",
-    "icon": "./assets/images/UI/cedica.png",
-    "splash": {
-      "image": "./assets/images/UI/cedica.png",
-      "resizeMode": "contain"
-    },
-    "updates": {
-      "fallbackToCacheTimeout": 0
-    },
-    "assetBundlePatterns": [
-      "**/*"
-    ],
-    "ios": {
-      "supportsTablet": true
-    },
-    "android": {
-      "package": "cedica.app"
-    }
-  }
+  "displayName": "CEDICA",
+  "name": "CEDICA"
 }
