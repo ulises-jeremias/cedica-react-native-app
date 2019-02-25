@@ -98,3 +98,10 @@ $ yarn build:android
 
 __Notar que se debe contar con una cuenta de expo__
 
+
+##
+
+```bash
+$ emulator -list-avds
+$ emulator @name
+```
