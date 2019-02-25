@@ -4,7 +4,7 @@
     "android": "react-native run-android",
     "ios": "react-native run-ios",
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
-    "remotedev": "remotedev --hostname=localhost --port=8000"
+    "android-linux": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res && react-native run-android"
   },
   "jest": {
     "preset": "react-native"
