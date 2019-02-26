@@ -58,7 +58,10 @@ class GridMode extends Component {
       try {
         (async () => {
           // const soundObject = new Audio.Sound()
-const soundObject = null
+          const soundObject = {
+            loadAsync: () => {},
+            playAsync: () => {}
+          }
           
           await soundObject.loadAsync(getSound(elem, sound))
           await soundObject.playAsync()

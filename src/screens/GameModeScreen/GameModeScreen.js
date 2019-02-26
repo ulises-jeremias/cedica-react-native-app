@@ -79,7 +79,10 @@ class GameModeScreen extends Component {
     try {
       (async () => {
         // const soundObject = new Audio.Sound()
-const soundObject = null
+          const soundObject = {
+            loadAsync: () => {},
+            playAsync: () => {}
+          }
         
         if (!(levels - 1) && (success + 1) < 3) {
           await soundObject.loadAsync(failedSound)            
@@ -110,7 +113,10 @@ const soundObject = null
     try {
       (async () => {
         // const soundObject = new Audio.Sound()
-const soundObject = null
+          const soundObject = {
+            loadAsync: () => {},
+            playAsync: () => {}
+          }
         
         if (!(levels - 1) && success >= 3) {
           await soundObject.loadAsync(successSound)

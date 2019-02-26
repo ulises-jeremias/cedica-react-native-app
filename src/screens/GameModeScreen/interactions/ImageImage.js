@@ -57,7 +57,10 @@ class ImageImageInteractionModeScreen extends Component {
       try {
         (async () => {
           // const soundObject = new Audio.Sound()
-const soundObject = null
+          const soundObject = {
+            loadAsync: () => {},
+            playAsync: () => {}
+          }
           
           await soundObject.loadAsync(getSound(elem, soundCode))
           await soundObject.playAsync()
