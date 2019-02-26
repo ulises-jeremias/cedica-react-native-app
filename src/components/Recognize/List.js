@@ -2,10 +2,8 @@ import React, { Component, Fragment } from 'react'
 import _ from 'underscore'
 // import { Audio } from 'expo'
 import {
-  Image,
   StyleSheet,
 } from 'react-native'
-
 
 import {
   Button,
@@ -19,6 +17,7 @@ import {
   Separator,
 } from 'native-base'
 
+import AsyncImage from '../AsyncImage'
 import { horses, getImage, getName, getDescription, getSound } from '../../config/Horses'
 
 class ListMode extends Component {
@@ -62,7 +61,7 @@ class ListMode extends Component {
               </Separator>
               <ListItem style={styles.horses}>
                 <Left>
-                  <Image
+                  <AsyncImage
                     source={getImage(elem)}
                     resizeMode='contain'
                     style={styles.horseImage}
@@ -78,7 +77,7 @@ class ListMode extends Component {
                     transparent
                     onPress={this.onPlayPress(elem)}
                   >
-                    <Image
+                    <AsyncImage
                       source={require('../../../assets/images/UI/audio_click.png')}
                       style={styles.playSound}
                     />

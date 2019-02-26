@@ -13,19 +13,16 @@ import {
   Row,
 } from 'react-native-easy-grid'
 import {
-  Image,
   StyleSheet,
   TouchableHighlight,
 } from 'react-native'
 import {
-  Button,
   Content,
-  Text,
-  View,
 } from 'native-base'
 
+import AsyncImage from '../../../components/AsyncImage'
 import settingsActions from '../../../actions/settings-actions'
-import { crosses, getImage, getBreed, getFur, getSound } from '../../../config/Horses'
+import { crosses, getImage, getSound } from '../../../config/Horses'
 
 function mapStateToProps(state) {
   const {
@@ -96,13 +93,13 @@ class ImageImageInteractionModeScreen extends Component {
         <Grid style={{ marginTop: hp('3%') }}>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <Col>
-              <Image
+              <AsyncImage
                 style={styles.mainImage}
                 source={getImage(selectedHorses[horseIndex].mother)}
               />
             </Col>
             <Col>
-              <Image
+              <AsyncImage
                 style={styles.mainImage}
                 source={getImage(selectedHorses[horseIndex].father)}
               />
@@ -115,7 +112,7 @@ class ImageImageInteractionModeScreen extends Component {
                   onPress={cmp(cross) ? onSuccess : onFailed}
                   style={styles.optionButton}
                 >
-                  <Image
+                  <AsyncImage
                     source={getImage(cross.horse)}
                     style={styles.optionImage}
                   />

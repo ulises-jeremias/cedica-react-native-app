@@ -2,11 +2,9 @@ import React, { Component, Fragment } from 'react'
 // import { Audio } from 'expo'
 import _ from 'underscore'
 import {
-  Image,
   StyleSheet,
   View,
 } from 'react-native'
-
 
 import {
   Button,
@@ -16,6 +14,7 @@ import {
 
 import { Row, Grid, Col } from "react-native-easy-grid"
 
+import AsyncImage from '../AsyncImage'
 import { horses, getBreed, getImage, getName, getSound } from '../../config/Horses'
 
 class GridMode extends Component {
@@ -27,7 +26,7 @@ class GridMode extends Component {
     return horseChunck.map(elem => (
       <Col key={getName(elem)}>
         <View>
-          <Image
+          <AsyncImage
             source={getImage(elem)}
             style={styles.horseImage}
           />
@@ -39,7 +38,7 @@ class GridMode extends Component {
             style={styles.playSoundButton}
             onPress={this.onPlayPress(elem)}
           >
-            <Image
+            <AsyncImage
               source={require('../../../assets/images/UI/audio_click.png')}
               style={styles.playSound}
             />
