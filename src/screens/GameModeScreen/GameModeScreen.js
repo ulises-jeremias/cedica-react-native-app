@@ -154,23 +154,32 @@ class GameModeScreen extends Component {
       settings: {
         settings: {
           current: {
-            miniGameCode,
+            actualGameLevel,
           },
           fields,
         },
       },
     } = this.props
 
-    const p = String(miniGameCode).split('#')
+    let nextFields = fields
 
-    const value = `${p[0]}#${p[1] === '2' ? 0 : parseInt(p[1]) + 1}`
+    if (actualGameLevel < 3) {
+      onSettingsFormFieldChange('settings', 'actualGameLevel', actualGameLevel + 1)
+      nextFields.actualGameLevel++
 
-    onSettingsFormFieldChange('settings', 'miniGameCode', value)
-    updateStoredConfiguration({
-      ...fields,
-      miniGameCode: value,
-    })
-
+      if ((actualGameLevel + 1) === 3) {
+        onSettingsFormFieldChange('settings', 'miniGameCode', 'miniGames#2')
+        nextFields.miniGameCode = 'miniGames#2'
+      }
+    }
+    
+    if (actualGameLevel === 3) {
+      onSettingsFormFieldChange('settings', 'levelCode', 'levels#1')
+      nextFields.levelCode = 'levels#1'
+    }
+    
+    updateStoredConfiguration(nextFields)
+    
     this.handleRefresh()
   }
 

@@ -214,7 +214,8 @@ class SettingsScreen extends Component {
           {Array.from(miniGames || []).map((miniGame, i) => (
             <ListItem
               key={`${miniGame.code}-${i+1}`}
-              onPress={this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+              disabled={fields.actualGameLevel <= i}
+              onPress={fields.actualGameLevel <= i ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
             >
               <Left>
                 <Text>
@@ -223,8 +224,9 @@ class SettingsScreen extends Component {
               </Left>
               <Right>
                 <Radio
-                  selected={fields.miniGameCode === miniGame.code}
-                  onPress={this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+                  disabled={fields.actualGameLevel <= i}
+                  selected={fields.actualGameLevel > i && fields.miniGameCode === miniGame.code}
+                  onPress={fields.actualGameLevel <= i ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
                 />
               </Right>
             </ListItem>

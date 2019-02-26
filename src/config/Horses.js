@@ -323,8 +323,8 @@ export const horses = [
     Se caracteriza por poseer pelos blancos y negros entremezclados, lo cual le da a la capa un aspecto grisáceo que puede variar del gris oscuro al casi blanco.
     Puede ser: Tordillo – Tordillo Canela – Tordillo Moro – Tordillo Negro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/names/mora.m4a'),
-      female: require('../../assets/sounds/voz_masculina/names/mora.m4a'),
+      male: '',
+      female: '',
     },
   },
   {
@@ -351,8 +351,8 @@ export const horses = [
     Formado por capa de color gris azulina, formada pelos negros y blancos sobre piel negra. Su cabeza es más bien oscura.
     Puede ser: Moro Claro – Moro Oscuro – Moro Negro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-mora.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-mora.mp3'),
+      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-moro.m4a'),
+      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-moro.mp3'),
     },
   },
   {

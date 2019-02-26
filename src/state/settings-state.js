@@ -17,6 +17,8 @@ export default {
   success: '',
   settings: {
     current: {
+      actualGameLevel: 0,
+
       viewModeCode: null,
       miniGameCode: null,
 
@@ -26,6 +28,10 @@ export default {
       gameModeCodes: [],
     },
     fields: {
+      actualGameLevel: 0,
+      actualGameLevelErrorMsg: '',
+      actualGameLevelHasError: false,
+
       viewModeCode: null,
       viewModeCodeErrorMsg: '',
       viewModeCodeHasError: false,
