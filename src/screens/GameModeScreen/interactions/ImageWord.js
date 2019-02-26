@@ -13,9 +13,7 @@ import {
   Row,
 } from 'react-native-easy-grid'
 import {
-  Image,
   StyleSheet,
-  TouchableHighlight,
 } from 'react-native'
 import {
   Button,
@@ -24,6 +22,7 @@ import {
   View,
 } from 'native-base'
 
+import AsyncImage from '../../../components/AsyncImage'
 import settingsActions from '../../../actions/settings-actions'
 import { horses, getImage, getBreed, getFur, getSound } from '../../../config/Horses'
 
@@ -109,7 +108,7 @@ class WordImageInteractionModeScreen extends Component {
         <Grid style={{ marginTop: hp('4%') }}>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <Col style={styles.main}>
-              <Image
+              <AsyncImage
                 style={styles.mainImage}
                 source={getImage(selectedHorses[horseIndex])}
               />
@@ -130,7 +129,7 @@ class WordImageInteractionModeScreen extends Component {
                     onPress={this.onPlayPress(horse)}
                     style={styles.playSoundButton}
                   >
-                    <Image
+                    <AsyncImage
                       source={require('../../../../assets/images/UI/audio_click.png')}
                       style={styles.playSound}
                     />

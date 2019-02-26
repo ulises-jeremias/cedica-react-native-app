@@ -1,7 +1,6 @@
 import React, { Component, Fragment } from 'react'
 import _ from 'underscore'
 import {
-  Image,
   StyleSheet,
   Text,
   View,
@@ -17,6 +16,7 @@ import {
   H2,
 } from 'native-base'
 
+import AsyncImage from '../AsyncImage'
 import { crosses, getImage, getName, getDescription } from '../../config/Horses'
 
 class CrossesMode extends Component {
@@ -38,7 +38,7 @@ class CrossesMode extends Component {
               <ListItem style={styles.horses}>
                 <Left>
                   <View>
-                    <Image
+                    <AsyncImage
                       source={getImage(horse)}
                       resizeMode='contain'
                       style={styles.horseImage}
@@ -52,7 +52,7 @@ class CrossesMode extends Component {
                 </Left>
                 <Body style={styles.horseActions}>
                   <View>
-                    <Image
+                    <AsyncImage
                       source={getImage(father)}
                       resizeMode='contain'
                       style={styles.horseImage}
@@ -66,7 +66,7 @@ class CrossesMode extends Component {
                 </Body>
                 <Right>
                   <View>
-                    <Image
+                    <AsyncImage
                       source={getImage(mother)}
                       resizeMode='contain'
                       style={styles.horseImage}
