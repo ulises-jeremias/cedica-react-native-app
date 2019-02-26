@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
-// import { Audio } from 'expo'
+import SoundPlayer from 'react-native-sound-player'
 import { StyleSheet } from 'react-native'
 import { Content } from 'native-base'
 
@@ -14,9 +14,6 @@ import ImageWord from './interactions/ImageWord'
 import Lose from '../../components/MiniGameStatus/Lose'
 import Success from '../../components/MiniGameStatus/Success'
 import Win from '../../components/MiniGameStatus/Win'
-
-import successSound from '../../../assets/sounds/Relincho.mp3'
-import failedSound from '../../../assets/sounds/Resoplido.m4a'
 
 function mapStateToProps(state) {
   const {
@@ -73,22 +70,11 @@ class GameModeScreen extends Component {
     } = this.state
 
     try {
-      (async () => {
-        // const soundObject = new Audio.Sound()
-          const soundObject = {
-            loadAsync: () => {},
-            playAsync: () => {}
-          }
-        
-        if (!(levels - 1) && (success + 1) < 3) {
-          await soundObject.loadAsync(failedSound)            
-        } else {
-          await soundObject.loadAsync(successSound)
-        }
-
-        await soundObject.stopAsync()
-        await soundObject.playAsync()
-      })()
+      if (!(levels - 1) && (success + 1) < 3) {
+        SoundPlayer.playSoundFile('assets_sounds_resoplido', 'mp3')            
+      } else {
+        SoundPlayer.playSoundFile('assets_sounds_relincho', 'm4a')
+      }
     } catch (error) {
       console.log(error.message)
     }
@@ -107,22 +93,11 @@ class GameModeScreen extends Component {
     } = this.state
 
     try {
-      (async () => {
-        // const soundObject = new Audio.Sound()
-          const soundObject = {
-            loadAsync: () => {},
-            playAsync: () => {}
-          }
-        
-        if (!(levels - 1) && success >= 3) {
-          await soundObject.loadAsync(successSound)
-        } else {
-          await soundObject.loadAsync(failedSound)            
-        }
-
-        await soundObject.stopAsync()
-        await soundObject.playAsync()
-      })()
+      if (!(levels - 1) && success >= 3) {
+        SoundPlayer.playSoundFile('assets_sounds_resoplido', 'mp3')            
+      } else {
+        SoundPlayer.playSoundFile('assets_sounds_relincho', 'm4a')
+      }
     } catch (error) {
       console.log(error.message)
     }

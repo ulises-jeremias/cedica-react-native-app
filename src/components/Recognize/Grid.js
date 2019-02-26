@@ -1,17 +1,15 @@
-import React, { Component, Fragment } from 'react'
-// import { Audio } from 'expo'
+import React, { Component } from 'react'
 import _ from 'underscore'
+import SoundPlayer from 'react-native-sound-player'
 import {
   StyleSheet,
   View,
 } from 'react-native'
-
 import {
   Button,
   Content,
   Text,
 } from 'native-base'
-
 import { Row, Grid, Col } from "react-native-easy-grid"
 
 import AsyncImage from '../AsyncImage'
@@ -55,16 +53,13 @@ class GridMode extends Component {
 
     return () => {
       try {
-        (async () => {
-          // const soundObject = new Audio.Sound()
-          const soundObject = {
-            loadAsync: () => {},
-            playAsync: () => {}
-          }
-          
-          await soundObject.loadAsync(getSound(elem, sound))
-          await soundObject.playAsync()
-        })()
+        const [path, ext] = getSound(elem, sound)
+
+        if (!path) {
+          return
+        }
+
+        SoundPlayer.playSoundFile(path, ext)
       } catch (error) {
         console.log(error.message)
       }

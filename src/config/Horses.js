@@ -133,8 +133,8 @@ export const horses = [
     Formado por una capa de pelos rojizos y blancos entremezclados, generalmente, sobre piel clara.
     Puede ser: Rosillo Blanco – Rosillo Claro – Rosillo Colorado.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/petiso_argentino-rosillo.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/petiso_argentino-rosillo.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_petiso_argentinorosillo.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_petiso_argentinorosillo.mp3',
     },
   },
   {
@@ -151,8 +151,8 @@ export const horses = [
     Capa color anaranjado parejo y uniforme, que va del amarillento al colorado azafrán. Su piel es oscura. Las crines, cerdas y miembros son del mismo color o más claros, pero nunca oscuro, pero nunca negras.
     Pueden ser: Alazán – Alazán Claro – Alazán Rubio – Alazán Dorado – Alazán Tostado.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo_cruz_arabe-alazan_tostado.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo_cruz_arabe-alazan_tostado.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizo_cruz_arabealazan_tostado.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizo_cruz_arabealazan_tostado.mp3',
     },
   },
   {
@@ -166,8 +166,8 @@ export const horses = [
     La capa tiene un color fundamentalmente marrón, variables de un rojo al negro.
     Pueden ser: Zaino – Zaino Colorado – Zaino Doradillo – Zaino Oscuro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/sangre_pura_de_carrera-zaina_colorada.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/sangre_pura_de_carrera-zaina_colorada.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_sangre_pura_de_carrerazaina_colorada.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_sangre_pura_de_carrerazaina_colorada.mp3',
     },
   },
   {
@@ -179,8 +179,8 @@ export const horses = [
     Capa pigmentada con manchas blancas características por sus bordes irregulares e indefinidos. Se da tanto en una capa pigmentada con manchas blancas o al revés. La parte inferior del cuerpo suele tener más presencia de blanco que la parte superior.
     Pueden ser: Overo Alazán – Overo Azulejo – Overo Moro – Overo Rosado – Overo  Zaino.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-overo_zaino.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-overo_zaino.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizoovero_zaino.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizoovero_zaino.mp3',
     },
   },
   {
@@ -192,8 +192,8 @@ export const horses = [
     PELAJE: ALAZÁN RUANO.
     Capa color rojizo de distintos tonos que presenta matices yendo del claro al oscuro. Se caracteriza por la crin y cola blancas.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-alazan_ruano.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-alazan_ruano.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizoalazan_ruano.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizoalazan_ruano.mp3',
     },
   },
   {
@@ -206,8 +206,8 @@ export const horses = [
     Formado por pelos de ese color y piel que carece de pigmentación.
     Pueden ser: - Blanco Común – Blanco Rosado – Blanco Porcelano.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-blanco.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-blanco.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizoblanco.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizoblanco.mp3',
     },
   },
   {
@@ -225,8 +225,8 @@ export const horses = [
     Capa pigmentada con manchas blancas características por sus bordes irregulares e indefinidos. Se da tanto en una capa pigmentada con manchas blancas o al revés. La parte inferior del cuerpo suele tener más presencia de blanco que la parte superior.
     Pueden ser: Overo Alazán – Overo Azulejo – Overo Moro – Overo Rosado – Overo  Zaino.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo_cuarto_de_milla-overo_azulejo.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo_cuarto_de_milla-overo_azulejo.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizo_cuarto_de_millaovero_azulejo.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizo_cuarto_de_millaovero_azulejo.mp3',
     },
   },
   {
@@ -239,8 +239,8 @@ export const horses = [
     Capa color anaranjado parejo y uniforme, que va del amarillento al colorado azafrán. Su piel es oscura. Las crines, cerdas y miembros son del mismo color o más claros, pero nunca oscuro, pero nunca negras.
     Pueden ser: Alazán – Alazán Claro – Alazán Rubio – Alazán Dorado – Alazán Tostado.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-alazan.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-alazan.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizoalazan.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizoalazan.mp3',
     },
   },
   {
@@ -253,8 +253,8 @@ export const horses = [
     Capa caracterizada por manchas de bordes definidos blancas –grandes o pequeñas- que, generalmente, se inician sobre la parte dorsal.
     Pueden ser: Tobiano Colorado – Tobiano Negro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-tobiano.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-tobiano.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizotobiano.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizotobiano.mp3',
     },
   },
   {
@@ -267,8 +267,8 @@ export const horses = [
     Se caracteriza por poseer pelos blancos y negros entremezclados, lo cual le da a la capa un aspecto grisáceo que puede variar del gris oscuro al casi blanco.
     Puede ser: Tordillo – Tordillo Canela – Tordillo Moro – Tordillo Negro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-tordillo_canela.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-tordillo_canela.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizotordillo_canela.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizotordillo_canela.mp3',
     },
   },
   {
@@ -280,8 +280,8 @@ export const horses = [
     La capa tiene un color fundamentalmente marrón, variables de un rojo al negro.
     Pueden ser: Zaino – Zaino Colorado – Zaino Doradillo – Zaino Oscuro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-zaino.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-zaino.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizozaino.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizozaino.mp3',
     },
   },
   {
@@ -293,8 +293,8 @@ export const horses = [
     PELAJE: PICAZO. 
     Se caracteriza por capa oscura con frente y extremidades blancas.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo_picazo.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo_picazo.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizo_picazo.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizo_picazo.mp3',
     },
   },
   {
@@ -308,8 +308,8 @@ export const horses = [
     El color de la capa abarca una amplia gama cromática que puede ir del amarillo muy claro casi blanco hasta el marrón claro anaranjado. Este pelaje suele presentar particularidades blancas o cabos negros.
     Pueden ser: Bayo – Bayo Claro – Bayo Anaranjado – Bayo Encerado.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/cuarto_de_milla-bayo.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/cuarto_de_milla-bayo.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_cuarto_de_millabayo.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_cuarto_de_millabayo.mp3',
     },
   },
   // FIXME
@@ -337,8 +337,8 @@ export const horses = [
     Capa pigmentada con manchas blancas características por sus bordes irregulares e indefinidos. Se da tanto en una capa pigmentada con manchas blancas o al revés. La parte inferior del cuerpo suele tener más presencia de blanco que la parte superior.
     Pueden ser: Overo Alazán – Overo Azulejo – Overo Moro – Overo Rosado – Overo  Zaino.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-overo_rosado.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-overo_rosado.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizoovero_rosado.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizoovero_rosado.mp3',
     },
   },
   {
@@ -351,8 +351,8 @@ export const horses = [
     Formado por capa de color gris azulina, formada pelos negros y blancos sobre piel negra. Su cabeza es más bien oscura.
     Puede ser: Moro Claro – Moro Oscuro – Moro Negro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-moro.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-moro.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizomoro.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizomoro.mp3',
     },
   },
   {
@@ -365,8 +365,8 @@ export const horses = [
     La capa tiene un color fundamentalmente marrón, variables de un rojo al negro.
     Pueden ser: Zaino – Zaino Colorado – Zaino Doradillo – Zaino Oscuro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/petiso_argentino-zaino.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/petiso_argentino-zaino.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_petiso_argentinozaino.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_petiso_argentinozaino.mp3',
     },
   },
   {
@@ -378,8 +378,8 @@ export const horses = [
     PELAJE: ALAZÁN PINTADO.
     Capa color rojizo de distintos tonos que presenta matices yendo del claro al oscuro.  Es distinguida porque los pelos de diferentes colores se agrupan formando manchas o parches.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-alazan_pintado.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-alazan_pintado.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizoalazan_pintado.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizoalazan_pintado.mp3',
     },
   },
   {
@@ -392,8 +392,8 @@ export const horses = [
     La capa tiene un color fundamentalmente marrón, variables de un rojo al negro.
     Pueden ser: Zaino – Zaino Colorado – Zaino Doradillo – Zaino Oscuro.`,
     sound: {
-      male: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-zaino.mp3'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-zaino.mp3'),
+      male: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizozaino.mp3',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizozaino.mp3',
     },
   },
   {
@@ -407,8 +407,8 @@ export const horses = [
     Capa color anaranjado parejo y uniforme, que va del amarillento al colorado azafrán. Su piel es oscura. Las crines, cerdas y miembros son del mismo color o más claros, pero nunca oscuro, pero nunca negras.
     Pueden ser: Alazán – Alazán Claro – Alazán Rubio – Alazán Dorado – Alazán Tostado.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/silla_argentino-alazan.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/silla_argentino-alazan.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_silla_argentinoalazan.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_silla_argentinoalazan.mp3',
     },
   },
   {
@@ -421,8 +421,8 @@ export const horses = [
     PELAJE: BAYO GATEADO.
     El color de la capa es amarilla anaranjada con distintas tonalidades. Se caracteriza por presentar raya de mula (línea que corre desde la cruz hasta la cola, de color más intenso que el resto del pelaje) y cebraduras (franjas transversales de color más oscuro que se encuentran en los miembros).`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/criollo-gateado.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/criollo-gateado.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_criollogateado.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_criollogateado.mp3',
     },
   },
   {
@@ -435,8 +435,8 @@ export const horses = [
     La capa tiene un color fundamentalmente marrón, variables de un rojo al negro.
     Pueden ser: Zaino – Zaino Colorado – Zaino Doradillo – Zaino Oscuro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-zaino_oscuro.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-zaino_oscuro.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizozaino_oscuro.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizozaino_oscuro.mp3',
     },
   },
   {
@@ -449,8 +449,8 @@ export const horses = [
     Se caracteriza por poseer pelos blancos y negros entremezclados, lo cual le da a la capa un aspecto grisáceo que puede variar del gris oscuro al casi blanco.
     Puede ser: Tordillo – Tordillo Canela – Tordillo Moro – Tordillo Negro.`,
     sound: {
-      male: require('../../assets/sounds/voz_masculina/razas_y_pelajes/mestizo-tordillo.m4a'),
-      female: require('../../assets/sounds/voz_femenina/razas_y_pelajes/mestizo-tordillo.mp3'),
+      male: 'assets_sounds_voz_masculina_razas_y_pelajes_mestizotordillo.m4a',
+      female: 'assets_sounds_voz_femenina_razas_y_pelajes_mestizotordillo.mp3',
     },
   },
 ]
@@ -481,7 +481,7 @@ export function getImage(horse) {
 
 export function getSound(horse, sex = 'sounds#1') {
   let sexField = sex === 'sounds#0' ? 'male' : 'female'
-  return horse.sound[sexField]
+  return horse.sound[sexField].split('.')
 }
 
 export default {

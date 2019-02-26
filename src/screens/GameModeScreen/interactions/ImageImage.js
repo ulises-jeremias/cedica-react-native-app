@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'underscore'
-// import { Audio } from 'expo'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -43,31 +42,6 @@ function mapDispatchToProps(dispatch) {
 }
 
 class ImageImageInteractionModeScreen extends Component {
-  onPlayPress(elem) {
-    const {
-      config: {
-        soundCode,
-      }
-    } = this.props
-
-    return () => {
-      try {
-        (async () => {
-          // const soundObject = new Audio.Sound()
-          const soundObject = {
-            loadAsync: () => {},
-            playAsync: () => {}
-          }
-          
-          await soundObject.loadAsync(getSound(elem, soundCode))
-          await soundObject.playAsync()
-        })()
-      } catch (error) {
-        console.log(error.message)
-      }
-    }
-  }
-
   render() {
     const {
       onSuccess,

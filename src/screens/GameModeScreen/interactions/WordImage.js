@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 import _ from 'underscore'
-// import { Audio } from 'expo'
+import SoundPlayer from 'react-native-sound-player'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -55,16 +55,17 @@ class WordImageInteractionModeScreen extends Component {
 
     return () => {
       try {
-        (async () => {
-          // const soundObject = new Audio.Sound()
-          const soundObject = {
-            loadAsync: () => {},
-            playAsync: () => {}
+        try {
+          const [path, ext] = getSound(elem, soundCode)
+  
+          if (!path) {
+            return
           }
-          
-          await soundObject.loadAsync(getSound(elem, soundCode))
-          await soundObject.playAsync()
-        })()
+  
+          SoundPlayer.playSoundFile(path, ext)
+        } catch (error) {
+          console.log(error.message)
+        }
       } catch (error) {
         console.log(error.message)
       }
