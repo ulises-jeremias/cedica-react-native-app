@@ -1,15 +1,3 @@
-import Options from '../config/Options'
-
-const {
-  settings: {  
-    miniGames,
-    gameModes,
-    viewModes,
-    levels,
-    sounds,
-  }
-} = Options
-
 export default {
   error: '',
   isValid: false,
@@ -17,7 +5,7 @@ export default {
   success: '',
   settings: {
     current: {
-      actualGameLevel: 0,
+      actualGameLevel: 1,
 
       viewModeCode: null,
       miniGameCode: null,

@@ -211,26 +211,33 @@ class SettingsScreen extends Component {
             </Text>
           </ListItem>
           
-          {Array.from(miniGames || []).map((miniGame, i) => (
-            <ListItem
-              key={`${miniGame.code}-${i+1}`}
-              disabled={fields.actualGameLevel <= i}
-              onPress={fields.actualGameLevel <= i ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
-            >
-              <Left>
-                <Text>
-                  {miniGame.text}
-                </Text>
-              </Left>
-              <Right>
-                <Radio
-                  disabled={fields.actualGameLevel <= i}
-                  selected={fields.actualGameLevel > i && fields.miniGameCode === miniGame.code}
-                  onPress={fields.actualGameLevel <= i ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
-                />
-              </Right>
-            </ListItem>
-          ))}
+          {Array.from(miniGames || []).map((miniGame, i) => {
+            let disabled = fields.actualGameLevel <= i
+          
+            return (
+              <ListItem
+                key={`${miniGame.code}-${i+1}`}
+                disabled={disabled}
+                style={!disabled ? {} : {
+                  opacity: 0.45
+                }}
+                onPress={disabled ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+              >
+                <Left>
+                  <Text>
+                    {miniGame.text}
+                  </Text>
+                </Left>
+                <Right>
+                  <Radio
+                    disabled={disabled}
+                    selected={!disabled && fields.miniGameCode === miniGame.code}
+                    onPress={disabled ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+                  />
+                </Right>
+              </ListItem>
+            )
+          })}
 
           <ListItem itemDivider>
             <Text>
