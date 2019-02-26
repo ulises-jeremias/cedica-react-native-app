@@ -3,12 +3,7 @@ import { bindActionCreators } from 'redux'
 import { connect } from 'react-redux'
 // import { Audio } from 'expo'
 import { StyleSheet } from 'react-native'
-import { Header, Button, Content, Icon, Container, Right } from 'native-base'
-import { Grid, Col, Row } from 'react-native-easy-grid'
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from 'react-native-responsive-screen'
+import { Content } from 'native-base'
 
 import settingsActions from '../../actions/settings-actions'
 
@@ -16,8 +11,9 @@ import ImageImage from './interactions/ImageImage'
 import WordImage from './interactions/WordImage'
 import ImageWord from './interactions/ImageWord'
 
-import Cup from '../../components/Success/Cup'
-import Confetti from '../../components/Success/Confetti'
+import Lose from '../../components/MiniGameStatus/Lose'
+import Success from '../../components/MiniGameStatus/Success'
+import Win from '../../components/MiniGameStatus/Win'
 
 import successSound from '../../../assets/sounds/Relincho.mp3'
 import failedSound from '../../../assets/sounds/Resoplido.m4a'
@@ -42,7 +38,7 @@ function mapDispatchToProps(dispatch) {
 
 class GameModeScreen extends Component {
   static navigationOptions = {
-    title: 'Juego',
+    header: null,
   }
 
   constructor(props) {
@@ -220,76 +216,9 @@ class GameModeScreen extends Component {
     const miniGamesComponent = {
       null: null,
 
-      'win': (
-        <Content style={{ backgroundColor: 'black' }}>
-          <Grid>
-            <Col>
-              <Cup
-                style={{
-                  marginTop: hp('6%'),
-                  width: wp('60%'),
-                  height: hp('60%'),
-                  resizeMode: 'contain',
-                  alignSelf: 'center',
-                }} 
-              />
-            </Col>
-            <Col>
-              <Row>
-                <Col style={{ paddingVertical: hp('17%') }}>
-                  <Button style={{ alignSelf: 'center' }} warning onPress={() => navigate('Home')}>
-                    <Icon name='md-home' />
-                  </Button>
-                </Col>
-              </Row>
-              <Row>
-                <Col style={{ paddingVertical: hp('7%') }}>
-                  <Button style={{ alignSelf: 'center' }} warning onPress={this.handleWin}>
-                    <Icon name='md-arrow-round-forward' />
-                  </Button>
-                </Col>
-              </Row>
-            </Col>
-          </Grid>
-        </Content>
-      ),
-      'success': (
-        <Container style={{ backgroundColor: 'black' }}>
-          <Header transparent>
-            <Right>
-              <Button block warning onPress={() => this.setState(() => ({ result: null }))}>
-                <Icon name='md-arrow-round-forward' />
-              </Button>
-            </Right>
-          </Header>
-          <Confetti
-            style={{
-              height: hp('100%'),
-              width: wp('100%'),
-              resizeMode: 'cover',
-              alignSelf: 'center',
-            }} 
-          />
-        </Container>
-      ),
-      'lose': (
-        <Content style={{ backgroundColor: 'black' }}>
-          <Grid>
-            <Row>
-              <Col style={{ paddingVertical: hp('18%') }}>
-                <Button style={{ alignSelf: 'center' }} large warning onPress={() => navigate('Home')}>
-                  <Icon name='md-home' />
-                </Button>
-              </Col>
-              <Col style={{ paddingVertical: hp('18%') }}>
-                <Button style={{ alignSelf: 'center' }} large warning onPress={this.handleRefresh}>
-                  <Icon name='md-repeat' />
-                </Button>
-              </Col>
-            </Row>
-          </Grid>
-        </Content>
-      ),
+      'win': <Win handleWin={this.handleWin} handleBackClick={() => navigate('Home')} />,
+      'lose': <Lose handleRefresh={this.handleRefresh} handleBackClick={() => navigate('Home')} />,
+      'success': <Success nextHandler={() => this.setState(() => ({ result: null }))} />,
 
       'miniGames#0': (
         <ImageWord
