@@ -49,6 +49,8 @@ exports.getStoredConfiguration = () => {
       .then(data => {
         if (data === null) {
           data = {
+            actualGameLevel: 1,
+
             viewModeCode: options.settings.viewModes[0].code,
             miniGameCode: options.settings.miniGames[0].code,
 

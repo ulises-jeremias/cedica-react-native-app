@@ -9,6 +9,12 @@ const miniGames = [
   'Cruza: Imagen - Imagen',
 ]
 
+const miniGamesConditions = [
+  actualGameLevel => actualGameLevel > 0 && actualGameLevel < 3,
+  actualGameLevel => actualGameLevel > 0 && actualGameLevel < 3,
+  actualGameLevel => actualGameLevel === 3
+]
+
 const gameModes = [
   'Razas y Pelajes',
   'Cruzas',
@@ -33,6 +39,7 @@ export default {
   settings: {
     viewModes: optionsMapper('viewModes', viewModes),
     miniGames: optionsMapper('miniGames', miniGames),
+    miniGamesConditions,
     gameModes: optionsMapper('gameModes', gameModes),
     levels: optionsMapper('levels', levels),
     sounds: optionsMapper('sounds', sounds),

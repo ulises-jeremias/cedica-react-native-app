@@ -143,6 +143,7 @@ class SettingsScreen extends Component {
     const {
       settings: {
         miniGames,
+        miniGamesConditions,
         gameModes,
         viewModes,
         levels,
@@ -212,7 +213,7 @@ class SettingsScreen extends Component {
           </ListItem>
           
           {Array.from(miniGames || []).map((miniGame, i) => {
-            let disabled = fields.actualGameLevel <= i
+            let disabled = !miniGamesConditions[i](fields.actualGameLevel)
           
             return (
               <ListItem

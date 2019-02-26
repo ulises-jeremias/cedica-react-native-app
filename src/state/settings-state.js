@@ -5,6 +5,8 @@ export default {
   success: '',
   settings: {
     current: {
+      gamesWon: 0,
+
       actualGameLevel: 1,
 
       viewModeCode: null,
@@ -16,7 +18,11 @@ export default {
       gameModeCodes: [],
     },
     fields: {
-      actualGameLevel: 0,
+      gamesWon: 0,
+      gamesWonErrorMsg: '',
+      gamesWonHasError: false,
+
+      actualGameLevel: 1,
       actualGameLevelErrorMsg: '',
       actualGameLevelHasError: false,
 

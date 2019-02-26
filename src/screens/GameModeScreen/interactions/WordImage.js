@@ -76,6 +76,7 @@ class WordImageInteractionModeScreen extends Component {
       onSuccess,
       onFailed,
       config: {
+        actualGameLevel,
         levelCode,
       }
     } = this.props
@@ -85,7 +86,7 @@ class WordImageInteractionModeScreen extends Component {
     const selectedHorses = _.sample(horses, samples)
     const horseIndex = Math.floor(Math.random() * (samples - 1))
 
-    const option = Math.floor(Math.random() * 3)
+    const option = actualGameLevel === 2 ? 2 : Math.floor(Math.random() * 2)
 
     const options = [
       {

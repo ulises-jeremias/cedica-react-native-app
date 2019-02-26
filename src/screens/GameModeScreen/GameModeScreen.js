@@ -164,18 +164,27 @@ class GameModeScreen extends Component {
     let nextFields = fields
 
     if (actualGameLevel < 3) {
-      onSettingsFormFieldChange('settings', 'actualGameLevel', actualGameLevel + 1)
-      nextFields.actualGameLevel++
+      onSettingsFormFieldChange('settings', 'actualGameLevel', ++nextFields.actualGameLevel)
 
-      if ((actualGameLevel + 1) === 3) {
+      if (nextFields.actualGameLevel === 3) {
         onSettingsFormFieldChange('settings', 'miniGameCode', 'miniGames#2')
         nextFields.miniGameCode = 'miniGames#2'
       }
     }
     
     if (actualGameLevel === 3) {
-      onSettingsFormFieldChange('settings', 'levelCode', 'levels#1')
-      nextFields.levelCode = 'levels#1'
+      if (nextFields.levelCode === 'levels#0') {
+        onSettingsFormFieldChange('settings', 'levelCode', 'levels#1')
+        nextFields.levelCode = 'levels#1'
+      }
+
+      onSettingsFormFieldChange('settings', 'actualGameLevel', 1)
+      nextFields.actualGameLevel = 1
+
+      onSettingsFormFieldChange('settings', 'gamesWon', ++nextFields.gamesWon)
+
+      onSettingsFormFieldChange('settings', 'miniGameCode', 'miniGames#0')
+      nextFields.miniGameCode = 'miniGames#0'
     }
     
     updateStoredConfiguration(nextFields)

@@ -73,6 +73,21 @@ export default class HelpScreen extends React.Component {
               - Nivel 2: se elige una opción entre 4 (imagen o palabra con audio) disponibles.
             </Text>
           </ListItem>
+          <ListItem noIndent style={styles.itemHeader}>
+            <Text>
+              Autores
+            </Text>
+          </ListItem>
+          <ListItem>
+            <Text>
+              Ulises J. Cornejo Fandos
+            </Text>
+          </ListItem>
+          <ListItem>
+            <Text>
+              Lucas Di Cunzolo
+            </Text>
+          </ListItem>
         </List>
       </ScrollView>
     )
