@@ -195,7 +195,8 @@ const styles = StyleSheet.create({
   optionImage: {
     resizeMode: 'contain',
     alignSelf: 'flex-start',
-    height: hp('25%'),
+    marginLeft: -wp('2%'),
+    height: hp('23%'),
     width: wp('30%'),
   },
   optionButton: {
