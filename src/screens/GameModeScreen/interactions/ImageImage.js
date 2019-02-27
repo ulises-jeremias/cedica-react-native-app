@@ -16,13 +16,14 @@ import {
   TouchableHighlight,
 } from 'react-native'
 import {
+  Button,
   Content,
   Icon,
 } from 'native-base'
 
 import AsyncImage from '../../../components/AsyncImage'
 import settingsActions from '../../../actions/settings-actions'
-import { crosses, getImage, getSound } from '../../../config/Horses'
+import { crosses, getImage } from '../../../config/Horses'
 
 function mapStateToProps(state) {
   const {
@@ -48,20 +49,13 @@ class ImageImageInteractionModeScreen extends Component {
       onSuccess,
       onFailed,
       navigate,
-      config: {
-        levelCode,
-      }
+      horses,
+      horseIndex,
     } = this.props
 
-    const samples = levelCode === 'levels#0' ? 2 : 4
-
-    const selectedHorses = _.sample(_.shuffle(crosses), samples)
-    const horseIndex = Math.floor(Math.random() * (samples - 1))
-
     const cmp = horse => {
-      return (_.isEqual(horse.mother, selectedHorses[horseIndex].mother) &&
-              _.isEqual(horse.father, selectedHorses[horseIndex].father))
-
+      return (_.isEqual(horse.mother, horses[horseIndex].mother) &&
+              _.isEqual(horse.father, horses[horseIndex].father))
     }
 
     return (
@@ -78,21 +72,21 @@ class ImageImageInteractionModeScreen extends Component {
             <Col>
               <AsyncImage
                 style={styles.mainImage}
-                source={getImage(selectedHorses[horseIndex].mother)}
+                source={getImage(horses[horseIndex].mother)}
               />
             </Col>
             <Col>
               <AsyncImage
                 style={styles.mainImage}
-                source={getImage(selectedHorses[horseIndex].father)}
+                source={getImage(horses[horseIndex].father)}
               />
             </Col>
           </Row>
           <Row>
-            {selectedHorses.map((cross, i) => (
+            {horses.map((cross, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
                 <TouchableHighlight
-                  onPress={cmp(cross) ? onSuccess : onFailed}
+                  onPress={cmp(cross) ? onSuccess(getImage(cross.horse)) : onFailed(getImage(cross.horse))}
                   style={styles.optionButton}
                 >
                   <AsyncImage

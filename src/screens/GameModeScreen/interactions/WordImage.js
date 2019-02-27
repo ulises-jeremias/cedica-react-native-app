@@ -26,7 +26,7 @@ import {
 
 import AsyncImage from '../../../components/AsyncImage'
 import settingsActions from '../../../actions/settings-actions'
-import { horses, getImage, getBreed, getFur, getSound } from '../../../config/Horses'
+import { getImage, getBreed, getFur, getSound } from '../../../config/Horses'
 
 function mapStateToProps(state) {
   const {
@@ -78,31 +78,23 @@ class WordImageInteractionModeScreen extends Component {
       onSuccess,
       onFailed,
       navigate,
-      config: {
-        actualGameLevel,
-        levelCode,
-      }
+      horses,
+      horseIndex,
+      option,
     } = this.props
-
-    const samples = levelCode === 'levels#0' ? 2 : 4
-
-    const selectedHorses = _.sample(horses, samples)
-    const horseIndex = Math.floor(Math.random() * (samples - 1))
-
-    const option = actualGameLevel === 2 ? 2 : Math.floor(Math.random() * 2)
 
     const options = [
       {
-        text: getBreed(selectedHorses[horseIndex]),
-        cmp: horse => getBreed(selectedHorses[horseIndex]) === getBreed(horse),
+        text: getBreed(horses[horseIndex]),
+        cmp: horse => getBreed(horses[horseIndex]) === getBreed(horse),
       },
       {
-        text: getFur(selectedHorses[horseIndex]),
-        cmp: horse => getFur(selectedHorses[horseIndex]) === getFur(horse),
+        text: getFur(horses[horseIndex]),
+        cmp: horse => getFur(horses[horseIndex]) === getFur(horse),
       },
       {
-        text: `${getBreed(selectedHorses[horseIndex])} - ${getFur(selectedHorses[horseIndex])}`,
-        cmp: horse => getFur(selectedHorses[horseIndex]) === getFur(horse) && getBreed(selectedHorses[horseIndex]) === getBreed(horse),
+        text: `${getBreed(horses[horseIndex])} - ${getFur(horses[horseIndex])}`,
+        cmp: horse => getFur(horses[horseIndex]) === getFur(horse) && getBreed(horses[horseIndex]) === getBreed(horse),
       },
     ]
 
@@ -125,7 +117,7 @@ class WordImageInteractionModeScreen extends Component {
               </Text>
               <Button
                 transparent
-                onPress={this.onPlayPress(selectedHorses[horseIndex])}
+                onPress={this.onPlayPress(horses[horseIndex])}
                 style={styles.playSoundButton}
               >
                 <AsyncImage
@@ -136,10 +128,10 @@ class WordImageInteractionModeScreen extends Component {
             </View>
           </Row>
           <Row>
-            {selectedHorses.map((horse, i) => (
+            {horses.map((horse, i) => (
               <Col key={`options-${i+1}`} style={{ padding: 5 }}>
                 <TouchableHighlight
-                  onPress={selectedOption.cmp(horse) ? onSuccess : onFailed}
+                  onPress={selectedOption.cmp(horse) ? onSuccess(getImage(horse)) : onFailed(getImage(horse))}
                   style={styles.optionButton}
                 >
                   <AsyncImage

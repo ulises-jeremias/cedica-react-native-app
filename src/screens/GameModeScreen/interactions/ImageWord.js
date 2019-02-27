@@ -25,7 +25,7 @@ import {
 
 import AsyncImage from '../../../components/AsyncImage'
 import settingsActions from '../../../actions/settings-actions'
-import { horses, getImage, getBreed, getFur, getSound } from '../../../config/Horses'
+import { getImage, getBreed, getFur, getSound } from '../../../config/Horses'
 
 function mapStateToProps(state) {
   const {
@@ -46,6 +46,14 @@ function mapDispatchToProps(dispatch) {
 }
 
 class WordImageInteractionModeScreen extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      selectedOptionIndex: null,
+    }
+  }
+
   onPlayPress(elem) {
     const {
       config: {
@@ -74,34 +82,30 @@ class WordImageInteractionModeScreen extends Component {
 
   render() {
     const {
+      selectedOptionIndex
+    } = this.state
+
+    const {
       onSuccess,
       onFailed,
       navigate,
-      config: {
-        actualGameLevel,
-        levelCode,
-      }
+      horses,
+      horseIndex,
+      option,
     } = this.props
-
-    const samples = levelCode === 'levels#0' ? 2 : 4
-
-    const selectedHorses = _.sample(horses, samples)
-    const horseIndex = Math.floor(Math.random() * (samples - 1))
-
-    const option = actualGameLevel === 2 ? 2 : Math.floor(Math.random() * 2)
 
     const options = [
       {
         text: horse => getBreed(horse),
-        cmp: horse => getBreed(selectedHorses[horseIndex]) === getBreed(horse),
+        cmp: horse => getBreed(horses[horseIndex]) === getBreed(horse),
       },
       {
         text: horse => getFur(horse),
-        cmp: horse => getFur(selectedHorses[horseIndex]) === getFur(horse),
+        cmp: horse => getFur(horses[horseIndex]) === getFur(horse),
       },
       {
         text: horse => `${getBreed(horse)} - ${getFur(horse)}`,
-        cmp: horse => getFur(selectedHorses[horseIndex]) === getFur(horse) && getBreed(selectedHorses[horseIndex]) === getBreed(horse),
+        cmp: horse => getFur(horses[horseIndex]) === getFur(horse) && getBreed(horses[horseIndex]) === getBreed(horse),
       },
     ]
 
@@ -121,33 +125,55 @@ class WordImageInteractionModeScreen extends Component {
             <Col style={styles.main}>
               <AsyncImage
                 style={styles.mainImage}
-                source={getImage(selectedHorses[horseIndex])}
+                source={getImage(horses[horseIndex])}
               />
             </Col>
           </Row>
           <Row style={{ marginVertical: hp('4%') }}>
-            {selectedHorses.map((horse, i) => (
-              <Col key={`options-${i+1}`} style={{ padding: 5 }}>
-                <View>
-                  <Text
-                    style={styles.mainText}
-                    onPress={selectedOption.cmp(horse) ? onSuccess : onFailed}
-                  >
-                    { selectedOption.text(horse) }
-                  </Text>
-                  <Button
-                    transparent
-                    onPress={this.onPlayPress(horse)}
-                    style={styles.playSoundButton}
-                  >
-                    <AsyncImage
-                      source={require('../../../../assets/images/UI/audio_click.png')}
-                      style={styles.playSound}
-                    />
-                  </Button>
-                </View>
-              </Col>
-            ))}
+            {horses.map((horse, i) => {
+              const cmpCondition = selectedOption.cmp(horse)
+              const isSelected = selectedOptionIndex === i
+              const containerEventHandler = cmpCondition ?
+                onSuccess(selectedOption.text(horse)) :
+                onFailed(selectedOption.text(horse))
+
+              return (
+                <Col key={`options-${i+1}`} style={{ padding: 5 }}>
+                  <View>
+                    <Button
+                      block
+                      bordered
+                      light={!isSelected}
+                      danger={isSelected && !cmpCondition}
+                      success={isSelected && cmpCondition}
+                      onPress={isSelected ? undefined : () => {
+                        this.setState(() => ({
+                          selectedOptionIndex: i,
+                        }))
+
+                        containerEventHandler()
+                      }}
+                    >
+                      <Text
+                        style={styles.mainText}
+                      >
+                        { selectedOption.text(horse) }
+                      </Text>
+                    </Button>
+                    <Button
+                      transparent
+                      onPress={this.onPlayPress(horse)}
+                      style={styles.playSoundButton}
+                    >
+                      <AsyncImage
+                        source={require('../../../../assets/images/UI/audio_click.png')}
+                        style={styles.playSound}
+                      />
+                    </Button>
+                  </View>
+                </Col>
+              )
+            })}
           </Row>
         </Grid>
       </Content>
@@ -171,7 +197,6 @@ const styles = StyleSheet.create({
     width: wp('55%'),
   },
   mainText: {
-    fontSize: hp('5%'),
     textAlign: 'center',
     color: 'white',
   },
@@ -183,8 +208,8 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
   },
   playSound: {
-    height: hp('6%'),
-    width: wp('6%'),
+    height: hp('7%'),
+    width: wp('7%'),
   },
 })
 

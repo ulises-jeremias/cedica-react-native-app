@@ -13,12 +13,11 @@ import {
 } from 'react-native-responsive-screen'
 import {
   StyleSheet,
-  ImageBackground,
 } from 'react-native'
 
 import AsyncImage from '../AsyncImage'
 
-class Success extends Component {
+class Failed extends Component {
   render() {
     const {
       nextHandler,
@@ -29,10 +28,7 @@ class Success extends Component {
     } = this.props
 
     return (
-      <ImageBackground
-        source={require('../../../assets/images/Festejos/success.png')}
-        style={{ width: '100%', height: '100%', backgroundColor: 'green' }}
-      >
+      <Container style={{ backgroundColor: 'red' }}>
         <Header transparent>
           <Right>
             <Button block warning onPress={nextHandler}>
@@ -52,7 +48,7 @@ class Success extends Component {
             style={styles.mainImage}
           />
         )}
-      </ImageBackground>
+      </Container>
     )
   }
 }
@@ -61,8 +57,8 @@ const styles = StyleSheet.create({
   mainImage: {
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: hp('57%'),
-    width: wp('62%'),
+    height: hp('50%'),
+    width: wp('55%'),
   },
   mainText: {
     fontSize: hp('15%'),
@@ -72,4 +68,4 @@ const styles = StyleSheet.create({
   },
 })
 
-export default Success
+export default Failed
