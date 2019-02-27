@@ -19,6 +19,7 @@ import {
 import {
   Button,
   Content,
+  Icon,
   Text,
   View,
 } from 'native-base'
@@ -76,6 +77,7 @@ class WordImageInteractionModeScreen extends Component {
     const {
       onSuccess,
       onFailed,
+      navigate,
       config: {
         actualGameLevel,
         levelCode,
@@ -109,6 +111,13 @@ class WordImageInteractionModeScreen extends Component {
     return (
       <Content style={styles.container}>
         <Grid style={{ marginTop: hp('4%') }}>
+          <Row>
+            <Col>
+              <Button style={{marginLeft: wp('2%')}} info onPress={() => navigate('Home')}>
+                <Icon name='md-home' />
+              </Button>
+            </Col>
+          </Row>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <View style={[styles.main]}>
               <Text style={styles.mainText}>

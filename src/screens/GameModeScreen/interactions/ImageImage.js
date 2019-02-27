@@ -17,6 +17,7 @@ import {
 } from 'react-native'
 import {
   Content,
+  Icon,
 } from 'native-base'
 
 import AsyncImage from '../../../components/AsyncImage'
@@ -46,6 +47,7 @@ class ImageImageInteractionModeScreen extends Component {
     const {
       onSuccess,
       onFailed,
+      navigate,
       config: {
         levelCode,
       }
@@ -65,6 +67,13 @@ class ImageImageInteractionModeScreen extends Component {
     return (
       <Content style={styles.container}>
         <Grid style={{ marginTop: hp('3%') }}>
+          <Row>
+            <Col>
+              <Button style={{marginLeft: wp('2%')}} info onPress={() => navigate('Home')}>
+                <Icon name='md-home' />
+              </Button>
+            </Col>
+          </Row>
           <Row style={{ textAlign: 'center', alignSelf: 'center' }}>
             <Col>
               <AsyncImage
