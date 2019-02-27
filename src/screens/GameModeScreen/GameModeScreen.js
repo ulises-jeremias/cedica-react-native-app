@@ -102,10 +102,12 @@ class GameModeScreen extends Component {
       console.log(error.message)
     }
 
-    this.setState(() => ({
-      result: (levels - 1) ? null : (success >= 3 ? 'win' : 'lose'),
-      levels: levels - 1
-    }))
+    setTimeout(() => {
+      this.setState(() => ({
+        result: (levels - 1) ? null : (success >= 3 ? 'win' : 'lose'),
+        levels: levels - 1
+      }))
+    }, 2000)
   }
 
   handleRefresh() {
