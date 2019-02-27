@@ -6,7 +6,7 @@
     "test": "node ./node_modules/jest/bin/jest.js --watchAll",
     "clean:gradle": "cd android; ./gradlew clean",
     "build:android": "cd android; ./gradlew assembleDebug",
-    "build:prod:android": "cd android; ./gradlew assembleRelease",
+    "build:prod:android": "cd android; ./gradlew assembleRelease -x react-native-sound-player:verifyReleaseResources",
     "bundle:android": "react-native bundle --platform android --dev false --entry-file index.js --bundle-output android/app/src/main/assets/index.android.bundle --assets-dest android/app/src/main/res"
   },
   "jest": {
@@ -20,7 +20,7 @@
     "react-native-easy-grid": "^0.2.0",
     "react-native-gesture-handler": "^1.0.16",
     "react-native-responsive-screen": "^1.2.0",
-    "react-native-sound-player": "^0.6.1",
+    "react-native-sound-player": "^0.5.3",
     "react-navigation": "^3.0.9",
     "react-redux": "^6.0.0",
     "react-timer-mixin": "^0.13.4",
