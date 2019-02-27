@@ -1,6 +1,5 @@
 import React, {Component} from 'react'
 import {
-  Container,
   Header,
   Right,
   Button,
@@ -24,7 +23,7 @@ class Success extends Component {
       nextHandler,
       selectedOption,
       config: {
-        miniGameInteractionCode,
+        miniGameCode,
       }
     } = this.props
 
@@ -40,7 +39,7 @@ class Success extends Component {
             </Button>
           </Right>
         </Header>
-        {miniGameInteractionCode === 'miniGameInteractions#0' ? (
+        {miniGameCode === 'miniGameInteractions#0' ? (
           <Text
             style={styles.mainText}
           >

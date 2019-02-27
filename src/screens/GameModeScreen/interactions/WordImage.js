@@ -14,7 +14,6 @@ import {
 } from 'react-native-easy-grid'
 import {
   StyleSheet,
-  TouchableHighlight,
 } from 'react-native'
 import {
   Button,
@@ -47,6 +46,14 @@ function mapDispatchToProps(dispatch) {
 }
 
 class WordImageInteractionModeScreen extends Component {
+  constructor(props) {
+    super(props)
+
+    this.state = {
+      selectedOptionIndex: null,
+    }
+  }
+
   onPlayPress(elem) {
     const {
       config: {
@@ -74,6 +81,10 @@ class WordImageInteractionModeScreen extends Component {
   }
 
   render() {
+    const {
+      selectedOptionIndex,
+    } = this.state
+
     const {
       onSuccess,
       onFailed,
@@ -128,19 +139,37 @@ class WordImageInteractionModeScreen extends Component {
             </View>
           </Row>
           <Row>
-            {horses.map((horse, i) => (
-              <Col key={`options-${i+1}`} style={{ padding: 5 }}>
-                <TouchableHighlight
-                  onPress={selectedOption.cmp(horse) ? onSuccess(getImage(horse)) : onFailed(getImage(horse))}
-                  style={styles.optionButton}
-                >
-                  <AsyncImage
-                    source={getImage(horse)}
-                    style={styles.optionImage}
-                  />
-                </TouchableHighlight>
-              </Col>
-            ))}
+            {horses.map((horse, i) => {
+              const cmpCondition = selectedOption.cmp(horse)
+              const isSelected = selectedOptionIndex === i
+              const containerEventHandler = cmpCondition ?
+                onSuccess(getImage(horse)) :
+                onFailed(getImage(horse))
+
+              return (
+                <Col key={`options-${i+1}`} style={{ padding: 5 }}>
+                  <Button
+                    style={styles.optionButton}
+                    bordered={!isSelected}
+                    light={!isSelected}
+                    danger={isSelected && !cmpCondition}
+                    success={isSelected && cmpCondition}
+                    onPress={isSelected ? undefined : () => {
+                      this.setState(() => ({
+                        selectedOptionIndex: i,
+                      }))
+
+                      containerEventHandler()
+                    }}
+                  >
+                    <AsyncImage
+                      source={getImage(horse)}
+                      style={styles.optionImage}
+                    />
+                  </Button>
+                </Col>
+              )
+            })}
           </Row>
         </Grid>
       </Content>
@@ -165,13 +194,15 @@ const styles = StyleSheet.create({
   },
   optionImage: {
     resizeMode: 'contain',
-    alignSelf: 'center',
+    alignSelf: 'flex-start',
     height: hp('25%'),
     width: wp('30%'),
   },
   optionButton: {
     alignSelf: 'center',
     marginTop: hp('4%'),
+    height: hp('27%'),
+    width: wp('22%'),
   },
   playSoundButton: {
     alignSelf: 'center',

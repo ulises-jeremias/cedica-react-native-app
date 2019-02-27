@@ -1,71 +1,39 @@
 import React, {Component} from 'react'
 import {
-  Container,
   Header,
   Right,
   Button,
-  Text,
   Icon,
+  Text,
 } from 'native-base'
 import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from 'react-native-responsive-screen'
-import {
-  StyleSheet,
+  ImageBackground,
 } from 'react-native'
-
-import AsyncImage from '../AsyncImage'
 
 class Failed extends Component {
   render() {
     const {
       nextHandler,
-      selectedOption,
-      config: {
-        miniGameInteractionCode,
-      }
     } = this.props
 
     return (
-      <Container style={{ backgroundColor: 'red' }}>
+      <ImageBackground
+        source={require('../../../assets/images/Festejos/failed.jpg')}
+        style={{ width: '100%', height: '100%', backgroundColor: '#5E7890' }}
+      >
         <Header transparent>
           <Right>
             <Button block warning onPress={nextHandler}>
+              <Text>
+                ¡Intenta otra vez!
+              </Text>
               <Icon name='md-arrow-round-forward' />
             </Button>
           </Right>
         </Header>
-        {miniGameInteractionCode === 'miniGameInteractions#0' ? (
-          <Text
-            style={styles.mainText}
-          >
-            { selectedOption }
-          </Text>
-        ) : (
-          <AsyncImage
-            source={selectedOption}
-            style={styles.mainImage}
-          />
-        )}
-      </Container>
+      </ImageBackground>
     )
   }
 }
-
-const styles = StyleSheet.create({
-  mainImage: {
-    resizeMode: 'contain',
-    alignSelf: 'center',
-    height: hp('50%'),
-    width: wp('55%'),
-  },
-  mainText: {
-    fontSize: hp('15%'),
-    marginTop: hp('15%'),
-    textAlign: 'center',
-    color: 'white',
-  },
-})
 
 export default Failed

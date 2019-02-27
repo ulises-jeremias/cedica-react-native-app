@@ -1,43 +1,44 @@
 import React, {Component} from 'react'
 import {
-  Content,
+  Header,
+  Right,
   Button,
   Icon,
+  Text,
+  Left,
 } from 'native-base'
 import {
-  Grid,
-  Row,
-  Col,
-} from 'react-native-easy-grid'
-import {
-  widthPercentageToDP as wp,
-  heightPercentageToDP as hp
-} from 'react-native-responsive-screen'
+  ImageBackground,
+} from 'react-native'
 
 class Lose extends Component {
   render() {
     const {
-      handleRefresh,
+      nextHandler,
       handleBackClick,
     } = this.props
 
     return (
-      <Content style={{ backgroundColor: 'black' }}>
-        <Grid>
-          <Row>
-            <Col style={{ paddingVertical: hp('18%') }}>
-              <Button style={{ alignSelf: 'center' }} large warning onPress={handleBackClick}>
-                <Icon name='md-home' />
-              </Button>
-            </Col>
-            <Col style={{ paddingVertical: hp('18%') }}>
-              <Button style={{ alignSelf: 'center' }} large warning onPress={handleRefresh}>
-                <Icon name='md-repeat' />
-              </Button>
-            </Col>
-          </Row>
-        </Grid>
-      </Content>
+      <ImageBackground
+        source={require('../../../assets/images/Festejos/lose.jpeg')}
+        style={{ width: '100%', height: '100%', backgroundColor: '#5E7890' }}
+      >
+        <Header transparent>
+          <Left>
+            <Button info onPress={handleBackClick}>
+              <Icon name='md-home' />
+            </Button>
+          </Left>
+          <Right>
+            <Button block warning onPress={nextHandler}>
+              <Text>
+                ¡Juega otra vez!
+              </Text>
+              <Icon name='md-arrow-round-forward' />
+            </Button>
+          </Right>
+        </Header>
+      </ImageBackground>
     )
   }
 }

@@ -16,8 +16,8 @@ const miniGameInteractions = [
 ]
 
 const miniGameInteractionsConditions = [
-  ({ lastWonGameLevel }) => lastWonGameLevel > 1 && lastWonGameLevel < 3 && actualGameLevel < 3,
-  ({ lastWonGameLevel }) => lastWonGameLevel > 1 && lastWonGameLevel < 3 && actualGameLevel < 3,
+  ({ lastWonGameLevel, actualGameLevel }) => lastWonGameLevel > 0 && lastWonGameLevel < 3 && actualGameLevel < 3,
+  ({ lastWonGameLevel, actualGameLevel }) => lastWonGameLevel > 0 && lastWonGameLevel < 3 && actualGameLevel < 3,
   ({ actualGameLevel }) => actualGameLevel === 3
 ]
 

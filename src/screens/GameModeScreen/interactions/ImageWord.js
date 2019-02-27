@@ -142,7 +142,7 @@ class WordImageInteractionModeScreen extends Component {
                   <View>
                     <Button
                       block
-                      bordered
+                      bordered={!isSelected}
                       light={!isSelected}
                       danger={isSelected && !cmpCondition}
                       success={isSelected && cmpCondition}

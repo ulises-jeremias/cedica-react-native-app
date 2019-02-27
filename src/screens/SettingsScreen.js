@@ -156,6 +156,7 @@ class SettingsScreen extends Component {
       settings: {
         settings: {
           fields,
+          current,
         }
       }
     } = this.props
@@ -214,9 +215,17 @@ class SettingsScreen extends Component {
           </ListItem>
 
           {Array.from(miniGames || []).map((miniGame, i) => {
-            const [,code] = miniGame.code.split('#')
+            let [,code] = miniGame.code.split('#')
 
             let disabled = fields.lastWonGameLevel < Number(code)
+
+            let clickHandler = () => {
+              if ((current.actualGameLevel === 3) && ((Number(code) + 1) !== 3)) {
+                this.onRadioButtonPressHandler('miniGameInteractionCode', 'miniGameInteractions#0')()
+              }
+
+              return this.onRadioButtonPressHandler('actualGameLevel', Number(code) + 1)
+            }
 
             return (
               <ListItem
@@ -225,7 +234,7 @@ class SettingsScreen extends Component {
                 style={!disabled ? {} : {
                   opacity: 0.45
                 }}
-                onPress={disabled ? undefined : this.onRadioButtonPressHandler('actualGameLevel', Number(code) + 1)}
+                onPress={disabled ? undefined : clickHandler()}
               >
                 <Left>
                   <Text>
@@ -236,7 +245,7 @@ class SettingsScreen extends Component {
                   <Radio
                     disabled={disabled}
                     selected={!disabled && fields.actualGameLevel === Number(code) + 1}
-                    onPress={disabled ? undefined : this.onRadioButtonPressHandler('actualGameLevel', Number(code) + 1)}
+                    onPress={disabled ? undefined : clickHandler()}
                   />
                 </Right>
               </ListItem>

@@ -71,12 +71,12 @@ class GameModeScreen extends Component {
   }
 
   onSuccess(option) {
+    const {
+      levels,
+      success,
+    } = this.state
+
     return () => {
-      const {
-        levels,
-        success,
-      } = this.state
-  
       try {
         if (!(levels - 1) && (success + 1) < 3) {
           SoundPlayer.playSoundFile('assets_sounds_resoplido', 'mp3')            
@@ -99,17 +99,17 @@ class GameModeScreen extends Component {
   }
 
   onFailed(option) {
+    const {
+      levels,
+      success,
+    } = this.state
+
     return () => {
-      const {
-        levels,
-        success,
-      } = this.state
-  
       try {
         if (!(levels - 1) && success >= 3) {
-          SoundPlayer.playSoundFile('assets_sounds_resoplido', 'mp3')            
-        } else {
           SoundPlayer.playSoundFile('assets_sounds_relincho', 'm4a')
+        } else {
+          SoundPlayer.playSoundFile('assets_sounds_resoplido', 'mp3')            
         }
       } catch (error) {
         console.log(error.message)
@@ -121,7 +121,7 @@ class GameModeScreen extends Component {
           levels: levels - 1,
           selectedOption: option,
         }))
-      }, 2000)
+      }, 1000)
     }
   }
 
@@ -232,7 +232,7 @@ class GameModeScreen extends Component {
       ),
       'lose': (
         <Lose
-          handleRefresh={this.handleRefresh}
+          nextHandler={this.handleRefresh}
           handleBackClick={() => navigate('Home')}
         />
       ),
