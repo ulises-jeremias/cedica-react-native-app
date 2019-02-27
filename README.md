@@ -27,7 +27,8 @@ $ yarn start
 Genera e instala apk-debug. Cuando anda no cierra la conexión.
 
 ```bash
-$ yarn android-linux
+$ yarn bundle:android
+$ yarn android
 ```
 
 ## Desarrollo de la APP
