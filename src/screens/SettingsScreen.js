@@ -142,8 +142,9 @@ class SettingsScreen extends Component {
   render() {
     const {
       settings: {
+        miniGameInteractions,
+        miniGameInteractionsConditions,
         miniGames,
-        miniGamesConditions,
         gameModes,
         viewModes,
         levels,
@@ -211,10 +212,12 @@ class SettingsScreen extends Component {
               Minijuego
             </Text>
           </ListItem>
-          
+
           {Array.from(miniGames || []).map((miniGame, i) => {
-            let disabled = !miniGamesConditions[i](fields.actualGameLevel)
-          
+            const [,code] = miniGame.code.split('#')
+
+            let disabled = fields.lastWonGameLevel < Number(code)
+
             return (
               <ListItem
                 key={`${miniGame.code}-${i+1}`}
@@ -222,7 +225,7 @@ class SettingsScreen extends Component {
                 style={!disabled ? {} : {
                   opacity: 0.45
                 }}
-                onPress={disabled ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+                onPress={disabled ? undefined : this.onRadioButtonPressHandler('actualGameLevel', Number(code) + 1)}
               >
                 <Left>
                   <Text>
@@ -232,8 +235,40 @@ class SettingsScreen extends Component {
                 <Right>
                   <Radio
                     disabled={disabled}
-                    selected={!disabled && fields.miniGameCode === miniGame.code}
-                    onPress={disabled ? undefined : this.onRadioButtonPressHandler('miniGameCode', miniGame.code)}
+                    selected={!disabled && fields.actualGameLevel === Number(code) + 1}
+                    onPress={disabled ? undefined : this.onRadioButtonPressHandler('actualGameLevel', Number(code) + 1)}
+                  />
+                </Right>
+              </ListItem>
+            )
+          })}
+
+          <ListItem itemDivider>
+            <Text />
+          </ListItem>
+          
+          {Array.from(miniGameInteractions || []).map((miniGameInteraction, i) => {
+            let disabled = !miniGameInteractionsConditions[i](fields)
+          
+            return (
+              <ListItem
+                key={`${miniGameInteraction.code}-${i+1}`}
+                disabled={disabled}
+                style={!disabled ? {} : {
+                  opacity: 0.45
+                }}
+                onPress={disabled ? undefined : this.onRadioButtonPressHandler('miniGameInteractionCode', miniGameInteraction.code)}
+              >
+                <Left>
+                  <Text>
+                    {miniGameInteraction.text}
+                  </Text>
+                </Left>
+                <Right>
+                  <Radio
+                    disabled={disabled}
+                    selected={!disabled && fields.miniGameInteractionCode === miniGameInteraction.code}
+                    onPress={disabled ? undefined : this.onRadioButtonPressHandler('miniGameInteractionCode', miniGameInteraction.code)}
                   />
                 </Right>
               </ListItem>

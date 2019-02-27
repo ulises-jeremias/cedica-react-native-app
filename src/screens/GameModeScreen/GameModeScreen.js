@@ -143,6 +143,7 @@ class GameModeScreen extends Component {
         settings: {
           current: {
             actualGameLevel,
+            lastWonGameLevel,
           },
           fields,
         },
@@ -152,11 +153,15 @@ class GameModeScreen extends Component {
     let nextFields = fields
 
     if (actualGameLevel < 3) {
+      if (lastWonGameLevel === actualGameLevel - 1) {
+        onSettingsFormFieldChange('settings', 'lastWonGameLevel', ++nextFields.lastWonGameLevel)
+      }
+
       onSettingsFormFieldChange('settings', 'actualGameLevel', ++nextFields.actualGameLevel)
 
       if (nextFields.actualGameLevel === 3) {
-        onSettingsFormFieldChange('settings', 'miniGameCode', 'miniGames#2')
-        nextFields.miniGameCode = 'miniGames#2'
+        onSettingsFormFieldChange('settings', 'miniGameInteractionCode', 'miniGameInteractions#2')
+        nextFields.miniGameInteractionCode = 'miniGameInteractions#2'
       }
     }
     
@@ -169,10 +174,11 @@ class GameModeScreen extends Component {
       onSettingsFormFieldChange('settings', 'actualGameLevel', 1)
       nextFields.actualGameLevel = 1
 
-      onSettingsFormFieldChange('settings', 'gamesWon', ++nextFields.gamesWon)
+      onSettingsFormFieldChange('settings', 'lastWonGameLevel', 0)
+      nextFields.lastWonGameLevel = 0
 
-      onSettingsFormFieldChange('settings', 'miniGameCode', 'miniGames#0')
-      nextFields.miniGameCode = 'miniGames#0'
+      onSettingsFormFieldChange('settings', 'miniGameInteractionCode', 'miniGameInteractions#0')
+      nextFields.miniGameInteractionCode = 'miniGameInteractions#0'
     }
     
     updateStoredConfiguration(nextFields)
@@ -208,14 +214,14 @@ class GameModeScreen extends Component {
 
     const samples = current.levelCode === 'levels#0' ? 2 : 4
 
-    const elements = current.miniGameCode === 'miniGames#2' ?
+    const elements = current.miniGameInteractionCode === 'miniGameInteractions#2' ?
       _.sample(crosses, samples) : 
       _.sample(horses, samples)
     
     const horseIndex = Math.floor(Math.random() * (samples - 1))
     const option = current.actualGameLevel === 2 ? 2 : Math.floor(Math.random() * 2)
 
-    const miniGamesComponent = {
+    const miniGameInteractionsComponent = {
       null: null,
 
       'win': (
@@ -245,7 +251,7 @@ class GameModeScreen extends Component {
         />
       ),
 
-      'miniGames#0': (
+      'miniGameInteractions#0': (
         <ImageWord
           {...this.state}
           config={current}
@@ -257,7 +263,7 @@ class GameModeScreen extends Component {
           onSuccess={this.onSuccess}
         />
       ),
-      'miniGames#1': (
+      'miniGameInteractions#1': (
         <WordImage
           {...this.state}
           config={current}
@@ -269,7 +275,7 @@ class GameModeScreen extends Component {
           onSuccess={this.onSuccess}
         />
       ),
-      'miniGames#2': (
+      'miniGameInteractions#2': (
         <ImageImage
           {...this.state}
           config={current}
@@ -282,7 +288,7 @@ class GameModeScreen extends Component {
       ),
     }
 
-    return miniGamesComponent[result !== null ? result : current.miniGameCode]
+    return miniGameInteractionsComponent[result !== null ? result : current.miniGameInteractionCode]
   }
 }
 

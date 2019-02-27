@@ -4,15 +4,21 @@ const viewModes = [
 ]
 
 const miniGames = [
+  'Razas y Pelajes',
+  'Razas y Pelajes Juntos',
+  'Cruza',
+]
+
+const miniGameInteractions = [
   'Razas y Pelajes: Imagen - Palabra',
   'Razas y Pelajes: Palabra e Imagen',
   'Cruza: Imagen - Imagen',
 ]
 
-const miniGamesConditions = [
-  actualGameLevel => actualGameLevel > 0 && actualGameLevel < 3,
-  actualGameLevel => actualGameLevel > 0 && actualGameLevel < 3,
-  actualGameLevel => actualGameLevel === 3
+const miniGameInteractionsConditions = [
+  ({ lastWonGameLevel }) => lastWonGameLevel > 1 && lastWonGameLevel < 3 && actualGameLevel < 3,
+  ({ lastWonGameLevel }) => lastWonGameLevel > 1 && lastWonGameLevel < 3 && actualGameLevel < 3,
+  ({ actualGameLevel }) => actualGameLevel === 3
 ]
 
 const gameModes = [
@@ -39,7 +45,8 @@ export default {
   settings: {
     viewModes: optionsMapper('viewModes', viewModes),
     miniGames: optionsMapper('miniGames', miniGames),
-    miniGamesConditions,
+    miniGameInteractions: optionsMapper('miniGameInteractions', miniGameInteractions),
+    miniGameInteractionsConditions,
     gameModes: optionsMapper('gameModes', gameModes),
     levels: optionsMapper('levels', levels),
     sounds: optionsMapper('sounds', sounds),

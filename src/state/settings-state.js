@@ -5,12 +5,11 @@ export default {
   success: '',
   settings: {
     current: {
-      gamesWon: 0,
-
       actualGameLevel: 1,
+      lastWonGameLevel: 0,
 
       viewModeCode: null,
-      miniGameCode: null,
+      miniGameInteractionCode: null,
 
       levelCode: null,
       soundCode: null,
@@ -18,21 +17,21 @@ export default {
       gameModeCodes: [],
     },
     fields: {
-      gamesWon: 0,
-      gamesWonErrorMsg: '',
-      gamesWonHasError: false,
-
       actualGameLevel: 1,
       actualGameLevelErrorMsg: '',
       actualGameLevelHasError: false,
+
+      lastWonGameLevel: 0,
+      lastWonGameLevelErrorMsg: '',
+      lastWonGameLevelHasError: false,
 
       viewModeCode: null,
       viewModeCodeErrorMsg: '',
       viewModeCodeHasError: false,
 
-      miniGameCode: null,
-      miniGameCodeErrorMsg: '',
-      miniGameCodeHasError: false,
+      miniGameInteractionCode: null,
+      miniGameInteractionCodeErrorMsg: '',
+      miniGameInteractionCodeHasError: false,
 
       levelCode: null,
       levelCodeErrorMsg: '',

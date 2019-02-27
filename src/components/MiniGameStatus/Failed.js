@@ -23,7 +23,7 @@ class Failed extends Component {
       nextHandler,
       selectedOption,
       config: {
-        miniGameCode,
+        miniGameInteractionCode,
       }
     } = this.props
 
@@ -36,7 +36,7 @@ class Failed extends Component {
             </Button>
           </Right>
         </Header>
-        {miniGameCode === 'miniGames#0' ? (
+        {miniGameInteractionCode === 'miniGameInteractions#0' ? (
           <Text
             style={styles.mainText}
           >
