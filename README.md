@@ -11,14 +11,24 @@ dependencias ejecutando los siguientes comandos en la linea de comandos:
 
 ```bash
 $ yarn
-$ yarn android
+$ react-native link
 ```
 
-Una vez levantado `expo`, se muestra una pantalla con un código QR que se debe
-escanear desde la aplicación de expo (disponible en android y ios).
+**Terminal A**
 
-Esto abrirá automáticamente nuestra aplicación en el teléfono, la cual
-construirá y descargará la app.
+Servimos los JS, permitiendo una suerte de hot reload.
+
+```bash
+$ yarn start
+```
+
+**Terminal B**
+
+Genera e instala apk-debug. Cuando anda no cierra la conexión.
+
+```bash
+$ yarn android-linux
+```
 
 ## Desarrollo de la APP
 
@@ -93,75 +103,6 @@ de la siguiente forma:
 
 ```bash
 $ yarn
-$ yarn build:android
-```
-
-__Notar que se debe contar con una cuenta de expo__
-
-* * *
-  
-## Utilizando Emulador 
-
-```bash
-$ emulator -list-avds
-$ emulator @name
-```
-
-* * *
-
-## Notas de Uso
-
-Bueno, para no olvidarme voy a dejar constancia de todo lo que hice para que ande con hot reloading y etc. Primero necesité variables de ambiente con los path de Android SDK. Para esto
-ejecutamos lo siguiente en la terminal:
-
-```bash
-$ export ANDROID_HOME="$HOME/Android/Sdk"
-$ export PATH=$PATH:$HOME/Android/Sdk/tools:$HOME/Android/Sdk/platform-tools
-```
-
-Despues, instalamos todas las dependencias del repo. Me sorprendió que muchísimia gente de la comunidad recomendaba borrar `node_modules`. A mi no me pareció necesario, así que solo hice lo siguiente:
-
-```bash
-$ yarn
 $ react-native link
+$ yarn build:prod:android
 ```
-
-Va a ser importante reinstalar porque tuve que instalar una nueva dependencia,
-`react-native-gesture-handler` la cual fué necesaria para compatibilidad con determinados
-dispositivos. Sorpresa! Se necesita para casi todos jajaja
-
-Despues, lo más importante, tuve que cambiar el nombre del rootDir en el `settings.gradle`
-de android, dado que se necesita que sea el nombre del repo o en si, el nombre del root dir, sea cual sea. En mi caso queda así, que es como quedaría con cualquier `clone` al repo.
-
-```java
-rootProject.name = 'cedica-react-native-app'
-
-include ':react-native-gesture-handler'
-project(':react-native-gesture-handler').projectDir = new File(rootProject.projectDir, '../node_modules/react-native-gesture-handler/android')
-
-include ':app'
-```
-
-Cabe destacar que al hacer `react-native link` se modificó dicho archivo para requerir algunas
-dependencias para el gesture handler.
-
-Despues lo que queda es simple. Por un lado servir los JS y por otro generar la apk instalable de debug.
-
-Primero conectamos el dispositivos, (a mi no me funca el emulador así que lo usé en el celu y va bien). Y después correr en dos terminales diferentes los siguientes comandos:
-
-**Terminal A**
-
-Servimos los JS, permitiendo una suerte de hot reload.
-
-```bash
-$ yarn start
-```
-
-**Terminal B**
-
-Genera e instala apk-debug. Cuando anda no cierra la conexión.
-
-```bash
-$ yarn android-linux
-```
-
