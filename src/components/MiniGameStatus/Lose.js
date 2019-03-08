@@ -44,7 +44,7 @@ class Lose extends Component {
         <Text
           style={{
             fontSize: hp('14%'),
-            marginTop: hp('22%'),
+            marginTop: hp('20%'),
             textAlign: 'center',
             color: 'white',
           }}

@@ -196,7 +196,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'flex-start',
     marginLeft: -wp('2%'),
-    marginTop: hp('0.7%'),
+    marginTop: hp('0.5%'),
     height: hp('23%'),
     width: wp('30%'),
   },

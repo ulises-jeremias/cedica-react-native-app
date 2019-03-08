@@ -193,7 +193,7 @@ const styles = StyleSheet.create({
     height: hp('15%'),
   },
   lastRow: {
-    marginTop: hp('8%'),
+    marginTop: hp('2%'),
   }
 })
 
