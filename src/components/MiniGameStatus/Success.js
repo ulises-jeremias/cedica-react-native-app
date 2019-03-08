@@ -58,16 +58,15 @@ class Success extends Component {
 
 const styles = StyleSheet.create({
   mainImage: {
-    marginTop: hp('0.25%'),
+    marginTop: hp('7%'),
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: hp('52%'),
-    width: wp('62%'),
+    height: hp('45%'),
+    width: wp('55%'),
   },
   mainText: {
-    marginTop: hp('2%'),
-    fontSize: hp('15%'),
-    marginTop: hp('15%'),
+    fontSize: hp('14%'),
+    marginTop: hp('22%'),
     textAlign: 'center',
     color: 'white',
   },

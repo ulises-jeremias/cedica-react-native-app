@@ -10,6 +10,9 @@ import {
 import {
   ImageBackground,
 } from 'react-native'
+import {
+  heightPercentageToDP as hp
+} from 'react-native-responsive-screen'
 
 class Lose extends Component {
   render() {
@@ -38,6 +41,16 @@ class Lose extends Component {
             </Button>
           </Right>
         </Header>
+        <Text
+          style={{
+            fontSize: hp('14%'),
+            marginTop: hp('22%'),
+            textAlign: 'center',
+            color: 'white',
+          }}
+        >
+          ¡Vuelve a intentarlo!
+        </Text>
       </ImageBackground>
     )
   }

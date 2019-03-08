@@ -34,11 +34,12 @@ class Failed extends Component {
         style={{ width: '100%', height: '100%', backgroundColor: 'green' }}
       >
         <Header transparent>
-          <Left>
-            <Text style={{ color: 'white' }}>
-              ¡La opción es incorrecta!
-            </Text>
+          <Left style={{ textAlign: 'center' }}>
+            <Icon name='remove' type='FontAwesome' style={{ color: 'red', fontSize: wp('5%') }} />
           </Left>
+          <Text style={{ color: 'white', fontSize: wp('3.5%') }}>
+            ¡La opción es incorrecta!
+          </Text>
           <Right>
             <Button block warning onPress={nextHandler}>
               <Icon name='md-arrow-round-forward' />
@@ -64,16 +65,15 @@ class Failed extends Component {
 
 const styles = StyleSheet.create({
   mainImage: {
-    marginTop: hp('0.25%'),
+    marginTop: hp('7%'),
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: hp('52%'),
-    width: wp('62%'),
+    height: hp('45%'),
+    width: wp('55%'),
   },
   mainText: {
-    marginTop: hp('2%'),
-    fontSize: hp('15%'),
-    marginTop: hp('15%'),
+    fontSize: hp('14%'),
+    marginTop: hp('22%'),
     textAlign: 'center',
     color: 'white',
   },

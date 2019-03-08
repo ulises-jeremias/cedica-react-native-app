@@ -205,11 +205,12 @@ const styles = StyleSheet.create({
     marginTop: hp('6%'),
   },
   playSoundButton: {
+    marginTop: hp('2%'),
     alignSelf: 'center',
   },
   playSound: {
-    height: hp('7%'),
-    width: wp('7%'),
+    height: hp('9%'),
+    width: wp('9%'),
   },
 })
 

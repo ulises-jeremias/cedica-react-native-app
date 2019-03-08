@@ -25,7 +25,7 @@ class Win extends Component {
 
     return (
       <ImageBackground
-        source={require('../../../assets/images/Festejos/lose.png')}
+        source={require('../../../assets/images/Festejos/win.png')}
         style={{ width: '100%', height: '100%', backgroundColor: '#5E7890' }}
       >
         <Header transparent>

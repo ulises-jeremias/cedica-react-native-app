@@ -196,6 +196,7 @@ const styles = StyleSheet.create({
     resizeMode: 'contain',
     alignSelf: 'flex-start',
     marginLeft: -wp('2%'),
+    marginTop: hp('0.7%'),
     height: hp('23%'),
     width: wp('30%'),
   },
@@ -203,15 +204,16 @@ const styles = StyleSheet.create({
     alignSelf: 'center',
     marginTop: hp('4%'),
     height: hp('27%'),
-    width: wp('22%'),
+    width: wp('23%'),
   },
   playSoundButton: {
+    marginTop: hp('2%'),
     alignSelf: 'center',
   },
   playSound: {
     alignSelf: 'center',
-    height: hp('7%'),
-    width: wp('7%'),
+    height: hp('10%'),
+    width: wp('10%'),
   },
 })
 

@@ -98,6 +98,7 @@ class HomeScreen extends Component {
             <Button
               onPress={() => navigate('GameMode')}
               transparent
+              style={styles.playButton}
               >
               <Image
                 source={require('../../assets/images/UI/jugar_regular.png')}
@@ -162,11 +163,14 @@ const styles = StyleSheet.create({
     width: wp('30%'),
     height: hp('35%'),
   },
+  playButton: {
+    alignSelf: 'center',
+    marginTop: hp('5%'),
+  },
   playButtonImage: {
     resizeMode: 'contain',
-    marginTop: hp('12%'),
     width: wp('20%'),
-    height: hp('20%'),
+    height: hp('22%'),
   },
   recognizeButton: {
     alignSelf: 'center',
