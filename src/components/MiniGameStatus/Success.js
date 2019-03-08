@@ -23,7 +23,7 @@ class Success extends Component {
       nextHandler,
       selectedOption,
       config: {
-        miniGameCode,
+        miniGameInteractionCode,
       }
     } = this.props
 
@@ -39,7 +39,7 @@ class Success extends Component {
             </Button>
           </Right>
         </Header>
-        {miniGameCode === 'miniGameInteractions#0' ? (
+        {miniGameInteractionCode === 'miniGameInteractions#0' ? (
           <Text
             style={styles.mainText}
           >
@@ -58,12 +58,14 @@ class Success extends Component {
 
 const styles = StyleSheet.create({
   mainImage: {
+    marginTop: hp('0.25%'),
     resizeMode: 'contain',
     alignSelf: 'center',
-    height: hp('57%'),
+    height: hp('52%'),
     width: wp('62%'),
   },
   mainText: {
+    marginTop: hp('2%'),
     fontSize: hp('15%'),
     marginTop: hp('15%'),
     textAlign: 'center',
