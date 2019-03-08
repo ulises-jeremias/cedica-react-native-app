@@ -1,4 +1,4 @@
-package com.cedica;
+package com.razasypelajescornejofandosdicunzolo;
 
 import android.app.Application;
 
