@@ -1,12 +1,14 @@
 import React, {Component} from 'react'
 import {
-  Content,
   Button,
   Header,
   Icon,
   Left,
   Right,
 } from 'native-base'
+import {
+  ImageBackground,
+} from 'react-native'
 import {
   widthPercentageToDP as wp,
   heightPercentageToDP as hp
@@ -22,7 +24,10 @@ class Win extends Component {
     } = this.props
 
     return (
-      <Content style={{ backgroundColor: '#5E7890' }}>
+      <ImageBackground
+        source={require('../../../assets/images/Festejos/lose.png')}
+        style={{ width: '100%', height: '100%', backgroundColor: '#5E7890' }}
+      >
         <Header transparent>
           <Left>
             <Button info onPress={handleBackClick}>
@@ -43,7 +48,7 @@ class Win extends Component {
             alignSelf: 'center',
           }}
         />
-      </Content>
+      </ImageBackground>
     )
   }
 }

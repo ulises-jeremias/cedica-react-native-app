@@ -20,7 +20,7 @@ class Lose extends Component {
 
     return (
       <ImageBackground
-        source={require('../../../assets/images/Festejos/lose.jpeg')}
+        source={require('../../../assets/images/Festejos/lose.png')}
         style={{ width: '100%', height: '100%', backgroundColor: '#5E7890' }}
       >
         <Header transparent>
