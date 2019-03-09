@@ -4,7 +4,7 @@
 
 En este repositorio se encuentra el código utilizado para la entrega realizada como trabajo final de la materia Laboratorio de Software de la carrera Lic. en Informática de la Facultad de Informática, UNLP. La misma consiste en una aplicación desarrollada en `react-native` con el objetivo final de ser un juego para android soportando Android 4 y versiones posteriores.
 
-En el directorio `/entrega` se puede encontrar `cedica.apk` una APK generada con la última versión estable del juego.
+En el directorio `/entrega` se puede encontrar `cedica.apk`, una APK generada con la última versión estable del juego.
 
 * * *
 
