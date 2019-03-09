@@ -2,6 +2,10 @@
 
 ## React Native App
 
+Este repositorio corresponde a la entrega realizada como trabajo final de la materia Laboratorio de Software de la carrera Lic. en Informática de la Facultad de Informática, UNLP. La misma consiste en una aplicación desarrollada en `react-native` con el objetivo final de ser un juego para android soportando Android 4 o versiones posteriores.
+
+En el directorio `/entrega` se puede encontrar la APK ya generada con la última versión estable del juego.
+
 * * *
 
 ## Ambiente de desarrollo
